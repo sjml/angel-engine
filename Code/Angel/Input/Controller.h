@@ -188,7 +188,7 @@ public:
 	 * @return The current input data from the buttons and thumbsticks of this
 	 *   controller. 
 	 */
-	const ControllerInput GetState();
+	ControllerInput GetState() const;
 	
 	/**
 	 * Get the X and Y positions of the left thumbstick as a Vector2. 
@@ -196,7 +196,7 @@ public:
 	 * @return The current direction of the left thumbstick, as a Vector2 with 
 	 *   both dimensions ranging from -1.0 to 1.0. 
 	 */
-	const Vector2 GetLeftThumbVec2();
+	Vector2 GetLeftThumbVec2() const;
 	
 	/**
 	 * Get the X and Y positions of the right thumbstick as a Vector2. 
@@ -204,7 +204,7 @@ public:
 	 * @return The current direction of the right thumbstick, as a Vector2 
 	 *   with both dimensions ranging from -1.0 to 1.0. 
 	 */
-	const Vector2 GetRightThumbVec2();
+	Vector2 GetRightThumbVec2() const;
 	
 	/**
 	 * Get the raw values of the left thumbstick as an integer vector. 
@@ -212,7 +212,7 @@ public:
 	 * @return The current raw values of the left thumbstick, with both X and
 	 *   Y ranging from -32768 to 32768. 
 	 */
-	const Vec2i GetLeftThumbstick();
+	Vec2i GetLeftThumbstick() const;
 	
 	/**
 	 * Get the raw values of the right thumbstick as an integer vector. 
@@ -220,7 +220,7 @@ public:
 	 * @return The current raw values of the right thumbstick, with both X and
 	 *   Y ranging from -32768 to 32768. 
 	 */
-	const Vec2i GetRightThumbstick();
+	Vec2i GetRightThumbstick() const;
 	
 	/**
 	 * Get the current value of the right trigger.
@@ -228,7 +228,7 @@ public:
 	 * @return How much the right analog trigger is pressed, ranging from 0 
 	 *   (untouched) to 255 (all the way down).
 	 */
-	const int GetRightTrigger();
+	int GetRightTrigger() const;
 	
 	/**
 	 * Get the current value of the left trigger.
@@ -236,7 +236,7 @@ public:
 	 * @return How much the left analog trigger is pressed, ranging from 0 
 	 *   (untouched) to 255 (all the way down).
 	 */
-	const int GetLeftTrigger();
+	int GetLeftTrigger() const;
 	
 	/**
 	 * Pass a button mask to find out if a combination of buttons is depressed
@@ -263,7 +263,7 @@ public:
 	 * @return True if all the masked buttons are pressed, false if they're
 	 *   not
 	 */
-	const bool IsButtonDown(int buttonMask);
+	bool IsButtonDown(int buttonMask) const;
 	
 	
 	//Do these really need documentation comments? Sigh. I guess so. 
@@ -273,70 +273,70 @@ public:
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsAButtonDown();
+	bool IsAButtonDown() const;
 	
 	/**
 	 * Find out if the B button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsBButtonDown();
+	bool IsBButtonDown() const;
 	
 	/**
 	 * Find out if the X button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsXButtonDown();
+	bool IsXButtonDown() const;
 	
 	/**
 	 * Find out if the Y button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsYButtonDown();
+	bool IsYButtonDown() const;
 	
 	/**
 	 * Find out if the left thumbstick is currently pressed down. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsLeftThumbstickButtonDown();
+	bool IsLeftThumbstickButtonDown() const;
 	
 	/**
 	 * Find out if the right thumbstick is currently pressed down. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsRightThumbstickButtonDown();
+	bool IsRightThumbstickButtonDown() const;
 	
 	/**
 	 * Find out if the start button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsStartButtonDown();
+	bool IsStartButtonDown() const;
 	
 	/**
 	 * Find out if the back button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsBackButtonDown();
+	bool IsBackButtonDown() const;
 	
 	/**
 	 * Find out if the left shoulder button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsLeftBumperDown();
+	bool IsLeftBumperDown() const;
 	
 	/**
 	 * Find out if the right shoulder button is currently pressed. 
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsRightBumperDown();
+	bool IsRightBumperDown() const;
 	
 	/**
 	 * Find out if the left trigger is pressed down. Since it's an analog
@@ -345,7 +345,7 @@ public:
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsLeftTriggerPressed();
+	bool IsLeftTriggerPressed() const;
 	
 	/**
 	 * Find out if the left trigger is pressed down. Since it's an analog
@@ -354,7 +354,7 @@ public:
 	 * 
 	 * @return True if it is, false if it's not. 
 	 */
-	const bool IsRightTriggerPressed();
+	bool IsRightTriggerPressed() const;
 	
 	/**
 	 * Set the rumble of the controller's lower frequencies. This sets the
@@ -401,14 +401,14 @@ public:
 	 * 
 	 * @return Current intensity, ranging from 0 to 65535. 
 	 */
-	const unsigned int GetLeftVibration(); 
+	unsigned int GetLeftVibration() const; 
 	
 	/**
 	 * Get the current vibration setting for the higher frequencies. 
 	 * 
 	 * @return Current intensity, ranging from 0 to 65535. 
 	 */
-	const unsigned int GetRightVibration();
+	unsigned int GetRightVibration() const;
 	
 	/**
 	 * Find out if this controller object is currently mapped to a real-world
@@ -416,14 +416,14 @@ public:
 	 * 
 	 * @return True if this controller gets input
 	 */
-	const bool IsConnected() { return _connected; }
+	bool IsConnected() const { return _connected; }
 	
 	/**
 	 * Get the index this controller corresponds to in the ControllerManager.
 	 * 
 	 * @return The index that can be used in ControllerManager::GetController
 	 */
-	const int GetControllerID() { return _controllerID; }
+	int GetControllerID() const { return _controllerID; }
 	
 protected:
 	Controller();
@@ -443,7 +443,7 @@ private:
 #elif defined(__APPLE__)
 	pRecDevice _device;
 	hashmap_ns::hash_map<unsigned int, pRecElement> _elements;
-	const long _getValueForCookie(unsigned int cookie)
+	long _getValueForCookie(unsigned int cookie)
 	{
 		return HIDGetElementValue(_device, _elements[cookie]);
 	}

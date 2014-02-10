@@ -53,8 +53,8 @@ public:
 
 	void Render();
 
-	bool HasChildren() {return LHC != NULL && RHC != NULL;}
-	void GetGridPoints( Vector2List& points, int& xPoints, int& yPoints );
+	bool HasChildren() const { return LHC != NULL && RHC != NULL; }
+	void GetGridPoints( Vector2List& points, int& xPoints, int& yPoints ) const;
 
 	BoundingBox BBox;
 	SpatialGraphKDNode* LHC;
@@ -88,25 +88,25 @@ public:
 	SpatialGraph(float entityWidth, const BoundingBox& startBox );
 	~SpatialGraph();
 	
-	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const BoundingBox& bbox);
-	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const Vector2& point);
-	SpatialGraphKDNode* FindNode(const BoundingBox& bbox);
-	SpatialGraphKDNode* FindNode(const Vector2& point);
+	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const BoundingBox& bbox) const;
+	SpatialGraphKDNode* FindNode(SpatialGraphKDNode* node, const Vector2& point) const;
+	SpatialGraphKDNode* FindNode(const BoundingBox& bbox) const;
+	SpatialGraphKDNode* FindNode(const Vector2& point) const;
 	void Render();
 
-	int GetDepth() {return _depth;}
-	Vector2 GetSmallestDimensions() {return _smallestDimensions;}
-	bool CanGo( const Vector2& vFrom, const Vector2 vTo );
+	int GetDepth() const { return _depth; }
+	Vector2 GetSmallestDimensions() const { return _smallestDimensions; }
+	bool CanGo( const Vector2& vFrom, const Vector2 vTo ) const;
 
 private:
 	SpatialGraphKDNode* CreateTree(int depth, const BoundingBox& bbox, SpatialGraphKDNode* parent = NULL, int index = 0 );
-	void AddNeighbor( SpatialGraphKDNode* node, const Vector2& pos );
-	void ComputeNeighbors( SpatialGraphKDNode* node );
-	void ValidateNeighbors( SpatialGraphKDNode* node );
-	void DeleteNode( SpatialGraphKDNode* pNode );
-	bool IsFullyBlocked( SpatialGraphKDNode* pNode );
-	bool CanGoInternal( const Vector2& vFrom, const Vector2 vTo, SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode );
-	bool CanGoNodeToNode( SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode );
+	void AddNeighbor( SpatialGraphKDNode* node, const Vector2& pos ) const;
+	void ComputeNeighbors( SpatialGraphKDNode* node ) const;
+	void ValidateNeighbors( SpatialGraphKDNode* node ) const;
+	void DeleteNode( SpatialGraphKDNode* pNode ) const;
+	bool IsFullyBlocked( SpatialGraphKDNode* pNode ) const;
+	bool CanGoInternal( const Vector2& vFrom, const Vector2 vTo, SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode ) const;
+	bool CanGoNodeToNode( SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode ) const;
 
 private:
 	int _depth;
@@ -126,32 +126,36 @@ public:
 
 	bool ReportFixture(b2Fixture* fixture);
 	
-	SpatialGraph* GetGraph() {return _spatialGraph;}
+	SpatialGraph* GetGraph() { return _spatialGraph; }
 	void CreateGraph( float entityWidth, const BoundingBox& bounds );
 
 	void Render();
 
-	bool GetPath( const Vector2& source, const Vector2& dest, Vector2List& path );
+	bool GetPath( const Vector2& source, const Vector2& dest, Vector2List& path ) const;
 
-	bool CanGo( const Vector2& from, const Vector2 to );
-	bool IsInPathableSpace( const Vector2& point );
-	bool FindNearestNonBlocked( const Vector2& fromPoint, Vector2& goTo );
+	bool CanGo( const Vector2& from, const Vector2 to ) const;
+	bool IsInPathableSpace( const Vector2& point ) const;
+	bool FindNearestNonBlocked( const Vector2& fromPoint, Vector2& goTo ) const;
 	
 	void EnableDrawBounds(bool enable);
-	const bool ToggleDrawBounds();
-	const bool GetDrawBounds();
+	bool ToggleDrawBounds();
+	bool GetDrawBounds() const;
+	
 	void EnableDrawBlocked(bool enable);
-	const bool ToggleDrawBlocked();
-	const bool GetDrawBlocked();
+	bool ToggleDrawBlocked();
+	bool GetDrawBlocked() const;
+	
 	void EnableDrawGridPoints(bool enable);
-	const bool ToggleDrawGridPoints();
-	const bool GetDrawGridPoints();
+	bool ToggleDrawGridPoints();
+	bool GetDrawGridPoints() const;
+	
 	void EnableDrawGraph(bool enable);
-	const bool ToggleDrawGraph();
-	const bool GetDrawGraph();
+	bool ToggleDrawGraph();
+	bool GetDrawGraph() const;
+	
 	void EnableDrawNodeIndex(bool enable);
-	const bool ToggleDrawNodeIndex();
-	const bool GetDrawNodeIndex();
+	bool ToggleDrawNodeIndex();
+	bool GetDrawNodeIndex() const;
 	
 protected:
 	SpatialGraphManager();

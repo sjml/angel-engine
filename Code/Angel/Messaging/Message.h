@@ -86,7 +86,7 @@ public:
 	 * 
 	 * @return The sender
 	 */
-	MessageListener* const GetSender();
+	MessageListener const * GetSender() const;
 	
 protected:
 	String _messageName;

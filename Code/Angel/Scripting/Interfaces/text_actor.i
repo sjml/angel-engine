@@ -13,18 +13,29 @@ enum TextAlignment
 class TextActor : public Actor
 {
 public:
-	TextActor(String fontNickname="Console", String displayString="", TextAlignment align=TXT_Left, int lineSpacing=5);
+	TextActor(const String& fontNickname="Console", const String& displayString="", TextAlignment align=TXT_Left, int lineSpacing=5);
 
-	const String GetFont();
-	void SetFont(String newFont);
-	const String GetDisplayString();
-	void SetDisplayString(String newString);
+	virtual void Render();
+	virtual void ReceiveMessage(Message* message);
 
-	const TextAlignment GetAlignment();
+	virtual void SetPosition(float x, float y);
+	virtual void SetPosition(const Vector2 position);
+
+	virtual void SetRotation(float newRotation);
+
+	const String& GetFont();
+	void SetFont(const String& newFont);
+
+	const String& GetDisplayString();
+	void SetDisplayString(const String& newString);
+
+	TextAlignment GetAlignment() const;
 	void SetAlignment(TextAlignment newAlignment);
 
-	const int GetLineSpacing();
+	int GetLineSpacing() const;
 	void SetLineSpacing(int newSpacing);
+
+	virtual String GetClassName() const;
 };
 
 

@@ -42,7 +42,7 @@ public:
 	virtual void Update(float dt);
 	virtual void Render();
 
-	PathFinder&		GetPathfinder() {return _pathFinder;}
+	PathFinder& GetPathfinder() { return _pathFinder; }
 	virtual void OnNamedEvent( const String& /*eventId*/ ) {}
 
 	virtual void InitializeBrain() {}

@@ -65,7 +65,7 @@ bool GetLinesFromFile(const String& fileName, StringList& outList )
 	return false;
 }
 
-const String ReadWholeFile(const String& fileName)
+String ReadWholeFile(const String& fileName)
 {
 	String forReturn = "";
 	StringList lines;
@@ -154,7 +154,7 @@ bool MakeDirectories( const String& path )
 	#endif
 }
 
-const String GetStorageDirectory()
+String GetStorageDirectory()
 {
 	#if defined(WIN32)
 		return "./";
@@ -177,7 +177,7 @@ const String GetStorageDirectory()
 	#endif
 }
 
-const String GetDocumentsPath()
+String GetDocumentsPath()
 {
 	#if defined(WIN32)
 		char myDocs[MAX_PATH];
@@ -200,7 +200,7 @@ const String GetDocumentsPath()
 	#endif
 }
 
-const String GetExeName() 
+String GetExeName() 
 {
 	String pathSplit = "/";
 	#if defined (WIN32)
@@ -237,7 +237,7 @@ const String GetExeName()
 	return exeName;
 }
 
-const long GetModificationTime(const String& fileName)
+long GetModificationTime(const String& fileName)
 {
 	struct stat statInfo;
 	if (stat(fileName.c_str(), &statInfo) != -1)

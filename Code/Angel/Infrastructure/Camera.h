@@ -123,14 +123,14 @@ public:
 	 * 
 	 * @return Height in pixels. 
 	 */
-	const int GetWindowHeight() const;
+	int GetWindowHeight() const;
 	
 	/**
 	 * Get the window's current width. 
 	 * 
 	 * @return Width in pixels.
 	 */
-	const int GetWindowWidth() const;
+	int GetWindowWidth() const;
 	
 	/**
 	 * If you were to draw a circle inscribed in the viewport, this function
@@ -142,21 +142,21 @@ public:
 	 * 
 	 * @return The radius size in GL units. 
 	 */
-	const double GetViewRadius() const;
+	double GetViewRadius() const;
 	
 	/**
 	 * Get the world coordinate of the top-right point of the window. 
 	 * 
 	 * @return The world coordinate (GL units).
 	 */
-	const Vector2 GetWorldMaxVertex() const;
+	Vector2 GetWorldMaxVertex() const;
 	
 	/**
 	 * Get the world coordinate of the bottom-left point of the window. 
 	 * 
 	 * @return The world coordinate (GL units).
 	 */
-	const Vector2 GetWorldMinVertex() const;
+	Vector2 GetWorldMinVertex() const;
 
 	/**
 	 * Set the position of the camera. Note that the camera is the only
@@ -207,7 +207,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done.
 	 *  You will have to manually subscribe to this Message, though.
      */
-    void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	/**
 	 * Gets the position of the Camera. Only returns the X and Y position so
@@ -216,14 +216,14 @@ public:
 	 * 
 	 * @return The (X, Y) position of the camera. 
 	 */
-	virtual Vector2 GetPosition() const;
+	Vector2 GetPosition() const;
 	
 	/**
 	 * Get the position of the camera on the Z-axis. 
 	 * 
 	 * @return The camera's Z coordinate. 
 	 */
-	virtual float GetZ() const;
+	float GetZ() const;
 	
 	/**
 	 * Set the rotation of the camera. Only rotates about the Z-axis,
@@ -240,21 +240,21 @@ public:
 	* @param radius The desired view radius.
 	* @return The Z value. 
 	*/
-	virtual float GetZForViewRadius(float radius);
+	float GetZForViewRadius(float radius) const;
 
 	/**
 	* Get the near clip distance.
 	* 
 	* @return The near clip distance. 
 	*/
-	virtual float GetNearClipDist();
+	float GetNearClipDist() const;
 
 	/**
 	* Get the far clip distance.
 	* 
 	* @return The far clip distance. 
 	*/
-	virtual float GetFarClipDist();
+	float GetFarClipDist() const;
 
 	/**
 	* Set the Z value necessary to achieve the requested view radius. 
@@ -289,6 +289,15 @@ public:
 	 * @param z The Z coordinate at which the Camera will aim. 
 	 */
 	virtual void SetViewCenter(float x, float y, float z);
+
+	/**
+	 * Set the point towards which the camera should aim. Since Angel is a 
+	 *  predominantly 2D world, be very careful setting this too far off of
+	 *  perpendicular. 
+	 * 
+	 * @param view The coordinates at which the Camera will aim. 
+	 */
+	virtual void SetViewCenter(const Vector3& view);
 	
 	/**
 	 * Get the current look-at target of the camera. 
@@ -303,7 +312,7 @@ public:
 	 * 
 	 * @return The string "Camera"
 	 */
-	virtual const String GetClassName() const { return "Camera"; }
+	virtual String GetClassName() const { return "Camera"; }
 
 protected:
 	Camera();

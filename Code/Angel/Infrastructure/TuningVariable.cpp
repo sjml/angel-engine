@@ -46,10 +46,10 @@ Tuning::Tuning()
 	//nothing to do here at the moment
 }
 
-StringSet Tuning::GetVariables()
+StringSet Tuning::GetVariables() const
 {
 	StringSet forReturn;
-	LoadedVariableMap::iterator it = _tuningVariables.begin();
+	LoadedVariableMap::const_iterator it = _tuningVariables.begin();
 	while (it != _tuningVariables.end())
 	{
 		forReturn.insert(it->first);
@@ -58,9 +58,9 @@ StringSet Tuning::GetVariables()
 	return forReturn;
 }
 
-int Tuning::GetInt(const String& name)
+int Tuning::GetInt(const String& name) const
 {
-	LoadedVariableMap::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::const_iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
 		return LoadedVariable()._int;
@@ -68,9 +68,9 @@ int Tuning::GetInt(const String& name)
 	return it->second._int;
 }
 
-float Tuning::GetFloat(const String& name)
+float Tuning::GetFloat(const String& name) const
 {
-	LoadedVariableMap::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::const_iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
 		return LoadedVariable()._float;
@@ -78,9 +78,9 @@ float Tuning::GetFloat(const String& name)
 	return it->second._float;
 }
 
-String Tuning::GetString(const String& name)
+String Tuning::GetString(const String& name) const
 {
-	LoadedVariableMap::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::const_iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
 		return LoadedVariable()._string;
@@ -88,9 +88,9 @@ String Tuning::GetString(const String& name)
 	return it->second._string;
 }
 
-Vector2 Tuning::GetVector(const String& name)
+Vector2 Tuning::GetVector(const String& name) const
 {
-	LoadedVariableMap::iterator it = _tuningVariables.find(name);
+	LoadedVariableMap::const_iterator it = _tuningVariables.find(name);
 	if (it == _tuningVariables.end())
 	{
 		return LoadedVariable()._vector;
@@ -123,7 +123,7 @@ void Tuning::AddToRuntimeTuningList(const String& varName)
 	_runTimeTunedList.insert(varName);
 }
 
-bool Tuning::IsRuntimeTuned(const String& varName)
+bool Tuning::IsRuntimeTuned(const String& varName) const
 {
 	return (_runTimeTunedList.count(varName) > 0);
 }

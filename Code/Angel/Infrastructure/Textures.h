@@ -69,7 +69,7 @@ void FlushTextureCache();
  * @return The GLuint that OpenGL uses to reference the texture. If the number
  *   is negative, that means the texture couldn't be loaded or found. 
  */
-const int GetTextureReference(const String& name, bool optional = false);
+int GetTextureReference(const String& name, bool optional = false);
 
 /**
  * The same as the above function, but with some more available parameters if
@@ -85,7 +85,7 @@ const int GetTextureReference(const String& name, bool optional = false);
  * @return The GLuint that OpenGL uses to reference the texture. If the number
  *   is negative, that means the texture couldn't be loaded or found. 
  */
-const int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional = false);
+int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional = false);
 
 /**
  * Gets the dimensions for a loaded texture. 
@@ -94,7 +94,7 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
  * @return The width and height of the texture; if no texture is currently
  *   loaded from the given filename, will return (0, 0)
  */
-const Vec2i GetTextureSize(const String& filename);
+Vec2i GetTextureSize(const String& filename);
 
 /**
  * Remove a texture from memory. On the desktop this usually isn't an issue 

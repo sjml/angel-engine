@@ -58,12 +58,12 @@ Vector3::Vector3()
 , Z(0)
 {}
 
-float Vector3::Length()
+float Vector3::Length() const
 {
 	return sqrt(LengthSquared());
 }
 
-float Vector3::LengthSquared()
+float Vector3::LengthSquared() const
 {
 	return (X * X) + (Y * Y) + (Z * Z);
 }
@@ -206,7 +206,6 @@ Vector3& Vector3::operator/=(float scaleFactor)
 	Z /= scaleFactor;
 	return *this;
 }
-
 
 #include <iostream>
 using namespace std;

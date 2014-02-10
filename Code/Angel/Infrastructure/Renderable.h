@@ -91,7 +91,7 @@ public:
 	 * 
 	 * @return True if the Renderable should be removed and deleted. 
 	 */
-	bool IsDestroyed() {return _deleteMe;}
+	bool IsDestroyed() const {return _deleteMe;}
 	
 	/**
 	 * The layer to which this Renderable has been assigned in the world. 
@@ -100,7 +100,7 @@ public:
 	 * 
 	 * @return The world layer for this Renderable
 	 */
-	int GetLayer() {return _layer;}
+	int GetLayer() const {return _layer;}
 protected:
 	/**
 	 * Will get called before this Renderable is destroyed (if you do it via 

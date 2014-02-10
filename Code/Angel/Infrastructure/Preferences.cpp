@@ -79,25 +79,25 @@ void Preferences::SavePreferences()
 	WriteLinesToFile(GetUserPrefsPath(), written);
 }
 
-const String Preferences::GetDefaultPath()
+String Preferences::GetDefaultPath()
 {
 	return "Config/defaults.lua";
 }
 
-const String Preferences::GetUserPrefsPath()
+String Preferences::GetUserPrefsPath()
 {
 	MakeDirectories(GetStorageDirectory());
 	return GetStorageDirectory() + "user_prefs.lua";
 }
 
-int Preferences::GetInt(const String& category, const String& name) 
+int Preferences::GetInt(const String& category, const String& name) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._int;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return LoadedVariable()._int;
@@ -106,14 +106,14 @@ int Preferences::GetInt(const String& category, const String& name)
 	return lvmIt->second._int;
 }
 
-float Preferences::GetFloat(const String& category, const String& name) 
+float Preferences::GetFloat(const String& category, const String& name) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._float;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return LoadedVariable()._float;
@@ -122,14 +122,14 @@ float Preferences::GetFloat(const String& category, const String& name)
 	return lvmIt->second._float;
 }
 
-String Preferences::GetString(const String& category, const String& name) 
+String Preferences::GetString(const String& category, const String& name) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._string;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return LoadedVariable()._string;
@@ -138,17 +138,17 @@ String Preferences::GetString(const String& category, const String& name)
 	return lvmIt->second._string;
 }
 
-LoadedVariableMap Preferences::GetTable(const String& category)
+LoadedVariableMap Preferences::GetTable(const String& category) const
 {
 	LoadedVariableMap forReturn;
 
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return forReturn;
 	}
 
-	LoadedVariableMap::iterator lvmIt = it->second.begin();
+	LoadedVariableMap::const_iterator lvmIt = it->second.begin();
 	while (lvmIt != it->second.end())
 	{
 		forReturn[lvmIt->first] = LoadedVariable(lvmIt->second._string);
@@ -200,14 +200,14 @@ void Preferences::SetString(const String& category, const String& name, const St
 	_preferenceVariables[category][name] = LoadedVariable(val);
 }
 
-int Preferences::OverrideInt(const String& category, const String& name, int val)
+int Preferences::OverrideInt(const String& category, const String& name, int val) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return val;
@@ -216,14 +216,14 @@ int Preferences::OverrideInt(const String& category, const String& name, int val
 	return lvmIt->second._int;
 }
 
-float Preferences::OverrideFloat(const String& category, const String& name, float val)
+float Preferences::OverrideFloat(const String& category, const String& name, float val) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return val;
@@ -232,14 +232,14 @@ float Preferences::OverrideFloat(const String& category, const String& name, flo
 	return lvmIt->second._float;
 }
 
-String Preferences::OverrideString(const String& category, const String& name, String val)
+String Preferences::OverrideString(const String& category, const String& name, const String& val) const
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	hashmap_ns::hash_map<String, LoadedVariableMap>::const_iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;
 	}
-	LoadedVariableMap::iterator lvmIt = it->second.find(name);
+	LoadedVariableMap::const_iterator lvmIt = it->second.find(name);
 	if (lvmIt == it->second.end())
 	{
 		return val;

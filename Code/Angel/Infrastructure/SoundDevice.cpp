@@ -604,7 +604,7 @@ void SoundDevice::PauseSound(AngelSoundHandle sound, bool paused)
 	#endif
 }
 
-bool SoundDevice::IsPlaying(AngelSoundHandle sound)
+bool SoundDevice::IsPlaying(AngelSoundHandle sound) const
 {
 	if (!sound)
 		return false;
@@ -621,7 +621,7 @@ bool SoundDevice::IsPlaying(AngelSoundHandle sound)
 	#endif
 }
 
-bool SoundDevice::IsPaused(AngelSoundHandle sound)
+bool SoundDevice::IsPaused(AngelSoundHandle sound) const
 {
 	if (!sound)
 		return false;

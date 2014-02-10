@@ -45,7 +45,7 @@
 
 std::map<String, FTFont*> _fontCache;
 
-const bool RegisterFont(const String& filename, int pointSize, const String& nickname)
+bool RegisterFont(const String& filename, int pointSize, const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if(it != _fontCache.end())
@@ -76,7 +76,7 @@ const bool RegisterFont(const String& filename, int pointSize, const String& nic
 	return true;
 }
 
-const bool IsFontRegistered(const String& nickname)
+bool IsFontRegistered(const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if (it != _fontCache.end())
@@ -89,7 +89,7 @@ const bool IsFontRegistered(const String& nickname)
 	}
 }
 
-const bool UnRegisterFont(const String& nickname)
+bool UnRegisterFont(const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if (it == _fontCache.end())

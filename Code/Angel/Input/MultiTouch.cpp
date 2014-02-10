@@ -113,7 +113,7 @@ Accelerometer& Accelerometer::GetInstance()
 	return *s_Accelerometer;
 }
 
-const Vector3 Accelerometer::GetData()
+Vector3 Accelerometer::GetData() const
 {
 	#if !ANGEL_MOBILE
 		return _data;

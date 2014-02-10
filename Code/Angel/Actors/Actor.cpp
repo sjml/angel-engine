@@ -231,36 +231,36 @@ void Actor::SetDrawShape( actorDrawShape drawShape )
 	_drawShape = drawShape;
 }
 
-const actorDrawShape& Actor::GetDrawShape() const
+actorDrawShape Actor::GetDrawShape() const
 {
 	return _drawShape;
 }
 
-void Actor::MoveTo(const Vector2& newPosition, float duration, bool smooth, String onCompletionMessage)
+void Actor::MoveTo(const Vector2& newPosition, float duration, bool smooth, const String& onCompletionMessage)
 {
 	_positionInterval = Interval<Vector2>(_position, newPosition, duration, smooth);
 	_positionIntervalMessage = onCompletionMessage;
 }
 
-void Actor::RotateTo(float newRotation, float duration, bool smooth, String onCompletionMessage)
+void Actor::RotateTo(float newRotation, float duration, bool smooth, const String& onCompletionMessage)
 {
 	_rotationInterval = Interval<float>(_rotation, newRotation, duration, smooth);
 	_rotationIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeColorTo(const Color& newColor, float duration, bool smooth, String onCompletionMessage)
+void Actor::ChangeColorTo(const Color& newColor, float duration, bool smooth, const String& onCompletionMessage)
 {
 	_colorInterval = Interval<Color>(_color, newColor, duration, smooth);
 	_colorIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeSizeTo(const Vector2& newSize, float duration, bool smooth, String onCompletionMessage)
+void Actor::ChangeSizeTo(const Vector2& newSize, float duration, bool smooth, const String& onCompletionMessage)
 {
 	_sizeInterval = Interval<Vector2>(_size, newSize, duration, smooth);
 	_sizeIntervalMessage = onCompletionMessage;
 }
 
-void Actor::ChangeSizeTo(float newSize, float duration, bool smooth, String onCompletionMessage)
+void Actor::ChangeSizeTo(float newSize, float duration, bool smooth, const String& onCompletionMessage)
 {
 	ChangeSizeTo(Vector2(newSize, newSize), duration, smooth, onCompletionMessage);
 }
@@ -355,7 +355,7 @@ const Vector2& Actor::GetSize() const
 	return _size;
 }
 
-const BoundingBox Actor::GetBoundingBox() const
+BoundingBox Actor::GetBoundingBox() const
 {
 	BoundingBox forReturn;
 	forReturn.Min = _position - (_size / 2.0f);
@@ -384,7 +384,7 @@ void Actor::SetRotation(float rotation)
 	_rotation = rotation;
 }
 
-const float Actor::GetRotation() const
+float Actor::GetRotation() const
 {
 	return _rotation;
 }
@@ -409,7 +409,7 @@ void Actor::SetAlpha(float newAlpha)
 	_color.A = newAlpha;
 }
 
-const float Actor::GetAlpha() const
+float Actor::GetAlpha() const
 {
 	return _color.A;
 }
@@ -599,10 +599,10 @@ void Actor::GetUVs(Vector2 &lowleft, Vector2 &upright) const
 	upright.Y = _UV[5];
 }
 
-const bool Actor::IsTagged(const String& tag)
+bool Actor::IsTagged(const String& tag) const
 {
 	String searchTag = ToLower(tag);
-	StringSet::iterator it = _tags.find(searchTag);
+	StringSet::const_iterator it = _tags.find(searchTag);
 	if (it != _tags.end())
 	{
 		return true;
@@ -668,7 +668,7 @@ const String& Actor::GetName() const
 	return _name;
 }
 
-Actor* const Actor::GetNamed(const String& nameLookup)
+Actor* Actor::GetNamed(const String& nameLookup)
 {
 	std::map<String,Actor*>::iterator it = _nameList.find(nameLookup);
 	if (it == _nameList.end())

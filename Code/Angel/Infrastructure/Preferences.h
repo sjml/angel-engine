@@ -81,7 +81,7 @@ public:
 	 * @param name The value of the desired preference
 	 * @return The retrieved integer (0 if this preference has never been set)
 	 */
-	int GetInt(const String& category, const String& name);
+	int GetInt(const String& category, const String& name) const;
 
 	/**
 	 * Retrieves a given preference in float form.
@@ -90,7 +90,7 @@ public:
 	 * @param name The value of the desired preference
 	 * @return The retrieved float (0.0f if this preference has never been set)
 	 */
-	float GetFloat(const String& category, const String& name);
+	float GetFloat(const String& category, const String& name) const;
 
 	/**
 	 * Retrieves a given preference in String form.
@@ -99,7 +99,7 @@ public:
 	 * @param name The value of the desired preference
 	 * @return The retrieved String (Empty string if this preference has never been set)
 	 */
-	String GetString(const String& category, const String& name);
+	String GetString(const String& category, const String& name) const;
 
 	/**
 	 * Gets all variables in a given category.
@@ -107,7 +107,7 @@ public:
 	 * @param category The desired category
 	 * @return All defined preferences for this category
 	 */
-	LoadedVariableMap GetTable(const String& category);
+	LoadedVariableMap GetTable(const String& category) const;
 
 	/**
 	 * Sets a preference as an integer. If it did not previously exist,
@@ -149,7 +149,7 @@ public:
 	 * @param val The value to return if there is no such preference
 	 * @return Either the given integer or the appropriate preference integer
 	 */
-	int OverrideInt(const String& category, const String& name, int val);
+	int OverrideInt(const String& category, const String& name, int val) const;
 
 	/**
 	 * Takes a given float, and returns either that float or, if an
@@ -161,7 +161,7 @@ public:
 	 * @param val The value to return if there is no such preference
 	 * @return Either the given float or the appropriate preference float
 	 */
-	float OverrideFloat(const String& category, const String& name, float val);
+	float OverrideFloat(const String& category, const String& name, float val) const;
 
 	/**
 	 * Takes a given String, and returns either that String or, if an
@@ -173,8 +173,7 @@ public:
 	 * @param val The value to return if there is no such preference
 	 * @return Either the given String or the appropriate preference String
 	 */
-	String OverrideString(const String& category, const String& name, String val);
-	
+	String OverrideString(const String& category, const String& name, const String& val) const;
 
 	/**
 	 * Used by the scripting system when it attempts to load the preferences
@@ -182,7 +181,7 @@ public:
 	 * 
 	 * @return The absolute path to the \c Config/defaults.lua file
 	 */
-	const String GetDefaultPath();
+	String GetDefaultPath();
 
 	/**
 	 * Used by the scripting system when it attempts to load the preferences
@@ -191,7 +190,7 @@ public:
 	 * @return The absolute path to the file which stores any preferences
 	 *   that were saved with thePrefs.SavePreferences()
 	 */
-	const String GetUserPrefsPath();
+	String GetUserPrefsPath();
 	
 private:
 	Preferences();

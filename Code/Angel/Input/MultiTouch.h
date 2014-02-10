@@ -180,7 +180,7 @@ public:
 	 * @return The X, Y, and Z parameters being detected. Values 
 	 *   are in Gs. 
 	 */
-	const Vector3 GetData();
+	Vector3 GetData() const;
 	
 	/**
 	 * Push a new accelerometer value into the object. No need to 

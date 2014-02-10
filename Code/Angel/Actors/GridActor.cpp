@@ -80,7 +80,7 @@ void GridActor::SetInterval(float interval)
 	_interval = interval;
 }
 
-const float GridActor::GetInterval() const
+float GridActor::GetInterval() const
 {
 	return _interval;
 }
@@ -91,7 +91,7 @@ void GridActor::SetMinCoord(const Vector2& minCoord)
 	RecalculatePoints();
 }
 
-const Vector2 GridActor::GetMinCoord() const
+const Vector2& GridActor::GetMinCoord() const
 {
 	return _minCoord;
 }
@@ -102,7 +102,7 @@ void GridActor::SetMaxCoord(const Vector2& maxCoord)
 	RecalculatePoints();
 }
 
-const Vector2 GridActor::GetMaxCoord() const
+const Vector2& GridActor::GetMaxCoord() const
 {
 	return _maxCoord;
 }

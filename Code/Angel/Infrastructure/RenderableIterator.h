@@ -57,7 +57,7 @@ public:
 
 	bool operator!=( const RenderableIterator& iter ) const;
 	RenderableIterator& erase( RenderableIterator& item_to_remove );
-	const RenderableIterator& operator++();
+	RenderableIterator& operator++();
 
 private:	
 	RenderLayers::iterator _layerIterator;

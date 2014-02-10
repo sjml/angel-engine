@@ -378,7 +378,7 @@ void Console::SetTabWidth(unsigned int newTabWidth)
 	_tabWidth = newTabWidth;
 }
 
-const unsigned int Console::GetTabWidth()
+unsigned int Console::GetTabWidth() const
 {
 	return _tabWidth;
 }

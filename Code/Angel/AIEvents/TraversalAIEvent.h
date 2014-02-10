@@ -42,8 +42,8 @@ public:
 	virtual void Update(float dt);
 	virtual void Stop();
 
-	virtual std::vector<Vector2>& GetResults();
-	virtual std::vector<Vector2> CopyResults() {return GetResults();}
+	virtual const std::vector<Vector2>& GetResults() const;
+	virtual std::vector<Vector2> CopyResults() const { return GetResults(); }
 private:
 	Traversal*	_traversal;
 	int			_numIterationsPerFrame;

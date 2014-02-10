@@ -49,7 +49,7 @@ void FullScreenActor::SetLock(bool locked)
 	}
 }
 
-const bool FullScreenActor::IsLocked()
+bool FullScreenActor::IsLocked() const
 {
 	return _locked;
 }

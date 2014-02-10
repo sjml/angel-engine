@@ -65,58 +65,70 @@ class Actor : public Renderable, public MessageListener
 public:
 	Actor();
 	virtual ~Actor();
+
+	virtual void Update(float dt);
+	virtual void ReceiveMessage(Message* message);
+	virtual void Render();
 	
-	void SetSize(float x, float y = -1.f);
-	void SetSize(Vector2 newSize);
-	const Vector2 GetSize();
-	void SetPosition(float x, float y);
-	void SetPosition(Vector2 pos);
-	const Vector2 GetPosition();
-	void SetRotation(float rotation);
-	const float GetRotation();
+	virtual void SetSize(float x, float y = -1.f);
+	virtual void SetSize(const Vector2 newSize);
+	const Vector2& GetSize() const;
+
+	virtual void SetPosition(float x, float y);
+	virtual void SetPosition(const Vector2 pos);
+	const Vector2& GetPosition() const;
+
+	virtual void SetRotation(float rotation);
+	float GetRotation() const;
+
 	void SetColor(float r, float g, float b, float a=1.0f);
-	void SetColor(Color color);
-	Color GetColor();
+	void SetColor(const Color color);
+	const Color& GetColor();
+
 	void SetAlpha(float newAlpha);
-	const float GetAlpha();
-	void SetDrawShape( actorDrawShape DrawShape );
+	float GetAlpha();
+
+	virtual void SetDrawShape( actorDrawShape DrawShape );
+	actorDrawShape GetDrawShape() const;
 	
-	void MoveTo(Vector2 newPosition, float duration, bool smooth=false, String onCompletionMessage="");
-	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeColorTo(Color newColor, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeSizeTo(Vector2 newSize, float duration, bool smooth=false, String onCompletionMessage="");
-	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
+	virtual void RotateTo(float newRotation, float duration, bool smooth=false, const String& onCompletionMessage="");
+	virtual void ChangeColorTo(const Color& newColor, float duration, bool smooth=false, const String& onCompletionMessage="");
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
+	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
-	const int GetSpriteTexture(int frame = 0);
+	int GetSpriteTexture(int frame = 0) const;
 	
-	bool SetSprite(String filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=0);
+	bool SetSprite(const String& filename, int frame = 0, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR, bool optional=0);
 	void ClearSpriteInfo();
-	void LoadSpriteFrames(String firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
-	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL); 
+	void LoadSpriteFrames(const String& firstFilename, GLint clampmode = GL_CLAMP, GLint filtermode = GL_LINEAR);
+	void PlaySpriteAnimation(float delay, spriteAnimationType animType = SAT_Loop, int startFrame = -1, int endFrame = -1, const char* _animName = NULL);
+ 
 	void SetSpriteFrame(int frame);
-	const int GetSpriteFrame();
-	bool IsSpriteAnimPlaying();
+	int GetSpriteFrame() const;
+
+	bool IsSpriteAnimPlaying() const;
+	virtual void AnimCallback(String animName);
+
 	void SetUVs(const Vector2 upright, const Vector2 lowleft);
 	void GetUVs(Vector2 &upright, Vector2 &lowleft) const;
 	
-	const bool IsTagged(String tag);
-	void Tag(String newTag);
-	void Untag(String oldTag);
-	const StringSet GetTags();
+	bool IsTagged(const String& tag) const;
+	void Tag(const String& newTag);
+	void Untag(const String& oldTag);
+	const StringSet& GetTags() const;
 	
-	const String SetName(String newName);
-	const String GetName();
-	static const Actor* GetNamed(String nameLookup);
-	
-	virtual void ReceiveMessage(Message* message) {}
+	const String& SetName(String newName);
+	const String& GetName() const;
+	static Actor* GetNamed(const String& nameLookup);
+
+	virtual void LevelUnloaded();
 	
 	void SetLayer(int layerIndex);
-	void SetLayer(String layerName);
-	
-	virtual void Update(float dt);
+	void SetLayer(const String& layerName);
 	
 	Actor* GetSelf();
-	virtual const String GetClassName() const;
+	virtual String GetClassName() const;
 	
 	%apply SWIGTYPE *DISOWN {Actor* a};
 	static void SetScriptCreatedActor(Actor* a);

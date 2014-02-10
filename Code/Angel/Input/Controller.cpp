@@ -521,12 +521,12 @@ void Controller::UpdateState()
 	theInput.HandleControl( *this );
 }
 
-const ControllerInput Controller::GetState()
+ControllerInput Controller::GetState() const
 {
 	return _currentControllerInput;
 }
 
-const Vector2 Controller::GetLeftThumbVec2()
+Vector2 Controller::GetLeftThumbVec2() const
 {
 	Vector2 forReturn;
 	forReturn.X = float(_currentControllerInput.LeftThumbstickX) / 32768.0f;
@@ -534,7 +534,7 @@ const Vector2 Controller::GetLeftThumbVec2()
 	return forReturn;
 }
 
-const Vector2 Controller::GetRightThumbVec2()
+Vector2 Controller::GetRightThumbVec2() const
 {
 	Vector2 forReturn;
 	forReturn.X = float(_currentControllerInput.RightThumbstickX) / 32768.0f;
@@ -542,14 +542,14 @@ const Vector2 Controller::GetRightThumbVec2()
 	return forReturn;
 }
 
-const Vec2i Controller::GetLeftThumbstick()
+Vec2i Controller::GetLeftThumbstick() const
 {
 	Vec2i forReturn;
 	forReturn.X = _currentControllerInput.LeftThumbstickX;
 	forReturn.Y = _currentControllerInput.LeftThumbstickY;
 	return forReturn;
 }
-const Vec2i Controller::GetRightThumbstick()
+Vec2i Controller::GetRightThumbstick() const
 {
 	Vec2i forReturn;
 	forReturn.X = _currentControllerInput.RightThumbstickX;
@@ -557,22 +557,22 @@ const Vec2i Controller::GetRightThumbstick()
 	return forReturn;
 }
 
-const int Controller::GetRightTrigger()
+int Controller::GetRightTrigger() const
 {
 	return _currentControllerInput.RightTriggerValue;
 }
 
-const int Controller::GetLeftTrigger()
+int Controller::GetLeftTrigger() const
 {
 	return _currentControllerInput.LeftTriggerValue;
 }
 
-const bool Controller::IsButtonDown(int buttonMask)
+bool Controller::IsButtonDown(int buttonMask) const
 {
 	return ((_currentControllerInput.Buttons & buttonMask) != 0);
 }
 
-const bool Controller::IsAButtonDown()
+bool Controller::IsAButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_A)
 	{
@@ -584,7 +584,7 @@ const bool Controller::IsAButtonDown()
 	}
 }
 
-const bool Controller::IsBButtonDown()
+bool Controller::IsBButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_B)
 	{
@@ -596,7 +596,7 @@ const bool Controller::IsBButtonDown()
 	}
 }
 
-const bool Controller::IsXButtonDown()
+bool Controller::IsXButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_X)
 	{
@@ -608,7 +608,7 @@ const bool Controller::IsXButtonDown()
 	}
 }
 
-const bool Controller::IsYButtonDown()
+bool Controller::IsYButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_Y)
 	{
@@ -620,7 +620,7 @@ const bool Controller::IsYButtonDown()
 	}
 }
 
-const bool Controller::IsLeftThumbstickButtonDown()
+bool Controller::IsLeftThumbstickButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_LEFT_THUMB)
 	{
@@ -632,7 +632,7 @@ const bool Controller::IsLeftThumbstickButtonDown()
 	}
 }
 
-const bool Controller::IsRightThumbstickButtonDown()
+bool Controller::IsRightThumbstickButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_RIGHT_THUMB)
 	{
@@ -644,7 +644,7 @@ const bool Controller::IsRightThumbstickButtonDown()
 	}
 }
 
-const bool Controller::IsStartButtonDown()
+bool Controller::IsStartButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_START)
 	{
@@ -656,7 +656,7 @@ const bool Controller::IsStartButtonDown()
 	}
 }
 
-const bool Controller::IsBackButtonDown()
+bool Controller::IsBackButtonDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_BACK)
 	{
@@ -668,7 +668,7 @@ const bool Controller::IsBackButtonDown()
 	}
 }
 
-const bool Controller::IsLeftBumperDown()
+bool Controller::IsLeftBumperDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_LEFT_SHOULDER)
 	{
@@ -680,7 +680,7 @@ const bool Controller::IsLeftBumperDown()
 	}
 }
 
-const bool Controller::IsRightBumperDown()
+bool Controller::IsRightBumperDown() const
 {
 	if(_currentControllerInput.Buttons & XINPUT_GAMEPAD_RIGHT_SHOULDER)
 	{
@@ -692,7 +692,7 @@ const bool Controller::IsRightBumperDown()
 	}
 }
 
-const bool Controller::IsLeftTriggerPressed()
+bool Controller::IsLeftTriggerPressed() const
 {
 	if (_currentControllerInput.LeftTriggerValue > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 	{
@@ -704,7 +704,7 @@ const bool Controller::IsLeftTriggerPressed()
 	}
 }
 
-const bool Controller::IsRightTriggerPressed()
+bool Controller::IsRightTriggerPressed() const
 {
 	if (_currentControllerInput.RightTriggerValue > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 	{
@@ -717,12 +717,12 @@ const bool Controller::IsRightTriggerPressed()
 }
 
 
-const unsigned int Controller::GetLeftVibration()
+unsigned int Controller::GetLeftVibration() const
 {
 	return _currentLeftVibration;
 }
 
-const unsigned int Controller::GetRightVibration()
+unsigned int Controller::GetRightVibration() const
 {
 	return _currentRightVibration;
 }

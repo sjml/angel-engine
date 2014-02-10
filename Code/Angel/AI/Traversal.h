@@ -51,17 +51,17 @@ public:
 	virtual bool DoNextTraversal();
 	virtual void ExecuteFullTraversal();
 
-	virtual std::vector<Vector2>& GetResults();
+	virtual const std::vector<Vector2>& GetResults() const;
 
 protected:
 	virtual void EvaluateNode( SpatialGraphKDNode* pNode ) = 0;
 	virtual void AddSuccessors( SpatialGraphKDNode* pCurrent);
 
 	virtual void AddNodeToVisit( SpatialGraphKDNode* pNode );
-	virtual bool HasNodesToVist();
+	virtual bool HasNodesToVist() const;
 	virtual SpatialGraphKDNode* PopNextNode();
 	virtual void SetVisited( SpatialGraphKDNode* pNode );
-	virtual bool WasVisited( SpatialGraphKDNode* pNode );
+	virtual bool WasVisited( SpatialGraphKDNode* pNode ) const;
 	virtual void ClearAllVisited();
 private:
 

@@ -83,7 +83,7 @@ bool MakeDirectories(const String& path );
  * @param fileName The file to read
  * @return The complete text of the file
  */
-const String ReadWholeFile(const String& fileName);
+String ReadWholeFile(const String& fileName);
 
 /**
  * Gives a system-appropriate writable directory for the use of logs,
@@ -91,7 +91,7 @@ const String ReadWholeFile(const String& fileName);
  * 
  * @return The path to the defined writable directory.
  */
-const String GetStorageDirectory();
+String GetStorageDirectory();
 
 /**
  * Returns a path to the My Documents directory on Windows, or the 
@@ -99,14 +99,14 @@ const String GetStorageDirectory();
  *
  * @return Path to the user's documents
  */
-const String GetDocumentsPath();
+String GetDocumentsPath();
 
 /**
  * Gives the name of the current executable. 
  *
  * @return The name of the current executable
  */
-const String GetExeName();
+String GetExeName();
 
 /**
  * Returns the modification time of a file. Defined as number of seconds
@@ -119,4 +119,4 @@ const String GetExeName();
  *   so apologies if you happen to have a file that was modified exactly
  *   on your epoch time.
  */
-const long GetModificationTime(const String& fileName);
+long GetModificationTime(const String& fileName);

@@ -157,7 +157,7 @@ public:
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @return True if the sound is still playing, false if it's not
 	 */
-	bool IsPlaying(AngelSoundHandle sound);
+	bool IsPlaying(AngelSoundHandle sound) const;
 	
 	/**
 	 * Find out whether a sound is paused
@@ -165,7 +165,7 @@ public:
 	 * @param sound The handle to the playing sound, gotten from SoundDevice::PlaySound
 	 * @return True if the sound is paused, false if it's playing or stopped
 	 */
-	bool IsPaused(AngelSoundHandle sound);
+	bool IsPaused(AngelSoundHandle sound) const;
 	
 	/**
 	 * Change the stereo positioning of a sound while it's playing.
