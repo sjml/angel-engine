@@ -293,25 +293,25 @@ public:
 	 * An override of the Actor::MoveTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors. 
 	 */
-	void MoveTo(const Vector2& newPosition, float duration, const String& onCompletionMessage="") {}
+	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::RotateTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void RotateTo(float newRotation, float duration, const String& onCompletionMessage="") {}
+	void RotateTo(float newRotation, float duration, bool smooth=false, const String& onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void ChangeSizeTo(const Vector2& newSize, float duration, const String& onCompletionMessage="") {}
+	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, const String& onCompletionMessage="") {}
 	
 	/**
 	 * An override of the Actor::ChangeSizeTo function that doesn't allow the 
 	 *  interval to be applied to PhysicsActors.
 	 */
-	void ChangeSizeTo(float newSize, float duration, const String& onCompletionMessage="") {}
+	void ChangeSizeTo(float newSize, float duration, bool smooth=false, const String& onCompletionMessage="") {}
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 
