@@ -41,10 +41,10 @@ public:
 	void SetPosition(const Vector2 pos);
 	void SetRotation(float rotation);
 
-	void MoveTo(const Vector2& newPosition, float duration, const String& onCompletionMessage="");
-	void RotateTo(float newRotation, float duration, const String& onCompletionMessage="");
-	void ChangeSizeTo(const Vector2& newSize, float duration, const String& onCompletionMessage="");
-	void ChangeSizeTo(float newSize, float duration, const String& onCompletionMessage="");
+	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
+	void RotateTo(float newRotation, float duration, bool smooth=false, const String& onCompletionMessage="");
+	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
+	void ChangeSizeTo(float newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	virtual String GetClassName() const;
 };

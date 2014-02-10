@@ -28,7 +28,9 @@ public:
 	virtual void SetPosition(float x, float y, float z);
 	virtual void SetPosition(const Vector3 v3);
 
-	void MoveTo(const Vector3 newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
+
+	void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
 
 	Vector2 GetPosition() const;
 	float GetZ() const;
