@@ -96,12 +96,12 @@ public:
 
 protected:
 	void SetNewState( PathFinder::ePFMoveState newState );
-	Vector2List& GetCurrentPath() {return _pathFinder->_currentPath;}
-	const Vector2& GetCurrentPosition() { return _pathFinder->_currentPos; }
-	const Vector2& GetCurrentDestination() { return _pathFinder->_currentDest; }
-	int& GetCurrentPathIndex() {return _pathFinder->_currentPathIndex; }
-	float GetCurrentArrivalDist() {return _pathFinder->_arrivalDist; }
+	Vector2List& GetCurrentPath()			{ return _pathFinder->_currentPath; }
+	int& GetCurrentPathIndex() 			{ return _pathFinder->_currentPathIndex; }
 
+	const Vector2& GetCurrentPosition() const	{ return _pathFinder->_currentPos; }
+	const Vector2& GetCurrentDestination() const	{ return _pathFinder->_currentDest; }
+	float GetCurrentArrivalDist() const		{ return _pathFinder->_arrivalDist; }
 
 	PathFinder*	_pathFinder;
 };
@@ -109,8 +109,8 @@ protected:
 
 struct PathFinderMove
 {
-	Vector2						MoveDir;
-	Vector2						NextSubgoalPos;
+	Vector2				MoveDir;
+	Vector2				NextSubgoalPos;
 	PathFinder::ePFMoveResult	LastResult;
 };
 

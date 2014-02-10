@@ -128,7 +128,7 @@ public:
 	 * 
 	 * @return The current value
 	 */
-	float GetCurrent()
+	float GetCurrent() const
 	{
 		return _current;
 	}
@@ -139,7 +139,7 @@ public:
 	 * 
 	 * @return 
 	 */
-	bool ShouldStep()
+	bool ShouldStep() const
 	{
 		return _shouldStep;
 	}

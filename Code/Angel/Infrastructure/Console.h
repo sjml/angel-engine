@@ -93,7 +93,7 @@ public:
 	 * 
 	 * @return True if it's enabled, false if it's not
 	 */
-	bool IsEnabled() {return _enabled;}
+	bool IsEnabled() const { return _enabled; }
 	
 	/**
 	 * Adds the given key to the Console's current input string. Should only be 
@@ -126,7 +126,7 @@ public:
 	 * 
 	 * @return The toggle console key
 	 */
-	unsigned char GetToggleConsoleKey()	{return '`';}
+	unsigned char GetToggleConsoleKey() const {return '`';}
 	
 	/**
 	 * Writes a string to the log area of the console. Used internally by 
@@ -148,7 +148,7 @@ public:
 	/**
 	 * Get the width of tabs when output to this console.
 	 */
-	const unsigned int GetTabWidth();
+	unsigned int GetTabWidth() const;
 
 	/**
 	 * Get the width of tabs when output to this console. Defaults to 8.

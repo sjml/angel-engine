@@ -59,12 +59,12 @@ Vector2::Vector2(const Vec2i& copy)
 , Y(copy.Y)
 {}
 
-float Vector2::Length()
+float Vector2::Length() const
 {
 	return sqrt(LengthSquared());
 }
 
-float Vector2::LengthSquared()
+float Vector2::LengthSquared() const
 {
 	return (X * X) + (Y * Y);
 }

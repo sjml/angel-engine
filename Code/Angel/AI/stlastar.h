@@ -122,7 +122,7 @@ public: // methods
 	{
 	}
 
-	int GetState() {return m_State;}
+	int GetState() const { return m_State; }
 
 	// call at any time to cancel the search and free up all the memory
 	void CancelSearch()
@@ -589,7 +589,7 @@ public: // methods
 
 	// Get the number of steps
 
-	int GetStepCount() { return m_Steps; }
+	int GetStepCount() const { return m_Steps; }
 
 	void EnsureMemoryFreed()
 	{

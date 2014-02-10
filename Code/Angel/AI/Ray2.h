@@ -42,12 +42,13 @@ struct Ray2
 
 	Ray2() {}
 
+	friend bool operator==(const Ray2& a, const Ray2& b);
+	friend bool operator!=(const Ray2& a, const Ray2& b);
+
 	static Ray2 CreateRayFromTo( const Vector2& vFrom, const Vector2& vTo )
 	{
 		return Ray2(vFrom, Vector2::Normalize( vTo - vFrom ));
 	}
 };
 
-bool operator ==(const Ray2& a, const Ray2& b);
-bool operator !=(const Ray2& a, const Ray2& b);
 

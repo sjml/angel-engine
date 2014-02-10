@@ -9,9 +9,9 @@ class Message
 public:
 	Message(String messageName, MessageListener* sender = NULL);
 	
-	virtual const String GetMessageName();
+	virtual const String& GetMessageName() const;
 	
-	MessageListener* const GetSender();
+	MessageListener const* GetSender() const;
 };
 
 template <class T>
@@ -53,9 +53,9 @@ public:
 	void DeferredBroadcast(Message* message, float delay);
 	%clear Message* message;
 	
-	const bool SubscribeTo(MessageListener* subscriber, String messageType);
-	const bool UnsubscribeFrom(MessageListener* subscriber, String messageType);
+	bool SubscribeTo(MessageListener* subscriber, const String& messageType);
+	bool UnsubscribeFrom(MessageListener* subscriber, const String& messageType);
 	
-	const std::set<MessageListener*> GetSubscribersTo(String messageType);
-	const StringSet GetSubscriptionsFor(MessageListener* subscriber);
+	std::set<MessageListener*> GetSubscribersTo(String messageType) const;
+	StringSet GetSubscriptionsFor(MessageListener* subscriber) const;
 };

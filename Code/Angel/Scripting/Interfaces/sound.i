@@ -16,8 +16,9 @@ public:
 	void StopSound(AngelSoundHandle sound);
 	void PauseSound(AngelSoundHandle sound, bool paused);
 
-	bool IsPlaying(AngelSoundHandle sound);
-	bool IsPaused(AngelSoundHandle sound);
+	bool IsPlaying(AngelSoundHandle sound) const;
+	bool IsPaused(AngelSoundHandle sound) const;
+
 	void SetPan(AngelSoundHandle sound, float newPan);
 	void SetVolume(AngelSoundHandle sound, float newVolume);
 };

@@ -49,14 +49,14 @@
  * @return Whether or not it successfully registered (check the error log if
  *   this returns false)
  */
-const bool RegisterFont(const String& filename, int pointSize, const String& nickname);
+bool RegisterFont(const String& filename, int pointSize, const String& nickname);
 
 /**
  * Tell whether there is already a font with a given name (to avoid repeat loading).
  * 
  * @return Whether or not there is currently a registered font by the given name.
  */
-const bool IsFontRegistered(const String& nickname);
+bool IsFontRegistered(const String& nickname);
 
 /**
  * If you're done using a font and are concerned about memory usage, you can
@@ -65,7 +65,7 @@ const bool IsFontRegistered(const String& nickname);
  * @param nickname The name you gave the font when you registered it
  * @return Whether it successfully unregistered. If false, check the error log. 
  */
-const bool UnRegisterFont(const String& nickname);
+bool UnRegisterFont(const String& nickname);
 
 /**
  * Draw text on the screen (but only once, so you need to call this every

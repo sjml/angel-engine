@@ -97,7 +97,7 @@ public:
 	 * @param y Vertical size in OpenGL units -- if less than or equal to 
 	 *   zero, assumed to be equal to x
 	 */
-	void SetSize(float x, float y = -1.f); 	// equal dimensions by default
+	virtual void SetSize(float x, float y = -1.f); 	// equal dimensions by default
 	
 	/**
 	 * Set the size of this Actor. 
@@ -105,7 +105,7 @@ public:
 	 * @param newSize Desired size of Actor in OpenGL units. If either 
 	 *  dimension is negative, it's clamped to zero. 
 	 */
-	void SetSize(const Vector2& newSize);
+	virtual void SetSize(const Vector2& newSize);
 	
 	/**
 	 * Return the size of this Actor.
@@ -119,7 +119,7 @@ public:
 	 *
 	 * @return Actor's bounding box
 	 */
-	const BoundingBox GetBoundingBox() const;
+	virtual BoundingBox GetBoundingBox() const;
 	
 	/**
 	 * Set the position of the Actor in world coordinates. 
@@ -156,7 +156,7 @@ public:
 	 * 
 	 * @return Actor's rotation in degrees
 	 */
-	const float GetRotation() const;
+	float GetRotation() const;
 	
 	/**
 	 * Sets the color of the Actor with individual components.
@@ -196,7 +196,7 @@ public:
 	 * 
 	 * @return Actor's current transparency value.
 	 */
-	const float GetAlpha() const;
+	float GetAlpha() const;
 	
 	/**
 	 * Set the shape of the Actor when it's drawn.
@@ -211,7 +211,7 @@ public:
 	 *
 	 * @return Actor's shape
 	 */
-	const actorDrawShape& GetDrawShape() const;
+	actorDrawShape GetDrawShape() const;
 
 	/**
 	* Use a display list index for drawing rather than a built-in shape.
@@ -241,7 +241,7 @@ public:
 	 *  sent when the movement is complete, letting you know when it's done. 
 	 *  You will have to manually subscribe to this Message, though. 
 	 */
-	void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that rotates an Actor over a designated 
@@ -254,7 +254,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void RotateTo(float newRotation, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void RotateTo(float newRotation, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's color over a 
@@ -267,7 +267,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeColorTo(const Color& newColor, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeColorTo(const Color& newColor, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's size over a 
@@ -281,7 +281,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(const Vector2& newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
 	
 	/**
 	 * A "fire and forget" function that changes an Actor's size over a 
@@ -294,7 +294,7 @@ public:
 	 *  instead of MathUtil::Lerp
 	 * @param onCompletionMessage the type of Message to be sent on completion
 	 */
-	void ChangeSizeTo(float newSize, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void ChangeSizeTo(float newSize, float duration, bool smooth=false, const String& onCompletionMessage="");
 		
 	/**
 	 * Gets the OpenGL texture reference that the Actor is currently using
@@ -385,7 +385,7 @@ public:
 	 * 
 	 * @return True if there's an animation playing, false if there isn't. 
 	 */
-	const bool IsSpriteAnimPlaying() const
+	bool IsSpriteAnimPlaying() const
 	{
 		return (_spriteFrameDelay > 0);
 	}
@@ -426,7 +426,7 @@ public:
 	 * @param tag the tag in question
 	 * @return True if the Actor has the tag
 	 */
-	const bool IsTagged(const String& tag);
+	bool IsTagged(const String& tag) const;
 	
 	/**
 	 * Adds a tag to an Actor. If the Actor already has this tag, no action is 
@@ -479,7 +479,7 @@ public:
 	 * @param nameLookup The name index to look for
 	 * @return The Actor with the given name. Will be NULL if there's no match
 	 */
-	static Actor* const GetNamed(const String& nameLookup);
+	static Actor* GetNamed(const String& nameLookup);
 	
 	/**
 	 * An implementation of the MessageListener interface, which will be 
@@ -603,7 +603,7 @@ public:
 	 * 
 	 * @return The string "Actor"
 	 */
-	virtual const String GetClassName() const { return "Actor"; }
+	virtual String GetClassName() const { return "Actor"; }
 	
 protected:
 	Vector2 _size;

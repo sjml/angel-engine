@@ -109,7 +109,7 @@ public:
 	 * 
 	 * @return the text alignment (TXT_Left, TXT_Right, or TXT_Center) 
 	 */
-	const TextAlignment GetAlignment();
+	TextAlignment GetAlignment() const;
 	
 	/**
 	 * Change the alignment of this TextActor. 
@@ -123,7 +123,7 @@ public:
 	 * 
 	 * @return the amount of space (in pixels) that goes between each line
 	 */
-	const int GetLineSpacing();
+	int GetLineSpacing() const;
 	
 	/**
 	 * Change the line spacing of this TextActor
@@ -180,7 +180,7 @@ public:
 	 * @return A BoundingBox describing the area covered by the TextActor in 
 	 *   GL units (not pixels). 
 	 */
-	const BoundingBox& GetBoundingBox() const;
+	virtual BoundingBox GetBoundingBox() const;
 	
 	/**
 	 * Used by the SetName function to create a basename for this class. 
@@ -188,7 +188,7 @@ public:
 	 * 
 	 * @return The string "TextActor"
 	 */
-	virtual const String GetClassName() const { return "TextActor"; }
+	virtual String GetClassName() const { return "TextActor"; }
 
 private:
 	struct TextNugget

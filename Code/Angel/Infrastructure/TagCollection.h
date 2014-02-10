@@ -67,14 +67,14 @@ public:
 	 * @param findTag The tag of interest
 	 * @return An ActorSet of everyone who is tagged thusly
 	 */
-	ActorSet GetObjectsTagged(String findTag);
+	ActorSet GetObjectsTagged(const String& findTag) const;
 	
 	/**
 	 * Get a list of all the tags currently in use. 
 	 * 
 	 * @return All current tags as a StringSet
 	 */
-	StringSet GetTagList();
+	StringSet GetTagList() const;
 
 	/**
 	 * Adds a tag to a given Actor. Shouldn't be called directly; use the 

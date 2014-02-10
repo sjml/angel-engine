@@ -325,7 +325,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	}
 #endif
 
-std::vector<Vec3ui> World::GetVideoModes()
+std::vector<Vec3ui> World::GetVideoModes() const
 {
 	std::vector<Vec3ui> forReturn;
 	#if !ANGEL_MOBILE
@@ -692,28 +692,28 @@ void World::DrawRenderables()
 	}
 }
 
-const float World::GetDT()
+float World::GetDT() const
 {
 	return _dt;
 }
 
-const bool World::ResumeSimulation()
+bool World::ResumeSimulation()
 {
 	return _simulateOn = true;
 }
 
-const bool World::PauseSimulation()
+bool World::PauseSimulation()
 {
 	_simulateOn = false;
 	return true;
 }
 
-const bool World::IsSimulationOn()
+bool World::IsSimulationOn() const
 {
 	return _simulateOn;
 }
 
-const bool World::PausePhysics()
+bool World::PausePhysics()
 {
 	if (!_physicsSetUp)
 	{
@@ -724,7 +724,7 @@ const bool World::PausePhysics()
 	return true;
 }
 
-const bool World::ResumePhysics()
+bool World::ResumePhysics()
 {
 	if (!_physicsSetUp)
 	{
@@ -861,9 +861,9 @@ void World::NameLayer(const String& name, int number)
 	_layerNames[name] = number;
 }
 
-const int World::GetLayerByName(const String& name)
+int World::GetLayerByName(const String& name) const
 {
-	std::map<String,int>::iterator it = _layerNames.find(name);
+	std::map<String,int>::const_iterator it = _layerNames.find(name);
 	if (it != _layerNames.end())
 	{
 		return it->second;

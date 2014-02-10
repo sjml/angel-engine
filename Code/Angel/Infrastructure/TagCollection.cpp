@@ -50,7 +50,7 @@ TagCollection::TagCollection()
 
 }
 
-ActorSet TagCollection::GetObjectsTagged(String findTag)
+ActorSet TagCollection::GetObjectsTagged(const String& findTag) const
 {
 	StringList tags = SplitString(findTag, ", ");
 	if (tags.size() == 0)
@@ -59,8 +59,7 @@ ActorSet TagCollection::GetObjectsTagged(String findTag)
 	}
 	else if (tags.size() == 1)
 	{
-		findTag = ToLower(findTag);
-		std::map<String, ActorSet>::iterator it = _tagMappings.find(findTag);
+		std::map<String, ActorSet>::const_iterator it = _tagMappings.find(ToLower(findTag));
 		if (it != _tagMappings.end())
 		{
 			return it->second;
@@ -108,10 +107,10 @@ ActorSet TagCollection::GetObjectsTagged(String findTag)
 	}
 }
 
-StringSet TagCollection::GetTagList()
+StringSet TagCollection::GetTagList() const
 {
 	StringSet forReturn;
-	std::map<String, ActorSet>::iterator it = _tagMappings.begin();
+	std::map<String, ActorSet>::const_iterator it = _tagMappings.begin();
 	while (it != _tagMappings.end())
 	{
 		forReturn.insert(it->first);

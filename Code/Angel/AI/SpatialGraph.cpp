@@ -113,7 +113,7 @@ void SpatialGraphKDNode::Render()
 	}
 }
 
-void SpatialGraphKDNode::GetGridPoints( Vector2List& points, int& xPoints, int& yPoints )
+void SpatialGraphKDNode::GetGridPoints( Vector2List& points, int& xPoints, int& yPoints ) const
 {
 	xPoints = 0;
 	yPoints = 0;
@@ -203,7 +203,7 @@ SpatialGraph::~SpatialGraph()
 	DeleteNode( _root );
 }
 
-void SpatialGraph::DeleteNode( SpatialGraphKDNode* pNode )
+void SpatialGraph::DeleteNode( SpatialGraphKDNode* pNode ) const
 {
 	if( pNode == NULL )
 		return;
@@ -216,7 +216,7 @@ void SpatialGraph::DeleteNode( SpatialGraphKDNode* pNode )
 
 
 
-SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const BoundingBox& bbox)
+SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const BoundingBox& bbox) const
 {
 	if (node == NULL)
 		return NULL;
@@ -238,7 +238,7 @@ SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const Bound
 	return NULL;
 }
 
-SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const Vector2& point)
+SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const Vector2& point) const
 {
 	if (node == NULL)
 		return NULL;
@@ -261,12 +261,12 @@ SpatialGraphKDNode* SpatialGraph::FindNode(SpatialGraphKDNode* node, const Vecto
 }
 
 
-SpatialGraphKDNode* SpatialGraph::FindNode(const BoundingBox& bbox)
+SpatialGraphKDNode* SpatialGraph::FindNode(const BoundingBox& bbox) const
 {
 	return FindNode(_root, bbox);
 }
 
-SpatialGraphKDNode* SpatialGraph::FindNode(const Vector2& point)
+SpatialGraphKDNode* SpatialGraph::FindNode(const Vector2& point) const
 {
 	return FindNode(_root, point);
 }
@@ -297,7 +297,6 @@ bool SpatialGraphManager::ReportFixture(b2Fixture* fixture)
 
 bool IsBlocked( const BoundingBox& bbox )
 {
-	
 	b2AABB physBounds;
 	physBounds.lowerBound = b2Vec2( bbox.Min.X, bbox.Min.Y ); 
 	physBounds.upperBound = b2Vec2( bbox.Max.X, bbox.Max.Y );
@@ -406,7 +405,7 @@ SpatialGraphKDNode* SpatialGraph::CreateTree(int depth, const BoundingBox& bbox,
 	return node;
 }
 
-bool SpatialGraph::IsFullyBlocked( SpatialGraphKDNode* node )
+bool SpatialGraph::IsFullyBlocked( SpatialGraphKDNode* node ) const
 {
 	if( node == NULL )
 		return true;
@@ -444,9 +443,8 @@ void NudgePointOnPlane( const BoundingBox& BBox, Vector2& vPointOnPlane )
 }
 
 
-bool SpatialGraph::CanGo( const Vector2& vFrom, const Vector2 vTo )
+bool SpatialGraph::CanGo( const Vector2& vFrom, const Vector2 vTo ) const
 {
-
 	//Get source cell
 	SpatialGraphKDNode* pSourceNode = FindNode( vFrom );
 	if( pSourceNode == NULL || pSourceNode->bBlocked)
@@ -459,7 +457,7 @@ bool SpatialGraph::CanGo( const Vector2& vFrom, const Vector2 vTo )
 	return CanGoInternal( vFrom, vTo, pSourceNode, pDestNode );
 }
 
-bool SpatialGraph::CanGoInternal( const Vector2& vFrom, const Vector2 vTo, SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode )
+bool SpatialGraph::CanGoInternal( const Vector2& vFrom, const Vector2 vTo, SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode ) const
 {
 	//If source is dest, we definitely can go (we're both within bounding box)
 	if( pSourceNode == pDestNode )
@@ -517,13 +515,13 @@ bool SpatialGraph::CanGoInternal( const Vector2& vFrom, const Vector2 vTo, Spati
 	return false;
 }
 
-bool SpatialGraph::CanGoNodeToNode( SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode )
+bool SpatialGraph::CanGoNodeToNode( SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNode ) const
 {
 	return CanGoInternal( pSourceNode->BBox.Centroid(), pDestNode->BBox.Centroid(), pSourceNode, pDestNode );
 }
 
 
-void SpatialGraph::AddNeighbor( SpatialGraphKDNode* node, const Vector2& pos )
+void SpatialGraph::AddNeighbor( SpatialGraphKDNode* node, const Vector2& pos ) const
 {
 	SpatialGraphKDNode* pNeighbor = node->Tree->FindNode( pos );
 	if( pNeighbor )
@@ -547,7 +545,7 @@ int GetColumnMajorIndex( int wantX, int wantY, int maxX )
 	return (wantY * maxX) + wantX;
 }
 
-void SpatialGraph::ComputeNeighbors( SpatialGraphKDNode* node )
+void SpatialGraph::ComputeNeighbors( SpatialGraphKDNode* node ) const
 {
 	if( node->HasChildren() )
 	{
@@ -593,7 +591,7 @@ void SpatialGraph::ComputeNeighbors( SpatialGraphKDNode* node )
 
 }
 
-void SpatialGraph::ValidateNeighbors( SpatialGraphKDNode* node )
+void SpatialGraph::ValidateNeighbors( SpatialGraphKDNode* node ) const
 {
 	if( node->HasChildren() )
 	{
@@ -686,17 +684,17 @@ struct SearchInterface
 	{
 	}
 
-	float GoalDistanceEstimate( const SearchInterface& goal )
+	float GoalDistanceEstimate( const SearchInterface& goal ) const
 	{
 		return GetCost( goal );
 	}
 
-	bool IsGoal( const SearchInterface& goal )
+	bool IsGoal( const SearchInterface& goal ) const
 	{
 		return IsSameState(goal);
 	}
 
-	bool IsSameState( const SearchInterface& goal )
+	bool IsSameState( const SearchInterface& goal ) const
 	{
 		return pNode == goal.pNode;
 	}
@@ -716,7 +714,7 @@ struct SearchInterface
 		return true;
 	}
 
-	float GetCost( const SearchInterface& successor )
+	float GetCost( const SearchInterface& successor ) const
 	{
 		return Vector2::Distance( pNode->BBox.Centroid(), successor.pNode->BBox.Centroid() );
 	}
@@ -750,7 +748,7 @@ bool ComputeAStar( SpatialGraphKDNode* pSourceNode, SpatialGraphKDNode* pDestNod
 	return false;
 }
 
-bool SpatialGraphManager::GetPath( const Vector2& source, const Vector2& dest, Vector2List& path )
+bool SpatialGraphManager::GetPath( const Vector2& source, const Vector2& dest, Vector2List& path ) const
 {
 	if( _spatialGraph == NULL )
 		return false;
@@ -785,7 +783,7 @@ bool SpatialGraphManager::GetPath( const Vector2& source, const Vector2& dest, V
 	return true;
 }
 
-bool SpatialGraphManager::CanGo( const Vector2& from, const Vector2 to )
+bool SpatialGraphManager::CanGo( const Vector2& from, const Vector2 to ) const
 {
 
 	if( _spatialGraph == NULL )
@@ -795,12 +793,12 @@ bool SpatialGraphManager::CanGo( const Vector2& from, const Vector2 to )
 
 }
 
-bool SpatialGraphManager::IsInPathableSpace( const Vector2& point )
+bool SpatialGraphManager::IsInPathableSpace( const Vector2& point ) const
 {
 	return CanGo(point,point);
 }
 
-bool SpatialGraphManager::FindNearestNonBlocked( const Vector2& fromPoint, Vector2& goTo )
+bool SpatialGraphManager::FindNearestNonBlocked( const Vector2& fromPoint, Vector2& goTo ) const
 {
 	if( _spatialGraph == NULL )
 		return false;
@@ -852,13 +850,13 @@ void SpatialGraphManager::EnableDrawBounds(bool enable)
 	_drawBounds = enable;
 }
 
-const bool SpatialGraphManager::ToggleDrawBounds()
+bool SpatialGraphManager::ToggleDrawBounds()
 {
 	EnableDrawBounds( !GetDrawBounds() );
 	return GetDrawBounds();
 }
 
-const bool SpatialGraphManager::GetDrawBounds()
+bool SpatialGraphManager::GetDrawBounds() const
 {
 	return _drawBounds;
 }
@@ -868,13 +866,13 @@ void SpatialGraphManager::EnableDrawBlocked(bool enable)
 	_drawBlocked = enable;
 }
 
-const bool SpatialGraphManager::ToggleDrawBlocked()
+bool SpatialGraphManager::ToggleDrawBlocked()
 {
 	EnableDrawBlocked( !GetDrawBlocked() );
 	return GetDrawBlocked();
 }
 
-const bool SpatialGraphManager::GetDrawBlocked()
+bool SpatialGraphManager::GetDrawBlocked() const
 {
 	return _drawBlocked;
 }
@@ -884,13 +882,13 @@ void SpatialGraphManager::EnableDrawGridPoints(bool enable)
 	_drawGridPoints = enable;
 }
 
-const bool SpatialGraphManager::ToggleDrawGridPoints()
+bool SpatialGraphManager::ToggleDrawGridPoints()
 {
 	EnableDrawGridPoints( !GetDrawGridPoints() );
 	return GetDrawGridPoints();
 }
 
-const bool SpatialGraphManager::GetDrawGridPoints()
+bool SpatialGraphManager::GetDrawGridPoints() const
 {
 	return _drawGridPoints;
 }
@@ -900,13 +898,13 @@ void SpatialGraphManager::EnableDrawGraph(bool enable)
 	_drawGraph = enable;
 }
 
-const bool SpatialGraphManager::ToggleDrawGraph()
+bool SpatialGraphManager::ToggleDrawGraph()
 {
 	EnableDrawGraph( !GetDrawGraph() );
 	return GetDrawGraph();
 }
 
-const bool SpatialGraphManager::GetDrawGraph()
+bool SpatialGraphManager::GetDrawGraph() const
 {
 	return _drawGraph;
 }
@@ -916,13 +914,13 @@ void SpatialGraphManager::EnableDrawNodeIndex(bool enable)
 	_drawNodeIndex = enable;
 }
 
-const bool SpatialGraphManager::ToggleDrawNodeIndex()
+bool SpatialGraphManager::ToggleDrawNodeIndex()
 {
 	EnableDrawNodeIndex( !GetDrawNodeIndex() );
 	return GetDrawNodeIndex();
 }
 
-const bool SpatialGraphManager::GetDrawNodeIndex()
+bool SpatialGraphManager::GetDrawNodeIndex() const
 {
 	return _drawNodeIndex;
 }

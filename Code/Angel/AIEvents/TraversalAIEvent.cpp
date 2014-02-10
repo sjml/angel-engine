@@ -68,7 +68,7 @@ void TraversalAIEvent::Stop()
 	delete _traversal;
 }
 
-std::vector<Vector2>& TraversalAIEvent::GetResults()
+const std::vector<Vector2>& TraversalAIEvent::GetResults() const
 {
 	return _traversal->GetResults();
 }

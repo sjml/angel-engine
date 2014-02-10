@@ -198,7 +198,7 @@ bool InputManager::OnKeyUp( int keyVal )
 struct XboxButtonBindRecord
 {
 	int HashKey;
-	const bool (Controller::*CheckFunc)();
+	bool (Controller::*CheckFunc)() const;
 };
 
 XboxButtonBindRecord sBindRecordsOne[] =

@@ -100,7 +100,7 @@ public:
 	 * 
 	 * @return the current interval in GL units
 	 */
-	const float GetInterval() const;
+	float GetInterval() const;
 	
 	/**
 	 * Set the bottom-left coordinate at which to start drawing the grid.
@@ -114,7 +114,7 @@ public:
 	 * 
 	 * @return the bottom-left X and Y position in GL unites
 	 */
-	const Vector2 GetMinCoord() const;
+	const Vector2& GetMinCoord() const;
 	
 	/**
 	 * Set the top-right coordinate at which to stop drawing the grid.
@@ -128,7 +128,7 @@ public:
 	 * 
 	 * @return the top-right X and Y position in GL units
 	 */
-	const Vector2 GetMaxCoord() const;
+	const Vector2& GetMaxCoord() const;
 	
 	/**
 	 * Override of the normal Renderable::Render function. Draws the lines that

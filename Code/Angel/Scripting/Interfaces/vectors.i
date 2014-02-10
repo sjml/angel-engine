@@ -262,13 +262,13 @@ struct Vector2
 	static Vector2 One;
 	static Vector2 UnitX;
 	static Vector2 UnitY;
+
 	Vector2(float x, float y);
 	Vector2(float value);
 	Vector2();
 	
-	
-	float Length();
-	float LengthSquared();
+	float Length() const;
+	float LengthSquared() const;
 	
 	static float Distance(const Vector2& value1, const Vector2& value2);
 	static float DistanceSquared(const Vector2& value1, const Vector2& value2);
@@ -293,6 +293,11 @@ struct Vector2
 	Vector2 operator+(const Vector2 &v) const;
 	Vector2 operator/(float divider) const;
 	Vector2 operator*(float scaleFactor) const;
+
+	Vector2& operator+=(const Vector2 &v);
+	Vector2& operator-=(const Vector2 &v);
+	Vector2& operator*=(float f);
+	Vector2& operator/=(float f);
 };
 
 
@@ -307,13 +312,14 @@ struct Vector3
 	static Vector3 UnitX;
 	static Vector3 UnitY;
 	static Vector3 UnitZ;
+
 	Vector3(float x, float y, float z);
 	Vector3(float value);
 	Vector3();
 	
 	
-	float Length();
-	float LengthSquared();
+	float Length() const;
+	float LengthSquared() const;
 
 	static float Distance(const Vector3& value1, const Vector3& value2);
 	static float DistanceSquared(const Vector3& value1, const Vector3& value2);

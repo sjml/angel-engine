@@ -11,14 +11,18 @@ public:
 
 	void SavePreferences();
 	
-	int GetInt(String category, String name);
-	float GetFloat(String category, String name);
-	String GetString(String category, String name);
+	int GetInt	(const String& category, const String& name) const;
+	float GetFloat	(const String& category, const String& name) const;
+	String GetString(const String& category, const String& name) const;
 	
-	void SetInt(String category, String name, int val);
-	void SetFloat(String category, String name, float val);
-	void SetString(String category, String name, String val);
+	void SetInt	(const String& category, const String& name, int val);
+	void SetFloat	(const String& category, const String& name, float val);
+	void SetString	(const String& category, const String& name, const String& val);
 
-	const String GetDefaultPath();
-	const String GetUserPrefsPath();
+	int OverrideInt		(const String& category, const String& name, int val) const;
+	float OverrideFloat	(const String& category, const String& name, float val) const;
+	String OverrideString	(const String& category, const String& name, const String& val) const;
+
+	String GetDefaultPath();
+	String GetUserPrefsPath();
 };

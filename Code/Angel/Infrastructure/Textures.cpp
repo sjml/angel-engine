@@ -92,7 +92,7 @@ void FlushTextureCache()
 	}
 }
 
-const int GetTextureReference(const String& filename, bool bOptional)
+int GetTextureReference(const String& filename, bool bOptional)
 {
 	return GetTextureReference(filename, GL_CLAMP, GL_LINEAR, bOptional);
 }
@@ -326,7 +326,7 @@ bool PurgeTexture(const String& filename)
 	}
 #endif //_ANGEL_DISABLE_DEVIL
 
-const int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional)
+int GetTextureReference(const String& filename, GLint clampmode, GLint filtermode, bool optional)
 {
 	bool cached = false;
 	TextureCacheEntry* currentCacheEntry = NULL;
@@ -415,7 +415,7 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 	return texRef;
 }
 
-const Vec2i GetTextureSize(const String& filename)
+Vec2i GetTextureSize(const String& filename)
 {
 	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
 	if (it == theTextureCache.end())

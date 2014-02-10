@@ -50,7 +50,7 @@ public:
 	
 	typedef void (ClassInstance::*FunctionPointer)(ParamType param);
 	
-	virtual void Execute(ParamType param) const
+	void Execute(ParamType param) const
 	{
 		if (_function) 
 			(_instance->*_function)(param);

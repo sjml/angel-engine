@@ -128,7 +128,7 @@ struct Vector3
 	 * 
 	 * @return The length (magnitude) of the vector
 	 */
-	float Length();
+	float Length() const;
 	
 	/**
 	 * Get the squared magnitude of the vector -- if all you care about is
@@ -137,7 +137,7 @@ struct Vector3
 	 * 
 	 * @return The length (magnitude) of the vector squared
 	 */
-	float LengthSquared();
+	float LengthSquared() const;
 
 	/**
 	 * Get the absolute distance between two points (most useful if the
@@ -249,4 +249,8 @@ struct Vector3
 	Vector3& operator-=(const Vector3 &v);
 	Vector3& operator*=(float f);
 	Vector3& operator/=(float f);
+
+	friend std::ostream& operator<<(std::ostream& stream, const Vector3& out);
 };
+
+typedef std::vector<Vector3> Vector3List;

@@ -110,7 +110,7 @@ public:
 	 *   value is the width; the Y value is the height, and the Z-value
 	 *   represents the color depth. 
 	 */
-	std::vector<Vec3ui> GetVideoModes();
+	std::vector<Vec3ui> GetVideoModes() const;
 
 	/**
 	 * Changes the dimension of the window while the game is running. Note that the
@@ -211,7 +211,7 @@ public:
 	 * 
 	 * @return The amount of time elapsed in seconds
 	 */
-	const float GetDT();
+	float GetDT() const;
 	
 	/**
 	 * Toggles the simulation off. Several classes and objects will still
@@ -220,7 +220,7 @@ public:
 	 * 
 	 * @return Whether the simulation was successfully paused
 	 */
-	const bool PauseSimulation();
+	bool PauseSimulation();
 	
 	/**
 	 * Toggles the simulation back on. 
@@ -228,14 +228,14 @@ public:
 	 * @see World::PauseSimulation
 	 * @return Whether the simulation was successfully resumed
 	 */
-	const bool ResumeSimulation();
+	bool ResumeSimulation();
 	
 	/**
 	 * Toggles the physics simulation off.
 	 * 
 	 * @return Whether the physics simulation was successfully paused
 	 */
-	const bool PausePhysics();
+	bool PausePhysics();
 	
 	/**
 	 * Toggles the physics simulation back on. 
@@ -243,7 +243,7 @@ public:
 	 * @see World::PausePhysics
 	 * @return Whether the physics simulation was successfully resumed
 	 */
-	const bool ResumePhysics();
+	bool ResumePhysics();
 
 	/**
 	 * Sets the world's background color. White by default. 
@@ -309,7 +309,7 @@ public:
 	 * @return The layer number. Will return 0 if the name has not been
 	 *   registered; note that 0 is still a valid layer. 
 	 */
-	const int GetLayerByName(const String& name);
+	int GetLayerByName(const String& name) const;
 	
 	/**
 	 * Get the set of layers and their associated Renderables
@@ -346,7 +346,7 @@ public:
 	 * 
 	 * @return True if physics has been initialized
 	 */
-	const bool IsPhysicsSetUp() { return _physicsSetUp; }
+	bool IsPhysicsSetUp() const { return _physicsSetUp; }
 	
 	/**
 	 * Wakes up all physics bodies in the world. See the Box2D documentation
@@ -382,7 +382,7 @@ public:
 	 * 
 	 * @return Total elapsed time in seconds
 	 */
-	float GetCurrentTimeSeconds() { return ( float(_currTime) ); }
+	float GetCurrentTimeSeconds() const { return ( float(_currTime) ); }
 	
 	/**
 	 * Find out how much time has elapsed since a specific timestamp. 
@@ -390,7 +390,7 @@ public:
 	 * @param lastTime The time index you want to calculate the difference from
 	 * @return How much time has elapsed since lastTime
 	 */
-	float GetTimeSinceSeconds( float lastTime ) {return GetCurrentTimeSeconds() - lastTime;}
+	float GetTimeSinceSeconds( float lastTime ) const { return GetCurrentTimeSeconds() - lastTime; }
 	
 	/**
 	* Draw a line for a specified length of time.
@@ -413,7 +413,7 @@ public:
 	* 
 	* @return Whether the simulation is running
 	*/
-	const bool IsSimulationOn();
+	bool IsSimulationOn() const;
 
 	/**
 	 * Set a GameManager object to be your high-level coordinator. 
@@ -473,7 +473,7 @@ public:
 	 *
 	 * @return Whether or not the screen is high resolution.
 	 */
-	const bool IsHighResScreen() { return _highResScreen; }
+	bool IsHighResScreen() const { return _highResScreen; }
 	
 	/**
 	 * INTERNAL: This function is called by the OS setup functions to let Angel
@@ -489,7 +489,7 @@ public:
 	 *
 	 * @return Whether or not we're running with antialiasing (multisampling). 
 	 */
-	const bool IsAntiAliased() { return _antiAliased; }
+	bool IsAntiAliased() const { return _antiAliased; }
 	
 	/**
 	 * INTERNAL: This function is used by various OS systems to run the Angel

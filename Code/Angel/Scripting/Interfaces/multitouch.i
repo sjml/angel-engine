@@ -48,5 +48,5 @@ class Accelerometer
 public:
     static Accelerometer& GetInstance();
     
-    const Vector3 GetData();
+    Vector3 GetData() const;
 };

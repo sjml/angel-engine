@@ -8,18 +8,18 @@ class Tuning
 {
 public:
 	static Tuning& GetInstance();
-	StringSet GetVariables();
+	StringSet GetVariables() const;
 	
-	int GetInt(String name);
-	float GetFloat(String name);
-	String GetString(String name);
-	Vector2 GetVector(String name);
+	int GetInt	(const String& name) const;
+	float GetFloat	(const String& name) const;
+	String GetString(const String& name) const;
+	Vector2 GetVector(const String& name) const;
 	
-	void SetInt(String name, int val);
-	void SetFloat(String name, float val);
-	void SetString(String name, String val);
-	void SetVector(String name, Vector2 val);
+	void SetInt	(const String& name, int val);
+	void SetFloat	(const String& name, float val);
+	void SetString	(const String& name, const String& val);
+	void SetVector	(const String& name, const Vector2& val);
 	
-	void AddToRuntimeTuningList(String varName);
-	bool IsRuntimeTuned(String varName);
+	void AddToRuntimeTuningList(const String& varName);
+	bool IsRuntimeTuned(const String& varName) const;
 };

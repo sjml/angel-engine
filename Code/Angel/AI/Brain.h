@@ -39,7 +39,7 @@ class AIBrain
 	typedef hashmap_ns::hash_map<String, AIBrainState*> BrainStateTable;
 public:
 	AIBrain();
-	void SetActor( Sentient* actor ) {_actor = actor;}
+	void SetActor( Sentient* actor ) { _actor = actor; }
 
 	virtual ~AIBrain();
 
@@ -48,7 +48,7 @@ public:
 	virtual void Update( float dt);
 	virtual void GotoState( const String& id );
 
-	Sentient* GetActor() {return _actor;}
+	Sentient* GetActor() { return _actor; }
 
 	void Render();
 	void GotoNullState();

@@ -75,7 +75,7 @@ void Traversal::ExecuteFullTraversal()
 	while( DoNextTraversal() ) {}
 }
 
-std::vector<Vector2>& Traversal::GetResults()
+const std::vector<Vector2>& Traversal::GetResults() const
 {
 	return _results;
 }
@@ -99,7 +99,7 @@ void Traversal::AddNodeToVisit( SpatialGraphKDNode* pNode )
 	SetVisited(pNode);
 }
 
-bool Traversal::HasNodesToVist()
+bool Traversal::HasNodesToVist() const
 {
 	return _nodesToVisit.size() > 0;
 }
@@ -117,7 +117,7 @@ void Traversal::SetVisited( SpatialGraphKDNode* pNode )
 	_visited[pNode] = 1;
 }
 
-bool Traversal::WasVisited( SpatialGraphKDNode* pNode )
+bool Traversal::WasVisited( SpatialGraphKDNode* pNode ) const
 {
 	return _visited.find(pNode) != _visited.end();
 }

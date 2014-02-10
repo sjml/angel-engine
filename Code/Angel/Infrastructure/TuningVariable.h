@@ -69,7 +69,7 @@ public:
 	 * 
 	 * @return The set of strings representing the variable names. 
 	 */
-	StringSet GetVariables();
+	StringSet GetVariables() const;
 	
 	/**
 	 * Get an integer representation of a tuning variable. The engine will do
@@ -80,7 +80,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its integer representation
 	 */
-	int GetInt(const String& name);
+	int GetInt(const String& name) const;
 	
 	/**
 	 * Get a floating point representation of a tuning variable. The engine
@@ -91,7 +91,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its floating point representation
 	 */
-	float GetFloat(const String& name);
+	float GetFloat(const String& name) const;
 	
 	/**
 	 * Get a string representation of a tuning variable. If the variable was
@@ -102,7 +102,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its string representation
 	 */
-	String GetString(const String& name);
+	String GetString(const String& name) const;
 	
 	/**
 	 * Get a Vector2 representation of a tuning variable. This guy is pretty
@@ -114,7 +114,7 @@ public:
 	 * @param name The name of the variable
 	 * @return Its Vector2 representation
 	 */
-	Vector2 GetVector(const String& name);
+	Vector2 GetVector(const String& name) const;
 	
 	/**
 	 * Change a tuning variable's value to a new integer. The Set* functions
@@ -169,7 +169,7 @@ public:
 	 * @param varName The name of the variable to check
 	 * @return Whether or not it's been tuned manually during this session
 	 */
-	bool IsRuntimeTuned(const String& varName);
+	bool IsRuntimeTuned(const String& varName) const;
 	
 private:
 	Tuning();

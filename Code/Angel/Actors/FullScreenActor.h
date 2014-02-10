@@ -60,7 +60,7 @@ public:
 	 * 
 	 * @return whether or not this FullScreenActor is currently tracking the camera
 	 */
-	const bool IsLocked();
+	bool IsLocked() const;
 	
 	/**
 	 * An implementation of the MessageListener interface, which listens for 
@@ -77,7 +77,7 @@ public:
 	 * 
 	 * @return The string "FullScreenActor"
 	 */
-	virtual const String GetClassName() const { return "FullScreenActor"; }
+	virtual String GetClassName() const { return "FullScreenActor"; }
 	
 private:
 	bool _locked;

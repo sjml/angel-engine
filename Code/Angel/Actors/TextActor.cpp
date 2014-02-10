@@ -94,7 +94,7 @@ void TextActor::SetDisplayString(const String& newString)
 	CalculatePosition();
 }
 
-const TextAlignment TextActor::GetAlignment()
+TextAlignment TextActor::GetAlignment() const
 {
 	return _alignment;
 }
@@ -105,7 +105,7 @@ void TextActor::SetAlignment(TextAlignment newAlignment)
 	CalculatePosition();
 }
 
-const int TextActor::GetLineSpacing()
+int TextActor::GetLineSpacing() const
 {
 	return _lineSpacing;
 }
@@ -142,7 +142,7 @@ void TextActor::ReceiveMessage(Message* m)
 	}
 }
 
-const BoundingBox& TextActor::GetBoundingBox() const
+BoundingBox TextActor::GetBoundingBox() const
 {
 	return _extents; 
 }

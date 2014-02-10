@@ -97,7 +97,7 @@ RenderableIterator& RenderableIterator::erase( RenderableIterator& item_to_remov
 	return *this;
 }
 
-const RenderableIterator& RenderableIterator::operator++()
+RenderableIterator& RenderableIterator::operator++()
 {
 	if (_myIterator == _layerIterator->second.end())
 	{

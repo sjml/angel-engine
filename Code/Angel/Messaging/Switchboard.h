@@ -106,7 +106,7 @@ public:
 	 *   round of delivery is done) or if the MessageListener was already 
 	 *   subscribed to Messages of that name. 
 	 */
-	const bool SubscribeTo(MessageListener* subscriber, const String& messageType);
+	bool SubscribeTo(MessageListener* subscriber, const String& messageType);
 	
 	/**
 	 * Lets a MessageListener stop receiving notifications of specific 
@@ -125,7 +125,7 @@ public:
 	 *   when this round of delivery is done) or if the MessageListener was
 	 *   not subscribed to Messages of that name. 
 	 */
-	const bool UnsubscribeFrom(MessageListener* subscriber, const String& messageType);
+	bool UnsubscribeFrom(MessageListener* subscriber, const String& messageType);
 	
 	/**
 	 * Get a list of all MessageListeners subscribed to Messages with a 
@@ -134,7 +134,7 @@ public:
 	 * @param messageName The Message you care about
 	 * @return A std::set of objects subscribed
 	 */
-	const std::set<MessageListener*> GetSubscribersTo(const String& messageName);
+	std::set<MessageListener*> GetSubscribersTo(const String& messageName) const;
 	
 	/**
 	 * Get a list of all Message subscriptions for a certain MessageListener
@@ -142,7 +142,7 @@ public:
 	 * @param subscriber The MessageListener you care about
 	 * @return A StringSet of all their subscriptions
 	 */
-	const StringSet GetSubscriptionsFor(MessageListener* subscriber);
+	StringSet GetSubscriptionsFor(MessageListener* subscriber) const;
 	
 	/**
 	 * Immediately sends all Messages to the appropriate subscribers. Called

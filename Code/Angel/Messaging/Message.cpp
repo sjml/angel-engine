@@ -52,7 +52,7 @@ const String& Message::GetMessageName() const
 	return _messageName;
 }
 
-MessageListener* const Message::GetSender()
+MessageListener const * Message::GetSender() const
 {
 	return _sender;
 }

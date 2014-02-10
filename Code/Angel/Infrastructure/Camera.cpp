@@ -105,28 +105,28 @@ void Camera::Resize(int width, int height)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-const int Camera::GetWindowHeight() const
+int Camera::GetWindowHeight() const
 {
 	return _windowHeight;
 }
 
-const int Camera::GetWindowWidth() const
+int Camera::GetWindowWidth() const
 {
 	return _windowWidth;
 }
 
-const double Camera::GetViewRadius() const
+double Camera::GetViewRadius() const
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
 	return tan(sideAngle) * fabs(_camera3DPosition.Z);
 }
 
-const Vector2 Camera::GetWorldMaxVertex() const
+Vector2 Camera::GetWorldMaxVertex() const
 {
 	return MathUtil::ScreenToWorld(GetWindowWidth(), 0);
 }
 
-const Vector2 Camera::GetWorldMinVertex() const
+Vector2 Camera::GetWorldMinVertex() const
 {
 	return MathUtil::ScreenToWorld(0, GetWindowHeight());
 }
@@ -218,7 +218,7 @@ void Camera::SetPosition(const Vector3& v3)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, String onCompletionMessage)
+void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, const String& onCompletionMessage)
 {
 	_3dPositionInterval = Interval<Vector3>(_camera3DPosition, newPosition, duration, smooth);
 	_3dPositionIntervalMessage = onCompletionMessage;
@@ -240,18 +240,18 @@ void Camera::SetRotation(float newRotation)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-float Camera::GetZForViewRadius(float radius)
+float Camera::GetZForViewRadius(float radius) const
 {
 	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
 	return radius / tan(sideAngle);
 }
 
-float Camera::GetNearClipDist()
+float Camera::GetNearClipDist() const
 {
 	return _zNearClip;
 }
 
-float Camera::GetFarClipDist()
+float Camera::GetFarClipDist() const
 {
 	return _zFarClip;
 }
@@ -277,6 +277,12 @@ void Camera::SetFarClipDist(float dist)
 void Camera::SetViewCenter(float x, float y, float z)
 {
 	_view = Vector3(x, y, z);
+	theSwitchboard.Broadcast(new Message("CameraChange"));
+}
+
+void Camera::SetViewCenter(const Vector3& view)
+{
+	_view = view;
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 

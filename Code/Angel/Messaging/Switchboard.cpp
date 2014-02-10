@@ -77,7 +77,7 @@ void Switchboard::Update(float dt)
 	}
 }
 
-const bool Switchboard::SubscribeTo(MessageListener* subscriber, const String& messageType)
+bool Switchboard::SubscribeTo(MessageListener* subscriber, const String& messageType)
 {
 	if (_messagesLocked)
 	{
@@ -90,7 +90,7 @@ const bool Switchboard::SubscribeTo(MessageListener* subscriber, const String& m
 	return insertResult.second;
 }
 
-const bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, const String& messageType)
+bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, const String& messageType)
 {
 	if (_messagesLocked)
 	{
@@ -117,7 +117,7 @@ const bool Switchboard::UnsubscribeFrom(MessageListener* subscriber, const Strin
 	}
 }
 
-const std::set<MessageListener*> Switchboard::GetSubscribersTo(const String& messageType)
+std::set<MessageListener*> Switchboard::GetSubscribersTo(const String& messageType) const
 {
 	if (_subscribers.find(messageType) == _subscribers.end())
 	{
@@ -125,11 +125,11 @@ const std::set<MessageListener*> Switchboard::GetSubscribersTo(const String& mes
 	}
 	else
 	{
-		return _subscribers[messageType];		
+		return _subscribers.at(messageType);		
 	}
 }
 
-const StringSet Switchboard::GetSubscriptionsFor(MessageListener* subscriber)
+StringSet Switchboard::GetSubscriptionsFor(MessageListener* subscriber) const
 {
 	if (_subscriptions.find(subscriber) == _subscriptions.end())
 	{
@@ -137,7 +137,7 @@ const StringSet Switchboard::GetSubscriptionsFor(MessageListener* subscriber)
 	}
 	else
 	{
-		return _subscriptions[subscriber];
+		return _subscriptions.at(subscriber);
 	}
 }
 
