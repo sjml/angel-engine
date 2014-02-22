@@ -77,7 +77,10 @@ void DemoScreen::Stop()
 				pa->ResetBody();
 			}
 		}
-		(*it)->Destroy();
+		if(*it) {
+			(*it)->Destroy();	
+		}
+		
 		it++;
 	}
 	_objects.clear();
