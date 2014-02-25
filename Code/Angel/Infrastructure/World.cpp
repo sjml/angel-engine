@@ -1054,12 +1054,10 @@ void World::UpdateDebugItems(float frame_dt)
 				DebugDrawBase* pDD = (*itdd);
 				_debugDrawItems.erase(itdd);
 				delete pDD;
-			}
-			else
-			{
-				itdd++;
+				itdd--;
 			}
 		}
+		itdd++;
 	}
 }
 
