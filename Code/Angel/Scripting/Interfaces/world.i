@@ -11,7 +11,7 @@ public:
 	
 	std::vector<Vec3ui> GetVideoModes();
 
-	void AdjustWindow(int windowWidth, int windowHeight, const String& windowName);
+	void AdjustWindow(unsigned int windowWidth, unsigned int windowHeight, const String& windowName);
 	void MoveWindow(int xPosition, int yPosition);
 
 	void ResetWorld();

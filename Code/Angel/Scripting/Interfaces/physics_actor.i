@@ -20,7 +20,7 @@ public:
 	void SetRestitution(float restitution);
 	void SetShapeType(eShapeType shapeType);
 	void SetIsSensor(bool isSensor);
-	void SetGroupIndex(int groupIndex);
+	void SetGroupIndex(short groupIndex);
 	void SetFixedRotation(bool fixedRotation);
 	
 	virtual void InitPhysics();
