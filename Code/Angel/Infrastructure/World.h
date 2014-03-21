@@ -113,18 +113,18 @@ public:
 	std::vector<Vec3ui> GetVideoModes();
 
 	/**
-	 * Changes the dimension of the window while the game is running. Note that the
-	 *  behavior is undefined if this method is called while in fullscreen mode.
+	 * Changes the dimension of the window while the game is running. Note that in
+	 *	full screen mode, this adjusts the screen resolution instead.
 	 * 
 	 * @param windowWidth The new desired width
 	 * @param windowHeight The new desired height
 	 * @param windowName The new string to go in the window's title bar
 	 */
-	void AdjustWindow(int windowWidth, int windowHeight, const String& windowName);
+	void AdjustWindow(unsigned int windowWidth, unsigned int windowHeight, const String& windowName);
 
 	/**
 	 * Moves the window around on screen, relative to the system origin. Note that
-	 *  behavior is undefined if this method is called while in fullscreen mode.
+	 *  this does nothing in full screen mode.
 	 * 
 	 * @param xPosition The new x position offset from the system origin
 	 * @param yPosition The new y position offset from the system origin
