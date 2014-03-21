@@ -112,7 +112,7 @@ void AIBrain::Render()
 		Vector2 screenCenter = MathUtil::WorldToScreen( GetActor()->GetPosition().X, GetActor()->GetPosition().Y );
 		//Print some vals
 		glColor3f(0,0.f,1.f);
-		DrawGameText( (*_current).first, "ConsoleSmall", (int)screenCenter.X, (int)screenCenter.Y );
+		DrawGameText( (*_current).first, "ConsoleSmall", (unsigned int)screenCenter.X, (unsigned int)screenCenter.Y );
 	}
 
 }
