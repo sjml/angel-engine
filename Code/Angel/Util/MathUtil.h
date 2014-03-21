@@ -217,19 +217,6 @@ public:
 	}
 	
 	/**
-	 * Clamps a double-precision float to a specified range
-	 * 
-	 * @param value The double in question
-	 * @param min The minimum of the range
-	 * @param max The maximum of the range
-	 * @return The clamped value
-	 */
-	static double Clamp(double value, double min, double max)
-	{
-		return Max(min, Min(max, value));
-	}
-	
-	/**
 	 * Convert radians to degrees
 	 * 
 	 * @param radians The angle in radians
@@ -272,13 +259,13 @@ public:
 	static float AngleFromVectors(const Vector2& v1, const Vector2& v2);
 	
 	/**
-	 * Takes a double or float and removes everything after the decimal
+	 * Takes a float and removes everything after the decimal
 	 *  point, making it into an integer. 
 	 * 
-	 * @param x The double or float to round
+	 * @param x The float to round
 	 * @return The rounded integer
 	 */
-	static int RoundToInt(double x);
+	static int RoundToInt(float x);
 	
 	/**
 	 * Get a random non-negative integer.
@@ -381,7 +368,7 @@ public:
 	 *   decrease if the field ends up too tightly packed. 
 	 * @return The list of generated points
 	 */
-	static Vector2List RandomPointField(int numPoints, const Vector2& minValue, const Vector2& maxValue, float minDistance=0.5f);
+	static Vector2List RandomPointField(unsigned int numPoints, const Vector2& minValue, const Vector2& maxValue, float minDistance=0.5f);
 	
 	/**
 	 * Compare two floating point values for "equality," with a permissible
@@ -421,7 +408,7 @@ public:
 	 * @param y The pixel Y coordinate
 	 * @return The world space coordinates
 	 */
-	static Vector2 ScreenToWorld(int x, int y);
+	static Vector2 ScreenToWorld(long x, long y);
 	
 	/**
 	 * Convert screen (pixel) coordinates to world (GL unit) coordinates. 
@@ -431,7 +418,8 @@ public:
 	 * @param screenCoordinates The pixel coordinates
 	 * @return The world space coordinates
 	 */
-	static Vector2 ScreenToWorld(const Vec2i& screenCoordinates);
+	static Vector2 ScreenToWorld(const Vec2ui& screenCoordinautes);
+	static Vector2 ScreenToWorld(const Vec2i& screenCoordinautes);
 	
 	/**
 	 * Convert world (GL unit) coordinates to screen (pixel) coordinates. 
