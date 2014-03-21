@@ -374,8 +374,8 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 		}
 
 		// Store dimensions
-		width = ilGetInteger(IL_IMAGE_WIDTH);
-		height = ilGetInteger(IL_IMAGE_HEIGHT);
+		width = (GLuint)ilGetInteger(IL_IMAGE_WIDTH);
+		height = (GLuint)ilGetInteger(IL_IMAGE_HEIGHT);
 
 		// Send it to GL
 		texRef = BindTexImageWithClampAndFilter(clampmode, filtermode);
@@ -415,16 +415,16 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
 	return texRef;
 }
 
-const Vec2i GetTextureSize(const String& filename)
+const Vec2ui GetTextureSize(const String& filename)
 {
 	std::map<String,TextureCacheEntry>::iterator it = theTextureCache.find(filename);
 	if (it == theTextureCache.end())
 	{
-		return Vec2i(0, 0);
+		return Vec2ui(0, 0);
 	}
 	else
 	{
-		return Vec2i(it->second.width, it->second.height);
+		return Vec2ui(it->second.width, it->second.height);
 	}
 }
 
@@ -466,8 +466,8 @@ bool GetRawImageData(const String& filename, std::vector<Color> &pixels)
 		}
 		
 		// get image datums
-		unsigned int width  = ilGetInteger(IL_IMAGE_WIDTH);
-		unsigned int height = ilGetInteger(IL_IMAGE_HEIGHT);
+		unsigned int width  = (unsigned int)ilGetInteger(IL_IMAGE_WIDTH);
+		unsigned int height = (unsigned int)ilGetInteger(IL_IMAGE_HEIGHT);
 		
 		// convert it to RGB floats for easy comparison
 		ilConvertImage(IL_RGBA, IL_FLOAT);
@@ -485,9 +485,9 @@ bool GetRawImageData(const String& filename, std::vector<Color> &pixels)
 	// convert every pixel into colors
 	float pixR, pixG, pixB, pixA;
 	unsigned int pixOffset = 0;
-	for (int y=0; y < height; y++)
+	for (unsigned int y=0; y < height; y++)
 	{
-		for (int x=0; x < width; x++)
+		for (unsigned int x=0; x < width; x++)
 		{
 			pixOffset = (y * width * 4) + (x * 4);
 			pixR = rawData[pixOffset];
@@ -549,8 +549,8 @@ bool PixelsToPositions(const String& filename, Vector2List &positions, float gri
 		}
 		
 		// get image datums
-		unsigned int width  = ilGetInteger(IL_IMAGE_WIDTH);
-		unsigned int height = ilGetInteger(IL_IMAGE_HEIGHT);
+		unsigned int width  = (unsigned int)ilGetInteger(IL_IMAGE_WIDTH);
+		unsigned int height = (unsigned int)ilGetInteger(IL_IMAGE_HEIGHT);
 		
 		// convert it to RGB floats for easy comparison
 		ilConvertImage(IL_RGB, IL_FLOAT);
@@ -571,9 +571,9 @@ bool PixelsToPositions(const String& filename, Vector2List &positions, float gri
 	Vector2 offset(w, h);
 	float pixR, pixG, pixB;
 	unsigned int pixOffset = 0;
-	for (int y=0; y < height; y++)
+	for (unsigned int y=0; y < height; y++)
 	{
-		for (int x=0; x < width; x++)
+		for (unsigned int x=0; x < width; x++)
 		{
 			pixOffset = (y * width * 3) + (x * 3);
 			pixR = rawData[pixOffset];

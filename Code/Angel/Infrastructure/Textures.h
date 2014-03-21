@@ -94,7 +94,7 @@ const int GetTextureReference(const String& filename, GLint clampmode, GLint fil
  * @return The width and height of the texture; if no texture is currently
  *   loaded from the given filename, will return (0, 0)
  */
-const Vec2i GetTextureSize(const String& filename);
+const Vec2ui GetTextureSize(const String& filename);
 
 /**
  * Remove a texture from memory. On the desktop this usually isn't an issue 
