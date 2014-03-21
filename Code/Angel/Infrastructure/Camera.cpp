@@ -63,7 +63,7 @@ void Camera::Destroy()
 #if !ANGEL_MOBILE
 	void Camera::ResizeCallback(GLFWwindow* window, int w, int h)
 	{
-		theCamera.Resize(w, h);
+		theCamera.Resize((unsigned int)w, (unsigned int)h);
 	}
 #endif
 
@@ -87,14 +87,14 @@ void Camera::LockTo(Actor *locked, bool lockX, bool lockY, bool lockRotation)
 	_lockRotation = lockRotation;
 }
 
-void Camera::Resize(int width, int height)
+void Camera::Resize(unsigned int width, unsigned int height)
 {
 	if ( (_windowHeight != height) || (_windowWidth != width) ) 
 	{
 		_windowHeight = height;
 		_windowWidth = width;
 
-		glViewport(0, 0, _windowWidth, _windowHeight);
+		glViewport(0, 0, (GLsizei)_windowWidth, (GLsizei)_windowHeight);
 	}
 
 	glMatrixMode(GL_PROJECTION);
@@ -106,19 +106,19 @@ void Camera::Resize(int width, int height)
 	theSwitchboard.Broadcast(new Message("CameraChange"));
 }
 
-const int Camera::GetWindowHeight() const
+const unsigned int Camera::GetWindowHeight() const
 {
 	return _windowHeight;
 }
 
-const int Camera::GetWindowWidth() const
+const unsigned int Camera::GetWindowWidth() const
 {
 	return _windowWidth;
 }
 
-const double Camera::GetViewRadius() const
+const float Camera::GetViewRadius() const
 {
-	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
+	float sideAngle = MathUtil::ToRadians(_aperture / 2.0f);
 	return tan(sideAngle) * fabs(_camera3DPosition.Z);
 }
 
@@ -228,6 +228,16 @@ void Camera::MoveTo(const Vector3& newPosition, float duration, bool smooth, Str
 	_3dPositionIntervalMessage = onCompletionMessage;
 }
 
+void Camera::MoveTo(const Vector2& newPosition, float duration, bool smooth, String onCompletionMessage)
+{
+	Vector3 pos;
+	pos.X = newPosition.X;
+	pos.Y = newPosition.Y;
+	pos.Z = _camera3DPosition.Z;
+
+	this->MoveTo(pos, duration, smooth, onCompletionMessage);
+}
+
 float Camera::GetZ() const
 {
 	return _camera3DPosition.Z;
@@ -241,7 +251,7 @@ void Camera::SetRotation(float newRotation)
 
 float Camera::GetZForViewRadius(float radius)
 {
-	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
+	float sideAngle = MathUtil::ToRadians(_aperture / 2.0f);
 	return radius / tan(sideAngle);
 }
 
@@ -257,7 +267,7 @@ float Camera::GetFarClipDist()
 
 void Camera::SetZByViewRadius(float newRadius)
 {
-	double sideAngle = MathUtil::ToRadians(_aperture / 2.0);
+	float sideAngle = MathUtil::ToRadians(_aperture / 2.0f);
 	_camera3DPosition.Z = newRadius / tan(sideAngle);
 }
 
