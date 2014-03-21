@@ -72,7 +72,7 @@ void MouseMotion(GLFWwindow* window, double x, double y)
 	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
 	while (it != _mouseSubscribers.end())
 	{
-		(*it)->MouseMotionEvent(Vec2i(x, y));
+		(*it)->MouseMotionEvent(_mouseLocation);
 		it++;
 	}
 }
@@ -111,7 +111,7 @@ void MouseButton(GLFWwindow* window, int button, int state, int mods)
 void MouseWheel(GLFWwindow* window, double x, double y)
 {
 	std::set<MouseListener*>::iterator it = _mouseSubscribers.begin();
-	Vector2 offset(x, y);
+	Vector2 offset((float)x, (float)y);
 	while (it != _mouseSubscribers.end())
 	{
 		(*it)->MouseWheelEvent(offset);

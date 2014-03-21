@@ -70,7 +70,7 @@ const String ReadWholeFile(const String& fileName)
 	String forReturn = "";
 	StringList lines;
 	GetLinesFromFile(fileName, lines);
-	for (int i=0; i < lines.size(); i++)
+	for (unsigned int i=0; i < lines.size(); i++)
 	{
 		forReturn += lines[i];
 	}
@@ -207,7 +207,7 @@ const String GetExeName()
 		TCHAR exePathWin[MAX_PATH];
 		GetModuleFileName( NULL, exePathWin, MAX_PATH );
 		String exePath(exePathWin);
-		int length = exePath.length();
+		unsigned int length = exePath.length();
 		if (exePath.substr(length - 4, length) == ".exe")
 		{
 			exePath = exePath.substr(0, length - 4);
@@ -245,7 +245,7 @@ const long GetModificationTime(const String& fileName)
 		#if defined(__APPLE__)
 			return statInfo.st_mtimespec.tv_sec;
 		#else //Linux or Windows
-			return statInfo.st_mtime;
+			return (long)statInfo.st_mtime;
 		#endif
 	}
 	else 

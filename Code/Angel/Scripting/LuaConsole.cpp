@@ -125,8 +125,8 @@ StringList LuaConsole::GetCompletions(const String& input)
 	if (lua_istable(L, -1))
 	{
 		// get table values
-		int size = lua_rawlen(L, -1);
-		for (int i=0; i < size; i++)
+		unsigned int size = lua_rawlen(L, -1);
+		for (unsigned int i=0; i < size; i++)
 		{
 			lua_pushinteger(L, i+1);
 			lua_gettable(L, -2);

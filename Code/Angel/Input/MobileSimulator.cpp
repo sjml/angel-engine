@@ -112,7 +112,7 @@ void MobileSimulator::MouseMotionEvent(Vec2i screenCoordinates)
 		if (tl->size() > 1)
 		{
 			Vector2 negCoordsVec = MathUtil::WorldToScreen(-pos);
-			Vec2i negCoords(negCoordsVec.X, negCoordsVec.Y);
+			Vec2i negCoords((int)negCoordsVec.X, (int)negCoordsVec.Y);
 			(*tl)[1]->CurrentPoint = negCoords;
 			if ( (*tl)[1]->MotionStartTime < 0.0f )
 			{
@@ -199,7 +199,7 @@ void MobileSimulator::MouseDownEvent(Vec2i screenCoordinates, MouseButtonInput b
 		t = new Touch();
 		t->__platformTouch = NULL;
 		Vector2 pos2 = MathUtil::WorldToScreen(_fingerGhost2->GetPosition());
-		t->StartingPoint = Vec2i(pos2.X, pos2.Y);
+		t->StartingPoint = Vec2i((int)pos2.X, (int)pos2.Y);
 		t->CurrentPoint = t->StartingPoint;
 		tl->push_back(t);
 		SendTouchNotifiers(t, TOUCH_START);
@@ -242,8 +242,8 @@ void MobileSimulator::MouseUpEvent(Vec2i screenCoordinates, MouseButtonInput but
 		{
 			if ( (theWorld.GetCurrentTimeSeconds() - (*it)->MotionStartTime) < SWIPE_MAX_DURATION)
 			{
-				Vector2 start((*it)->StartingPoint.X, (*it)->StartingPoint.Y);
-				Vector2 end((*it)->CurrentPoint.X, (*it)->CurrentPoint.Y);
+				Vector2 start((*it)->StartingPoint);
+				Vector2 end((*it)->CurrentPoint);
 				Vector2 motion = end - start;
 				if (motion.LengthSquared() >= (SWIPE_MIN_DISTANCE * SWIPE_MIN_DISTANCE))
 				{
