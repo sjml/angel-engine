@@ -17,15 +17,15 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float r = lua_tonumber(L, -1);
+		float r = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float g = lua_tonumber(L, -1);
+		float g = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 3);
 		lua_gettable(L, $input);
-		float b = lua_tonumber(L, -1);
+		float b = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		float a = 1.0f;
@@ -35,7 +35,7 @@
 			lua_gettable(L, $input);
 			if (lua_isnumber(L, -1))
 			{
-				a = lua_tonumber(L, -1);
+				a = (float)lua_tonumber(L, -1);
 			}
 			lua_pop(L, 1);
 		}
@@ -45,11 +45,10 @@
 	}
 }
 
-%typemap(in) const Color&
+%typemap(in) const Color& (Color col)
 {
 	// const Color& conversion
 	Color *colPtr;
-	Color col;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&colPtr,SWIGTYPE_p_Color,0))) 
 	{
 		$1 = colPtr;
@@ -59,15 +58,15 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float r = lua_tonumber(L, -1);
+		float r = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float g = lua_tonumber(L, -1);
+		float g = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 3);
 		lua_gettable(L, $input);
-		float b = lua_tonumber(L, -1);
+		float b = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		float a = 1.0f;
@@ -77,7 +76,7 @@
 			lua_gettable(L, $input);
 			if (lua_isnumber(L, -1))
 			{
-				a = lua_tonumber(L, -1);
+				a = (float)lua_tonumber(L, -1);
 			}
 			lua_pop(L, 1);
 		}
