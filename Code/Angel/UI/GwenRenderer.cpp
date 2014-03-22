@@ -270,10 +270,10 @@ Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, u
 	}
 
 	Gwen::Color c;
-	c.r = unsigned char(_skinTexture[offset].R * 255.0f);
-	c.g = unsigned char(_skinTexture[offset].G * 255.0f);
-	c.b = unsigned char(_skinTexture[offset].B * 255.0f);
-	c.a = unsigned char(_skinTexture[offset].A * 255.0f);
+	c.r = (unsigned char)(_skinTexture[offset].R * 255.0f);
+	c.g = (unsigned char)(_skinTexture[offset].G * 255.0f);
+	c.b = (unsigned char)(_skinTexture[offset].B * 255.0f);
+	c.a = (unsigned char)(_skinTexture[offset].A * 255.0f);
 	
 	return c;
 }
