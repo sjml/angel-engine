@@ -351,7 +351,7 @@ std::vector<Vec3ui> World::GetVideoModes()
 			Vec3ui avm;
 			avm.X = (unsigned int)vidModes[i].width;
 			avm.Y = (unsigned int)vidModes[i].height;
-			avm.Z = unsigned int(vidModes[i].redBits + vidModes[i].greenBits + vidModes[i].blueBits);
+			avm.Z = (unsigned int)(vidModes[i].redBits + vidModes[i].greenBits + vidModes[i].blueBits);
 			forReturn.push_back(avm);
 		}
 	#else
