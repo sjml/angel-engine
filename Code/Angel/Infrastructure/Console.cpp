@@ -474,7 +474,7 @@ void Console::Render()
 
 	//Draw autocomplete
 	const unsigned int sMaxAutoCompleteLines = MAX_AUTO_COMPLETE;
-	const unsigned int numAutoCompleteLines = MathUtil::Min(sMaxAutoCompleteLines, _autoCompleteList.size() );
+	const unsigned int numAutoCompleteLines = MathUtil::Min(sMaxAutoCompleteLines, (unsigned int)_autoCompleteList.size() );
 	const unsigned int autoCompleteBottomY = textBoxBottomY + (numAutoCompleteLines * sTextBoxHeight);
 	const unsigned int autoCompleteStartY = textBoxBottomY + 2*sTextBoxHeight/3;
 
