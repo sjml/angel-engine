@@ -111,7 +111,7 @@ String FloatToString( float val )
 	return to_string( val, std::dec );
 }
 
-String ULLIntToString( unsigned long long val )
+String ULIntToString( unsigned long val )
 {
 	return to_string( val, std::dec );
 }

@@ -639,7 +639,7 @@ const StringSet& Actor::GetTags() const
 const String& Actor::SetName(String newName)
 {
 	//overkill for sure, but who knows how many unique actors we'll need
-	static unsigned long long nameIndex = 0;
+	static unsigned long nameIndex = 0;
 	
 	if(newName.length() == 0)
 	{
@@ -655,7 +655,7 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
-		_name = newName + ULLIntToString(++nameIndex);
+		_name = newName + ULIntToString(++nameIndex);
 	}
 	
 	Actor::_nameList[_name] = this;
