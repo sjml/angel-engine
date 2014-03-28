@@ -487,9 +487,9 @@ void Actor::PlaySpriteAnimation(float delay, spriteAnimationType animType, int s
 
 void Actor::LoadSpriteFrames(const String& firstFilename, GLint clampmode, GLint filtermode)
 {
-	unsigned int extensionLocation = firstFilename.rfind(".");
-	unsigned int numberSeparator = firstFilename.rfind("_");
-	unsigned int numDigits = extensionLocation - numberSeparator - 1;
+	size_t extensionLocation = firstFilename.rfind(".");
+	size_t numberSeparator = firstFilename.rfind("_");
+	size_t numDigits = extensionLocation - numberSeparator - 1;
 
 	// Clear out the number of frames we think we have.
 	_spriteNumFrames = 0;
