@@ -42,13 +42,14 @@
 
 
 Console::Console()
-: _enabled(false),
+: 
 _currentInput(""),
 _inputHistoryPos(0),
+_tabWidth(8),
 _cursorPos(0),
 _cursorDispTime(0.0f),
 _bCursorDisp(true),
-_tabWidth(8)
+_enabled(false)
 {
 	if (!IsFontRegistered("Console") || !IsFontRegistered("ConsoleSmall"))
 	{

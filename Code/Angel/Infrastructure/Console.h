@@ -202,8 +202,8 @@ protected:
 	String _unsplitBuffer;
 	float _lineHeight;
 	StringList _autoCompleteList;
-	unsigned int _cursorPos;
 	unsigned int _tabWidth;
+	unsigned int _cursorPos;
 	
 private:
 	void RefreshAutoCompletes();
