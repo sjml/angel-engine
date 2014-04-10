@@ -178,6 +178,8 @@ bool PurgeTexture(const String& filename)
 		{
 			if (!optional)
 				sysLog.Printf("ERROR: %s is not a PNG.", filename.c_str());
+
+			fclose(PNG_file);
 			return false;
 		}
 		

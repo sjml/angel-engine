@@ -62,7 +62,7 @@
 		ERRCHECK(__LINE__);\
 	}
 
-	const char * OpenAL_ErrorString(ALenum errCode)
+	String OpenAL_ErrorString(ALenum errCode)
 	{
 		String retVal;
 		switch (errCode)
@@ -88,7 +88,7 @@
 			default:
 				retVal = "Unknown error.";
 		}
-		return retVal.c_str();
+		return retVal;
 	}
 
 	void ERRCHECK(int lineNumber)
@@ -96,7 +96,7 @@
 		ALenum errCode = alGetError();
 		while (errCode != AL_NO_ERROR)
 		{
-			sysLog.Printf("OpenAL error! Line %i: %s", lineNumber, OpenAL_ErrorString(errCode));
+			sysLog.Printf("OpenAL error! Line %i: %s", lineNumber, OpenAL_ErrorString(errCode).c_str());
 			errCode = alGetError();
 		}
 	}

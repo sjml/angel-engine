@@ -1082,7 +1082,7 @@ void World::PurgeDebugDrawing()
 	while (itdd != _debugDrawItems.end())
 	{
 		DebugDrawBase* pDD = (*itdd);
-		_debugDrawItems.erase(itdd);
+		itdd = _debugDrawItems.erase(itdd);
 		delete pDD;
 	}
 }
