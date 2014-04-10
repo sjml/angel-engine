@@ -101,7 +101,7 @@ void PhysicsActor::SetIsSensor(bool isSensor)
 		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetIsSensor()");
 }
 
-void PhysicsActor::SetGroupIndex(int groupIndex)
+void PhysicsActor::SetGroupIndex(short groupIndex)
 {
 	if (_physBody == NULL)
 		_groupIndex = groupIndex;

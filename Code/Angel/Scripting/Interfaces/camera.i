@@ -14,10 +14,10 @@ public:
 	void LockTo(Actor* locked, bool lockX=true, bool lockY=true, bool lockRotation=false);
 	Actor* GetLockedActor();
 	
-	const int GetWindowHeight();
-	const int GetWindowWidth();
+	const unsigned int GetWindowHeight();
+	const unsigned int GetWindowWidth();
 	
-	const double GetViewRadius();
+	const float GetViewRadius();
 	const Vector2 GetWorldMaxVertex();
 	const Vector2 GetWorldMinVertex();
 

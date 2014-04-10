@@ -55,8 +55,8 @@ Vector2::Vector2()
 {}
 
 Vector2::Vector2(const Vec2i& copy)
-: X(copy.X)
-, Y(copy.Y)
+: X((float)copy.X)
+, Y((float)copy.Y)
 {}
 
 float Vector2::Length()

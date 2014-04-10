@@ -161,7 +161,7 @@ UserInterface::UserInterface()
 	_renderer->FinishInit();
 
 	AngelCanvas = new Gwen::Controls::Canvas(AngelSkin);
-	AngelCanvas->SetSize(theCamera.GetWindowWidth(), theCamera.GetWindowHeight()); // should be size of window (update when change)
+	AngelCanvas->SetSize((int)theCamera.GetWindowWidth(), (int)theCamera.GetWindowHeight()); // should be size of window (update when change)
 
 	_locked = false;
 }

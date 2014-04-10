@@ -42,13 +42,14 @@
 
 
 Console::Console()
-: _enabled(false),
+: 
 _currentInput(""),
 _inputHistoryPos(0),
+_tabWidth(8),
 _cursorPos(0),
 _cursorDispTime(0.0f),
 _bCursorDisp(true),
-_tabWidth(8)
+_enabled(false)
 {
 	if (!IsFontRegistered("Console") || !IsFontRegistered("ConsoleSmall"))
 	{
@@ -62,9 +63,9 @@ Console::~Console()
 
 }
 
-void DrawTile( int xPos, int yPos, int width, int height )
+static void DrawTile( unsigned int xPos, unsigned int yPos, unsigned int width, unsigned int height )
 {
-	Vec2i winDimensions;
+	Vec2ui winDimensions;
 	winDimensions.X = theCamera.GetWindowWidth();
 	winDimensions.Y = theCamera.GetWindowHeight();
 	yPos = winDimensions.Y - yPos;
@@ -110,12 +111,12 @@ void Console::Enable(bool bEnable /* = true  */)
 	_enabled = bEnable;
 }
 
-bool Console::GetInput( int key )
+bool Console::GetInput( unsigned int key )
 {
 	if( !IsEnabled() )
 		return false;
 
-	if (key == GetToggleConsoleKey())
+	if (key == (unsigned int)GetToggleConsoleKey())
 	{
 		Enable(false);
 	}
@@ -123,7 +124,7 @@ bool Console::GetInput( int key )
 	{
 		String oldInput = _currentInput;
 		_currentInput = oldInput.substr(0, _cursorPos);
-		_currentInput += key;
+		_currentInput += (char)key;
 		
 		if (_cursorPos < oldInput.length())
 		{
@@ -249,9 +250,9 @@ void Console::WriteToOutput(String output)
 	size_t tabIndex = output.find_first_of('\t');
 	while (tabIndex != std::string::npos)
 	{
-		int numSpaces = _tabWidth - (tabIndex % _tabWidth);
+		unsigned int numSpaces = _tabWidth - (tabIndex % _tabWidth);
 		String replacement = "";
-		for(int i=0; i < numSpaces; i++)
+		for(unsigned int i=0; i < numSpaces; i++)
 		{
 			replacement += " ";
 		}
@@ -279,7 +280,7 @@ void Console::WriteToOutput(String output)
 	_lineHeight = largest;
 }
 
-bool Console::IsTextKey(unsigned char key)
+bool Console::IsTextKey(unsigned int key)
 {
 	if( key >= ' ' && key <= '}' )
 		return true;
@@ -306,7 +307,7 @@ void Console::AcceptAutocomplete()
 	
 	//cycle through the available completions with tab
 	int found = -1;
-	for (int i=0; i < _autoCompleteList.size(); i++)
+	for (unsigned int i=0; i < _autoCompleteList.size(); i++)
 	{
 		if (i > MAX_AUTO_COMPLETE)
 		{
@@ -342,7 +343,7 @@ void Console::AdvanceInputHistory(int byVal)
 		return;
 	
 	//If we're at the bottom of our input history, do nothing
-	int lastInputIndex = _inputHistory.size();
+	int lastInputIndex = (int)_inputHistory.size();
 	if( byVal >= 0 && (_inputHistoryPos + byVal) >= lastInputIndex )
 	{
 		_currentInput = "";
@@ -403,25 +404,24 @@ void Console::Render()
 
 	//TODO: Clean up this nonsense
 
-	static float sTestAlpha = 0.75;
-	Vec2i winDimensions;
+	const float sTestAlpha = 0.75;
+	Vec2ui winDimensions;
 	winDimensions.X = theCamera.GetWindowWidth();
 	winDimensions.Y = theCamera.GetWindowHeight();
 
-	static float fScreenHeightPct = 0.5f;
-	static int sTextBoxBorder = winDimensions.Y/192;
-	static int sTextBoxHeight = winDimensions.Y/32 + sTextBoxBorder;
+	const float fScreenHeightPct = 0.5f;
+	const unsigned int sTextBoxBorder = winDimensions.Y/192;
+	const unsigned int sTextBoxHeight = winDimensions.Y/32 + sTextBoxBorder;
 
-	int consoleBGHeight = (int)(fScreenHeightPct * (float)winDimensions.Y);
-
-	int consoleBGBottomY = consoleBGHeight;
+	const unsigned int consoleBGHeight = (unsigned int)(fScreenHeightPct * (float)winDimensions.Y);
+	const unsigned int consoleBGBottomY = consoleBGHeight;
 
 	glColor4f(0.0f,0.0f,0.0f,sTestAlpha);
 	DrawTile(0, consoleBGBottomY, winDimensions.X, consoleBGHeight );
 
 	//Draw log
-	static int sLogXPos = sTextBoxBorder;
-	int logYPos = consoleBGBottomY - sTextBoxBorder;
+	const unsigned int sLogXPos = sTextBoxBorder;
+	unsigned int logYPos = consoleBGBottomY - sTextBoxBorder;
 	if (_buffer.size() > 0)
 	{
 		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -430,21 +430,22 @@ void Console::Render()
 		{
 			it--;
 			/* Vector2 textSize = */ DrawGameText( *it, "ConsoleSmall", sLogXPos, logYPos );
-			logYPos -= (int)_lineHeight + sTextBoxBorder;
+			logYPos -= (unsigned int)_lineHeight + sTextBoxBorder;
 		}
 	}
 
 	//Draw text box border
 	glColor4f(0.0f,1.0f,0.0f,sTestAlpha/2.0f);
-	int textBoxBottomY = consoleBGBottomY + sTextBoxHeight;
+	unsigned int textBoxBottomY = consoleBGBottomY + sTextBoxHeight;
 	DrawTile(0, textBoxBottomY, winDimensions.X, sTextBoxHeight );
 
 	//Draw text box
 
-	int textBoxHeight = sTextBoxHeight - sTextBoxBorder;
-	int textBoxWidth = winDimensions.X - sTextBoxBorder;
-	int textBoxXPos = (winDimensions.X - textBoxWidth)/2;
-	int textBoxYPos = textBoxBottomY - (sTextBoxHeight-textBoxHeight)/2;
+	const unsigned int textBoxHeight = sTextBoxHeight - sTextBoxBorder;
+	const unsigned int textBoxWidth = winDimensions.X - sTextBoxBorder;
+
+	unsigned int textBoxXPos = (winDimensions.X - textBoxWidth)/2;
+	unsigned int textBoxYPos = textBoxBottomY - (sTextBoxHeight-textBoxHeight)/2;
 
 	glColor4f(0.0f,0.0f,0.0f,sTestAlpha);
 	DrawTile(textBoxXPos, textBoxYPos, textBoxWidth, textBoxHeight);
@@ -473,25 +474,25 @@ void Console::Render()
 	DrawGameText(printInput.c_str(), "ConsoleSmall", textBoxXPos, textBoxYPos);
 
 	//Draw autocomplete
-	static int sMaxAutoCompleteLines = MAX_AUTO_COMPLETE;
-	int numAutoCompleteLines = MathUtil::Min(sMaxAutoCompleteLines, (int)_autoCompleteList.size() );
-	int autoCompleteBottomY = textBoxBottomY + (numAutoCompleteLines * sTextBoxHeight);
-	int autoCompleteStartY = textBoxBottomY + 2*sTextBoxHeight/3;
+	const unsigned int sMaxAutoCompleteLines = MAX_AUTO_COMPLETE;
+	const unsigned int numAutoCompleteLines = MathUtil::Min(sMaxAutoCompleteLines, (unsigned int)_autoCompleteList.size() );
+	const unsigned int autoCompleteBottomY = textBoxBottomY + (numAutoCompleteLines * sTextBoxHeight);
+	const unsigned int autoCompleteStartY = textBoxBottomY + 2*sTextBoxHeight/3;
 
-	int autoCompleteXPos = textBoxXPos + winDimensions.Y / 24;
-	int autoCompleteBoxXPos = autoCompleteXPos - sTextBoxBorder;
+	const unsigned int autoCompleteXPos = textBoxXPos + winDimensions.Y / 24;
+	const unsigned int autoCompleteBoxXPos = autoCompleteXPos - sTextBoxBorder;
 
 	glColor4f(0.0f,0.0f,0.0f,sTestAlpha);
 	DrawTile(autoCompleteBoxXPos, autoCompleteBottomY, winDimensions.X-autoCompleteBoxXPos, numAutoCompleteLines * sTextBoxHeight);
 
 	glColor4f(0.0f,1.0f,0.0f,1.0f);
 	Vector2 outPos((float)autoCompleteXPos, (float)autoCompleteStartY);
-	for( int i = 0; i < numAutoCompleteLines; i++ )
+	for( unsigned int i = 0; i < numAutoCompleteLines; i++ )
 	{
-		if( (int)_autoCompleteList.size() > sMaxAutoCompleteLines-1 && i == sMaxAutoCompleteLines-1 )
-			DrawGameText( "...", "ConsoleSmall", autoCompleteXPos, (int)outPos.Y );
+		if( _autoCompleteList.size() > sMaxAutoCompleteLines-1 && i == sMaxAutoCompleteLines-1 )
+			DrawGameText( "...", "ConsoleSmall", autoCompleteXPos, (unsigned int)outPos.Y );
 		else
-			DrawGameText( _autoCompleteList[i].c_str(), "ConsoleSmall", autoCompleteXPos, (int)outPos.Y );
+			DrawGameText( _autoCompleteList[i].c_str(), "ConsoleSmall", autoCompleteXPos, (unsigned int)outPos.Y );
 		outPos.Y += sTextBoxHeight;
 	}
 

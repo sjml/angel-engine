@@ -50,11 +50,10 @@
 	}
 }
 
-%typemap(in) const Vec2i&
+%typemap(in) const Vec2i& (Vec2i vec)
 {
 	// const Vec2i& conversion
 	Vec2i *vecPtr;
-	Vec2i vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vec2i,0)))
 	{
 		$1 = vecPtr;
@@ -103,11 +102,10 @@
 	}
 }
 
-%typemap(in) const Vec2ui&
+%typemap(in) const Vec2ui& (Vec2ui vec)
 {
 	// cosnt Vec2ui& conversion
 	Vec2ui *vecPtr;
-	Vec2ui vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vec2ui,0)))
 	{
 		$1 = vecPtr;
@@ -160,11 +158,10 @@
 	}
 }
 
-%typemap(in) const Vec3i&
+%typemap(in) const Vec3i& (Vec3i vec)
 {
 	// const Vec3i& conversion
 	Vec3i *vecPtr;
-	Vec3i vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vec3i,0)))
 	{
 		$1 = vecPtr;
@@ -222,11 +219,10 @@
 	}
 }
 
-%typemap(in) const Vec3ui&
+%typemap(in) const Vec3ui& (Vec3ui vec)
 {
 	// const Vec3ui& conversion
 	Vec3ui *vecPtr;
-	Vec3ui vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vec3ui,0)))
 	{
 		$1 = vecPtr;
@@ -268,11 +264,11 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float x = lua_tonumber(L, -1);
+		float x = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float y = lua_tonumber(L, -1);
+		float y = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		// build the vector
@@ -280,11 +276,10 @@
 	}
 }
 
-%typemap(in) const Vector2&
+%typemap(in) const Vector2& (Vector2 vec)
 {
 	// const Vector2& conversion
 	Vector2 *vecPtr;
-	Vector2 vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vector2,0))) 
 	{
 		$1 = vecPtr;
@@ -294,11 +289,11 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float x = lua_tonumber(L, -1);
+		float x = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float y = lua_tonumber(L, -1);
+		float y = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		// build the vector
@@ -321,17 +316,17 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float x = lua_tonumber(L, -1);
+		float x = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float y = lua_tonumber(L, -1);
+		float y = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushinteger(L, 3);
 		lua_gettable(L, $input);
-		float z = lua_tonumber(L, -1);
+		float z = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		// build the vector
@@ -339,11 +334,10 @@
 	}
 }
 
-%typemap(in) const Vector3&
+%typemap(in) const Vector3& (Vector3 vec)
 {
 	// const Vector3& conversion
 	Vector3 *vecPtr;
-	Vector3 vec;
 	if (SWIG_IsOK(SWIG_ConvertPtr(L,$input,(void**)&vecPtr,SWIGTYPE_p_Vector3,0))) 
 	{
 		$1 = vecPtr;
@@ -353,17 +347,17 @@
 		// convert table parameters to floats
 		lua_pushinteger(L, 1);
 		lua_gettable(L, $input);
-		float x = lua_tonumber(L, -1);
+		float x = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushinteger(L, 2);
 		lua_gettable(L, $input);
-		float y = lua_tonumber(L, -1);
+		float y = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushinteger(L, 3);
 		lua_gettable(L, $input);
-		float z = lua_tonumber(L, -1);
+		float z = (float)lua_tonumber(L, -1);
 		lua_pop(L, 1);
 		
 		// build the vector

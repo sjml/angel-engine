@@ -62,7 +62,7 @@
 		ERRCHECK(__LINE__);\
 	}
 
-	const char * OpenAL_ErrorString(ALenum errCode)
+	String OpenAL_ErrorString(ALenum errCode)
 	{
 		String retVal;
 		switch (errCode)
@@ -88,7 +88,7 @@
 			default:
 				retVal = "Unknown error.";
 		}
-		return retVal.c_str();
+		return retVal;
 	}
 
 	void ERRCHECK(int lineNumber)
@@ -96,7 +96,7 @@
 		ALenum errCode = alGetError();
 		while (errCode != AL_NO_ERROR)
 		{
-			sysLog.Printf("OpenAL error! Line %i: %s", lineNumber, OpenAL_ErrorString(errCode));
+			sysLog.Printf("OpenAL error! Line %i: %s", lineNumber, OpenAL_ErrorString(errCode).c_str());
 			errCode = alGetError();
 		}
 	}
@@ -190,10 +190,10 @@ void SoundDevice::Initialize()
 		}
 
 		/* Replace with whatever channel count and flags you use! */
-		FMOD_RESULT result = _system->init(100, FMOD_INIT_NORMAL, 0);	
+		FMOD_RESULT sysresult = _system->init(100, FMOD_INIT_NORMAL, 0);	
 
 		/* Ok, the speaker mode selected isn't supported by this soundcard.  Switch it back to stereo... */
-		if (result == FMOD_ERR_OUTPUT_CREATEBUFFER)		
+		if (sysresult == FMOD_ERR_OUTPUT_CREATEBUFFER)		
 		{
 			ANGEL_SOUND_CHECKED( _system->setSpeakerMode(FMOD_SPEAKERMODE_STEREO) )
 			/* Replace with whatever channel count and flags you use! */
@@ -289,7 +289,7 @@ void SoundDevice::Shutdown()
 AngelSampleHandle SoundDevice::LoadSample(const String& filename, bool isStream)
 {
 	#if !ANGEL_DISABLE_FMOD
-		int flags = FMOD_DEFAULT;
+		unsigned int flags = FMOD_DEFAULT;
 		if (isStream )
 			flags |= FMOD_CREATESTREAM;
 
@@ -454,7 +454,7 @@ AngelSoundHandle SoundDevice::PlaySound(AngelSampleHandle sample, float volume, 
 		ANGEL_SOUND_CHECKED( FMOD_Channel->setVolume(volume) )
 		
 		// Looping.
-		int modeFlags = 0;
+		unsigned int modeFlags = 0;
 		if (looping)
 			modeFlags |= FMOD_LOOP_NORMAL;
 		else

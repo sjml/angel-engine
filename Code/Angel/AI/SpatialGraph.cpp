@@ -71,7 +71,7 @@ void SpatialGraphKDNode::Render()
 		Vector2 screenCenter = MathUtil::WorldToScreen( centroid.X, centroid.Y );
 		//Print some vals
 		glColor3f(0,1.f,1.f);
-		DrawGameText( IntToString(Index), "ConsoleSmall", (int)screenCenter.X, (int)screenCenter.Y );
+		DrawGameText( IntToString(Index), "ConsoleSmall", (unsigned int)screenCenter.X, (unsigned int)screenCenter.Y );
 	}
 
 	if( theSpatialGraph.GetDrawGraph() && !bBlocked )
@@ -385,7 +385,7 @@ SpatialGraphKDNode* SpatialGraph::CreateTree(int depth, const BoundingBox& bbox,
 	if (depth > 0 && node->bBlocked )
 	{
 		BoundingBox LHSbbox, RHSbbox;
-		MathUtil::SplitBoundingBox( bbox, depth % 2 ? MathUtil::AA_X : MathUtil::AA_Y, LHSbbox, RHSbbox );
+		MathUtil::SplitBoundingBox( bbox, (depth % 2) ? MathUtil::AA_X : MathUtil::AA_Y, LHSbbox, RHSbbox );
 		node->LHC = CreateTree(depth, LHSbbox, node, node->Index << 1);
 		node->RHC = CreateTree(depth, RHSbbox, node, (node->Index << 1) + 1);
 
@@ -642,8 +642,7 @@ SpatialGraphManager::~SpatialGraphManager()
 
 void SpatialGraphManager::CreateGraph( float entityWidth, const BoundingBox& bounds )
 {
-	if( _spatialGraph != NULL )
-		delete _spatialGraph;
+	delete _spatialGraph;
 
 	_spatialGraph = new SpatialGraph( entityWidth, bounds );
 }

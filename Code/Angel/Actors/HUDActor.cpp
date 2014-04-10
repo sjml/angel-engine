@@ -37,10 +37,10 @@
 
 void HUDActor::Render()
 {
-	Vec2i winDimensions;
+	Vec2ui winDimensions;
 	winDimensions.X = theCamera.GetWindowWidth();
 	winDimensions.Y = theCamera.GetWindowHeight();
-	float pixelY = winDimensions.Y - _position.Y;
+	float pixelY = (float)winDimensions.Y - _position.Y;
 	
 	//set up projection
 	glMatrixMode(GL_PROJECTION);

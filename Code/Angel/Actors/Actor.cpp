@@ -487,19 +487,19 @@ void Actor::PlaySpriteAnimation(float delay, spriteAnimationType animType, int s
 
 void Actor::LoadSpriteFrames(const String& firstFilename, GLint clampmode, GLint filtermode)
 {
-	int extensionLocation = firstFilename.rfind(".");
-	int numberSeparator = firstFilename.rfind("_");
-	int numDigits = extensionLocation - numberSeparator - 1;
+	size_t extensionLocation = firstFilename.rfind(".");
+	size_t numberSeparator = firstFilename.rfind("_");
+	size_t numDigits = extensionLocation - numberSeparator - 1;
 
 	// Clear out the number of frames we think we have.
 	_spriteNumFrames = 0;
 
 	bool bValidNumber = true;
 	// So you're saying I've got a chance?
-	if (numberSeparator > 0 && numDigits > 0)
+	if (numberSeparator != String::npos && numDigits > 0 )
 	{
 		// Now see if all of the digits between _ and . are numbers (i.e. test_001.jpg).
-		for (int i=1; i<=numDigits; ++i)
+		for (unsigned int i=1; i<=numDigits; ++i)
 		{
 			char digit = firstFilename[numberSeparator+i];
 			if (digit < '0' || digit > '9')
@@ -511,7 +511,7 @@ void Actor::LoadSpriteFrames(const String& firstFilename, GLint clampmode, GLint
 	}
 
 	// If these aren't valid, the format is incorrect.
-	if (numberSeparator == (int)String::npos || numDigits <= 0 || !bValidNumber)
+	if (numberSeparator == String::npos || numDigits == 0 || !bValidNumber)
 	{
 		sysLog.Log("LoadSpriteFrames() - Bad Format - Expecting somename_###.ext");
 		sysLog.Log("Attempting to load single texture: " + firstFilename);
@@ -566,10 +566,10 @@ void Actor::LoadSpriteFrames(const String& firstFilename, GLint clampmode, GLint
 
 		// We assume that all the files have as many numerical digits as the first one (or greater) (i.e. 01..999).
 		// See if we need to pad with leading zeros.
-		int numLeadingZeros = numDigits - (int)newNumberString.length();
+		unsigned int numLeadingZeros = numDigits - newNumberString.length();
 
 		// Do the leading zero padding.
-		for (int i=0; i<numLeadingZeros; ++i)
+		for (unsigned int i=0; i<numLeadingZeros; ++i)
 		{
 			newNumberString = '0' + newNumberString;
 		}
@@ -639,14 +639,14 @@ const StringSet& Actor::GetTags() const
 const String& Actor::SetName(String newName)
 {
 	//overkill for sure, but who knows how many unique actors we'll need
-	static unsigned long long nameIndex = 0;
+	static unsigned long nameIndex = 0;
 	
 	if(newName.length() == 0)
 	{
-		newName = GetClassName();
+		newName = this->GetClassName();
 	}
 	
-	newName[0] = toupper(newName[0]);
+	newName[0] = (char)toupper(newName[0]);
 	
 	const Actor* preNamed = Actor::GetNamed(newName);
 	if ((preNamed == NULL) || (preNamed == this))
@@ -655,7 +655,7 @@ const String& Actor::SetName(String newName)
 	}
 	else
 	{
-		_name = newName + ULLIntToString(++nameIndex);
+		_name = newName + ULIntToString(++nameIndex);
 	}
 	
 	Actor::_nameList[_name] = this;

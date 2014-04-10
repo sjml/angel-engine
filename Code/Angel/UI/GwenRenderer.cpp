@@ -234,7 +234,7 @@ void GwenRenderer::LoadTexture( Gwen::Texture* texture )
 		texture->failed = false;
 		texture->data = new GLuint;
 		*((GLuint*)texture->data) = texID;
-		const Vec2i dimensions = GetTextureSize(texture->name.Get());
+		const Vec2ui dimensions = GetTextureSize(texture->name.Get());
 		texture->width = dimensions.X;
 		texture->height = dimensions.Y;
 	}
@@ -270,10 +270,10 @@ Gwen::Color GwenRenderer::PixelColour( Gwen::Texture* texture, unsigned int x, u
 	}
 
 	Gwen::Color c;
-	c.r = int(_skinTexture[offset].R * 255.0f);
-	c.g = int(_skinTexture[offset].G * 255.0f);
-	c.b = int(_skinTexture[offset].B * 255.0f);
-	c.a = int(_skinTexture[offset].A * 255.0f);
+	c.r = (unsigned char)(_skinTexture[offset].R * 255.0f);
+	c.g = (unsigned char)(_skinTexture[offset].G * 255.0f);
+	c.b = (unsigned char)(_skinTexture[offset].B * 255.0f);
+	c.a = (unsigned char)(_skinTexture[offset].A * 255.0f);
 	
 	return c;
 }
@@ -325,7 +325,7 @@ void GwenRenderer::RenderText( Gwen::Font* font, Gwen::Point pos, const Gwen::Un
 	glLoadIdentity();
 	gluOrtho2D(0, _windowWidth, 0, _windowHeight);
 	
-	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), fontConv, pos.x, pos.y);
+	DrawGameTextRaw(Gwen::Utility::UnicodeToString(text), fontConv, (unsigned int)pos.x, (unsigned int)pos.y);
 	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

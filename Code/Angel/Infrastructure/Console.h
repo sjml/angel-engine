@@ -103,7 +103,7 @@ public:
 	 * @return Whether or not the key was added to the input string (false if
 	 *   the Console is currently disabled or that was the key which toggled it.)
 	 */
-	bool GetInput(int key);
+	bool GetInput(unsigned int key);
 	
 	/**
 	 * Handles special input like Enter, Escape, arrow keys, etc. Again, this 
@@ -126,7 +126,7 @@ public:
 	 * 
 	 * @return The toggle console key
 	 */
-	unsigned char GetToggleConsoleKey()	{return '`';}
+	char GetToggleConsoleKey()	{return '`';}
 	
 	/**
 	 * Writes a string to the log area of the console. Used internally by 
@@ -191,8 +191,9 @@ public:
 	virtual StringList GetCompletions(const String& input) = 0;
 
 protected:
-	bool IsTextKey(unsigned char key);
+	bool IsTextKey(unsigned int key);
 	void AcceptCurrentInput();
+
 	String _currentInput;
 	StringList _inputHistory;
 	int _inputHistoryPos;
@@ -201,8 +202,8 @@ protected:
 	String _unsplitBuffer;
 	float _lineHeight;
 	StringList _autoCompleteList;
-	int _cursorPos;
 	unsigned int _tabWidth;
+	unsigned int _cursorPos;
 	
 private:
 	void RefreshAutoCompletes();

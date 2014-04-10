@@ -127,6 +127,7 @@ public:
 	
 	/**
 	 * Change the line spacing of this TextActor
+	 *	Negative makes the lines go in reverse (first as last)
 	 * 
 	 * @param newSpacing the desired amount of space (in pixels) between each line 
 	 */
