@@ -1052,12 +1052,17 @@ void World::UpdateDebugItems(float frame_dt)
 			if ((*itdd)->_timeRemaining <= 0.f)
 			{
 				DebugDrawBase* pDD = (*itdd);
-				_debugDrawItems.erase(itdd);
+				itdd = _debugDrawItems.erase(itdd);
 				delete pDD;
-				itdd--;
+			}
+			else
+			{
+				itdd++;
 			}
 		}
-		itdd++;
+		else{
+			itdd++;
+		}
 	}
 }
 
