@@ -880,7 +880,7 @@ void World::DrawDebugLine(const Vector2& a, const Vector2& b, float time, const 
 	line->_points[0] = a.X;
 	line->_points[1] = a.Y;
 	line->_points[2] = b.X;
-	line->_points[3] = a.Y;
+	line->_points[3] = b.Y;
 	line->_color = color;
 	line->_timeRemaining = time;
 	line->_bPermanent = (time < 0);
@@ -1052,13 +1052,17 @@ void World::UpdateDebugItems(float frame_dt)
 			if ((*itdd)->_timeRemaining <= 0.f)
 			{
 				DebugDrawBase* pDD = (*itdd);
-				_debugDrawItems.erase(itdd);
+				itdd = _debugDrawItems.erase(itdd);
 				delete pDD;
 			}
 			else
 			{
 				itdd++;
 			}
+		}
+		else
+		{
+			itdd++;
 		}
 	}
 }
