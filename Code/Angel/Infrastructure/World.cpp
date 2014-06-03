@@ -1060,7 +1060,8 @@ void World::UpdateDebugItems(float frame_dt)
 				itdd++;
 			}
 		}
-		else{
+		else
+		{
 			itdd++;
 		}
 	}
