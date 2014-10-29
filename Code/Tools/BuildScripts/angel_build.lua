@@ -233,7 +233,7 @@ function check_swig_version(path)
   local old = false
   if (tonumber(vparts[1]) < 2) then
     old = true
-  elseif ((tonumber(vparts[2]) < 1) and (tonumber(vparts[3]) < 6)) then
+  elseif ((tonumber(vparts[1]) == 2) and (tonumber(vparts[2]) == 0) and (tonumber(vparts[3]) < 6)) then
     old = true
   end
 
