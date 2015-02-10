@@ -246,7 +246,6 @@ ILAPI ILboolean     ILAPIENTRY ilutRenderer(ILenum Renderer);
 // ImageLib Utility Toolkit's OpenGL Functions
 #ifdef ILUT_USE_OPENGL
 	ILAPI GLuint	ILAPIENTRY ilutGLBindTexImage();
-	ILAPI GLuint	ILAPIENTRY ilutGLBindTexImageWithClampAndFilter(GLint ClampMode, GLint FilterMode);
 	ILAPI GLuint	ILAPIENTRY ilutGLBindMipmaps(void);
 	ILAPI ILboolean	ILAPIENTRY ilutGLBuildMipmaps(void);
 	ILAPI GLuint	ILAPIENTRY ilutGLLoadImage(ILstring FileName);
