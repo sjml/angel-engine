@@ -25,7 +25,7 @@
 		343C17421319544C003637EA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C174013195432003637EA /* OpenAL.framework */; };
 		345AAF4A11CB39A3002B4471 /* libfmodex.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3462B41814FC67280049A886 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3462B41614FC67280049A886 /* Cocoa.framework */; };
-		34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; };
+		34810A150E67A38B00246544 /* libfmodex.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34810A050E679FE500246544 /* libfmodex.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		34974A320E2925BE0018A032 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A300E2925BE0018A032 /* stdafx.cpp */; };
 		34974A330E2925BE0018A032 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34974A310E2925BE0018A032 /* Main.cpp */; };
 		34974A3B0E2926460018A032 /* stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34974A2F0E2925BE0018A032 /* stdafx.h */; };
@@ -34,13 +34,13 @@
 		34A6E2A71527568800BEA400 /* AngelLuaWrapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6E2A61527568800BEA400 /* AngelLuaWrapping.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
 		34A6E2C0152758E100BEA400 /* angel.icns in Copy Icon */ = {isa = PBXBuildFile; fileRef = 34A6E2AA1527573600BEA400 /* angel.icns */; };
 		34A6E51B1527811300BEA400 /* libAngel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A6E3291527632500BEA400 /* libAngel.a */; };
-		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; };
-		34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; };
-		34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; };
-		34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; };
-		34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; };
-		34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; };
-		34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; };
+		34E7629C1338C70F00BA9A3C /* libIL.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E7629D1338C70F00BA9A3C /* libILU.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E7629E1338C70F00BA9A3C /* libILUT.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E7629F1338C70F00BA9A3C /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627F1338C6F600BA9A3C /* libjpeg.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E762A11338C70F00BA9A3C /* libmng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E762A31338C70F00BA9A3C /* libtiff.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		34E762BE1338C7C500BA9A3C /* liblcms.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762BB1338C7C000BA9A3C /* liblcms.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		34E762D31338CA9900BA9A3C /* libIL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627C1338C6F600BA9A3C /* libIL.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762D41338CA9900BA9A3C /* libILU.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627D1338C6F600BA9A3C /* libILU.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762D51338CA9900BA9A3C /* libILUT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7627E1338C6F600BA9A3C /* libILUT.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -49,9 +49,9 @@
 		34E762D81338CA9900BA9A3C /* libmng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762811338C6F600BA9A3C /* libmng.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E762DA1338CA9900BA9A3C /* libtiff.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E762831338C6F600BA9A3C /* libtiff.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E76405133979E000BA9A3C /* libpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
-		34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; };
+		34E76406133979EA00BA9A3C /* libpng.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76403133979E000BA9A3C /* libpng.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		34EB439E15A59E1000CF9CD8 /* libjasper.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB439D15A59E1000CF9CD8 /* libjasper.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		34EB43A915A59E2800CF9CD8 /* libjasper.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB439D15A59E1000CF9CD8 /* libjasper.dylib */; };
+		34EB43A915A59E2800CF9CD8 /* libjasper.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 34EB439D15A59E1000CF9CD8 /* libjasper.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		34EB43AB15A59EA800CF9CD8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E76381133967E200BA9A3C /* libz.dylib */; };
 /* End PBXBuildFile section */
 
@@ -355,7 +355,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ClientGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -608,7 +608,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -619,8 +619,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.8;
-				VALID_ARCHS = i386;
+				SDKROOT = macosx;
+				VALID_ARCHS = "$(inherited)";
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Debug;
@@ -629,7 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=0",
@@ -639,8 +639,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.8;
-				VALID_ARCHS = i386;
+				SDKROOT = macosx;
+				VALID_ARCHS = "$(inherited)";
 				WARNING_CFLAGS = "-Wno-write-strings";
 			};
 			name = Release;
