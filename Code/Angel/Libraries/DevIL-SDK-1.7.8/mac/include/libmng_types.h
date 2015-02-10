@@ -151,12 +151,13 @@
 /* *  together)                                                             * */
 /* *                                                                        * */
 /* ************************************************************************** */
-
+#ifdef HIDDEN_FOR_NOW
 #ifdef WIN32                           /* only include needed stuff */
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
 #endif
+#endif /* HIDDEN_FOR_NOW */
 
 #ifdef MNG_USE_DLL
 #ifdef MNG_SKIP_ZLIB
@@ -178,23 +179,32 @@
 #ifndef ZLIB_DLL
 #undef FAR
 #endif
+#ifdef HAVE_LIBLCMS1
 #include <lcms.h>
+#elif defined(HAVE_LIBLCMS2)
+#include <lcms2.h>
+#endif
 #endif /* MNG_INCLUDE_LCMS */
 
 #ifdef MNG_INCLUDE_IJG6B               /* IJG's jpgsrc6b */
-#include <stdio.h>
+#define JPEG_INTERNAL_OPTIONS          /* for RGB_PIXELSIZE */
 #ifdef MNG_USE_SETJMP
 #include <setjmp.h>                    /* needed for error-recovery (blergh) */
 #else
 #ifdef WIN32
-#define USE_WINDOWS_MESSAGEBOX         /* display a messagebox under Windoze */
+/* #define USE_WINDOWS_MESSAGEBOX */        /* display a messagebox under Windoze */
 #endif
 #endif /* MNG_USE_SETJMP */
 #ifdef FAR
 #undef FAR                             /* possibly defined by zlib or lcms */
 #endif
 #define JPEG_INTERNAL_OPTIONS          /* for RGB_PIXELSIZE */
-#include <jpeglib.h>                   /* all that for JPEG support  :-) */
+/* There has been a change in jpeg-9 : */
+#ifndef _WIN32
+#define HAVE_BOOLEAN
+typedef int boolean;
+#endif
+#include <jpeglib.h>
 #endif /* MNG_INCLUDE_IJG6B */
 
 #if defined(MNG_INTERNAL_MEMMNGMT) || defined(MNG_INCLUDE_FILTERS)
@@ -388,7 +398,12 @@ typedef cmsHPROFILE         mng_cmsprof;         /* little CMS helper defs */
 typedef cmsHTRANSFORM       mng_cmstrans;
 typedef cmsCIExyY           mng_CIExyY;
 typedef cmsCIExyYTRIPLE     mng_CIExyYTRIPLE;
+
+#ifdef HAVE_LIBLCMS1
 typedef LPGAMMATABLE        mng_gammatabp;
+#elif defined(HAVE_LIBLCMS2)
+typedef cmsToneCurve*       mng_gammatabp;
+#endif
 #endif /* MNG_INCLUDE_LCMS */
 
 /* ************************************************************************** */

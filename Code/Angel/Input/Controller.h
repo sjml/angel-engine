@@ -441,11 +441,11 @@ private:
 	DWORD _dwResult;
 	XINPUT_STATE _currentControllerRawState;
 #elif defined(__APPLE__)
-	pRecDevice _device;
-	hashmap_ns::hash_map<unsigned int, pRecElement> _elements;
+	IOHIDDeviceRef _device;
+	hashmap_ns::hash_map<unsigned int, IOHIDElementRef> _elements;
 	const long _getValueForCookie(unsigned int cookie)
 	{
-		return HIDGetElementValue(_device, _elements[cookie]);
+        return IOHIDElement_GetValue(_elements[cookie], kIOHIDValueScaleTypePhysical);
 	}
 #elif defined(__linux__)
 	int _deviceFD;
