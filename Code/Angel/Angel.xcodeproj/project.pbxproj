@@ -61,18 +61,6 @@
 		340644D311E7E20100033B1D /* ft2build.h in Headers */ = {isa = PBXBuildFile; fileRef = 340644D211E7E20100033B1D /* ft2build.h */; };
 		3406451311E7E3E700033B1D /* libFreeType.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3406447911E7DE4200033B1D /* libFreeType.a */; };
 		3406454011E7E77B00033B1D /* smooth.c in Sources */ = {isa = PBXBuildFile; fileRef = 3406453F11E7E77B00033B1D /* smooth.c */; };
-		3433A8D60E2AADEF00A02B4E /* PID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CA0E2AADAE00A02B4E /* PID.h */; };
-		3433A8D70E2AADEF00A02B4E /* HID_Utilities_External.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CB0E2AADAE00A02B4E /* HID_Utilities_External.h */; };
-		3433A8D80E2AADEF00A02B4E /* IOHIDPowerUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */; };
-		3433A8D90E2AADF400A02B4E /* HIDLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8C60E2AADAE00A02B4E /* HIDLib.h */; };
-		3433A8DA0E2AADF400A02B4E /* HID_Utilities_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8C70E2AADAE00A02B4E /* HID_Utilities_Internal.h */; };
-		3433A8DB0E2AADF400A02B4E /* HID_Name_Lookup.h in Headers */ = {isa = PBXBuildFile; fileRef = 3433A8C80E2AADAE00A02B4E /* HID_Name_Lookup.h */; };
-		3433A8DC0E2AADFD00A02B4E /* HID_Name_Lookup.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */; };
-		3433A8DD0E2AADFD00A02B4E /* HID_Error_Handler.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */; };
-		3433A8DE0E2AADFD00A02B4E /* HID_Transaction_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */; };
-		3433A8DF0E2AADFD00A02B4E /* HID_Config_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C20E2AADAE00A02B4E /* HID_Config_Utilities.c */; };
-		3433A8E00E2AADFD00A02B4E /* HID_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C30E2AADAE00A02B4E /* HID_Utilities.c */; };
-		3433A8E10E2AADFD00A02B4E /* HID_Queue_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 3433A8C40E2AADAE00A02B4E /* HID_Queue_Utilities.c */; };
 		34388F2711E3EF18002A79B1 /* LuaModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D6B53F11CC79B700D72FE6 /* LuaModule.h */; };
 		34388F2811E3EF18002A79B1 /* LuaConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 3473838511D061A500088BB9 /* LuaConsole.h */; };
 		34388F2B11E3EF33002A79B1 /* LuaModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D6B53E11CC79B700D72FE6 /* LuaModule.cpp */; };
@@ -624,6 +612,19 @@
 		34FB489B1638FE0A002EB836 /* ControlFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FB48991638FE0A002EB836 /* ControlFactory.h */; };
 		34FB489C1638FE0A002EB836 /* ImportExport.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FB489A1638FE0A002EB836 /* ImportExport.h */; };
 		34FB48DB163900A3002EB836 /* libGWEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FB467C1638F773002EB836 /* libGWEN.a */; };
+		AE36CE3A1A89BA010019CC75 /* HID_Config_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE2A1A89BA010019CC75 /* HID_Config_Utilities.c */; };
+		AE36CE3B1A89BA010019CC75 /* HID_Error_Handler.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE2B1A89BA010019CC75 /* HID_Error_Handler.c */; };
+		AE36CE3C1A89BA010019CC75 /* HID_Name_Lookup.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE2C1A89BA010019CC75 /* HID_Name_Lookup.c */; };
+		AE36CE3D1A89BA010019CC75 /* HID_Queue_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE2D1A89BA010019CC75 /* HID_Queue_Utilities.c */; };
+		AE36CE3E1A89BA010019CC75 /* HID_Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE2E1A89BA010019CC75 /* HID_Utilities.c */; };
+		AE36CE3F1A89BA010019CC75 /* HID_Utilities_External.h in Headers */ = {isa = PBXBuildFile; fileRef = AE36CE2F1A89BA010019CC75 /* HID_Utilities_External.h */; };
+		AE36CE581A89BA5D0019CC75 /* ImmrHIDUtilAddOn.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE511A89BA5D0019CC75 /* ImmrHIDUtilAddOn.c */; };
+		AE36CE591A89BA5D0019CC75 /* ImmrHIDUtilAddOn.h in Headers */ = {isa = PBXBuildFile; fileRef = AE36CE521A89BA5D0019CC75 /* ImmrHIDUtilAddOn.h */; };
+		AE36CE5A1A89BA5D0019CC75 /* IOHIDDevice_.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE531A89BA5D0019CC75 /* IOHIDDevice_.c */; };
+		AE36CE5B1A89BA5D0019CC75 /* IOHIDDevice_.h in Headers */ = {isa = PBXBuildFile; fileRef = AE36CE541A89BA5D0019CC75 /* IOHIDDevice_.h */; };
+		AE36CE5C1A89BA5D0019CC75 /* IOHIDElement_.c in Sources */ = {isa = PBXBuildFile; fileRef = AE36CE551A89BA5D0019CC75 /* IOHIDElement_.c */; };
+		AE36CE5D1A89BA5D0019CC75 /* IOHIDElement_.h in Headers */ = {isa = PBXBuildFile; fileRef = AE36CE561A89BA5D0019CC75 /* IOHIDElement_.h */; };
+		AE36CE5E1A89BA5D0019CC75 /* IOHIDLib_.h in Headers */ = {isa = PBXBuildFile; fileRef = AE36CE571A89BA5D0019CC75 /* IOHIDLib_.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -741,18 +742,6 @@
 		340644D211E7E20100033B1D /* ft2build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ft2build.h; path = "Libraries/freetype-2.4.8/include/ft2build.h"; sourceTree = "<group>"; };
 		3406453F11E7E77B00033B1D /* smooth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smooth.c; path = "Libraries/freetype-2.4.8/src/smooth/smooth.c"; sourceTree = "<group>"; };
 		3411DFE90E5FDD83009D734D /* actor.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; name = actor.i; path = Scripting/Interfaces/actor.i; sourceTree = "<group>"; };
-		3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Name_Lookup.c; path = "Libraries/HID Utilities/HID_Name_Lookup.c"; sourceTree = "<group>"; };
-		3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Error_Handler.c; path = "Libraries/HID Utilities/HID_Error_Handler.c"; sourceTree = "<group>"; };
-		3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Transaction_Utilities.c; path = "Libraries/HID Utilities/HID_Transaction_Utilities.c"; sourceTree = "<group>"; };
-		3433A8C20E2AADAE00A02B4E /* HID_Config_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Config_Utilities.c; path = "Libraries/HID Utilities/HID_Config_Utilities.c"; sourceTree = "<group>"; };
-		3433A8C30E2AADAE00A02B4E /* HID_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Utilities.c; path = "Libraries/HID Utilities/HID_Utilities.c"; sourceTree = "<group>"; };
-		3433A8C40E2AADAE00A02B4E /* HID_Queue_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HID_Queue_Utilities.c; path = "Libraries/HID Utilities/HID_Queue_Utilities.c"; sourceTree = "<group>"; };
-		3433A8C60E2AADAE00A02B4E /* HIDLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HIDLib.h; path = "Libraries/HID Utilities/HIDLib.h"; sourceTree = "<group>"; };
-		3433A8C70E2AADAE00A02B4E /* HID_Utilities_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HID_Utilities_Internal.h; path = "Libraries/HID Utilities/HID_Utilities_Internal.h"; sourceTree = "<group>"; };
-		3433A8C80E2AADAE00A02B4E /* HID_Name_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HID_Name_Lookup.h; path = "Libraries/HID Utilities/HID_Name_Lookup.h"; sourceTree = "<group>"; };
-		3433A8CA0E2AADAE00A02B4E /* PID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PID.h; path = "Libraries/HID Utilities/PID.h"; sourceTree = "<group>"; };
-		3433A8CB0E2AADAE00A02B4E /* HID_Utilities_External.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HID_Utilities_External.h; path = "Libraries/HID Utilities/HID_Utilities_External.h"; sourceTree = "<group>"; };
-		3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOHIDPowerUsage.h; path = "Libraries/HID Utilities/IOHIDPowerUsage.h"; sourceTree = "<group>"; };
 		3433A8D10E2AADDE00A02B4E /* libHIDUtilities.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHIDUtilities.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3433A92B0E2AB09B00A02B4E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		3433A9330E2AB0E000A02B4E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
@@ -1348,6 +1337,19 @@
 		34FB48961638FDFB002EB836 /* UnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTest.h; path = Libraries/gwen/include/Gwen/UnitTest/UnitTest.h; sourceTree = "<group>"; };
 		34FB48991638FE0A002EB836 /* ControlFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlFactory.h; path = Libraries/gwen/include/Gwen/Util/ControlFactory.h; sourceTree = "<group>"; };
 		34FB489A1638FE0A002EB836 /* ImportExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportExport.h; path = Libraries/gwen/include/Gwen/Util/ImportExport.h; sourceTree = "<group>"; };
+		AE36CE2A1A89BA010019CC75 /* HID_Config_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HID_Config_Utilities.c; sourceTree = "<group>"; };
+		AE36CE2B1A89BA010019CC75 /* HID_Error_Handler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HID_Error_Handler.c; sourceTree = "<group>"; };
+		AE36CE2C1A89BA010019CC75 /* HID_Name_Lookup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HID_Name_Lookup.c; sourceTree = "<group>"; };
+		AE36CE2D1A89BA010019CC75 /* HID_Queue_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HID_Queue_Utilities.c; sourceTree = "<group>"; };
+		AE36CE2E1A89BA010019CC75 /* HID_Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HID_Utilities.c; sourceTree = "<group>"; };
+		AE36CE2F1A89BA010019CC75 /* HID_Utilities_External.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HID_Utilities_External.h; sourceTree = "<group>"; };
+		AE36CE511A89BA5D0019CC75 /* ImmrHIDUtilAddOn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ImmrHIDUtilAddOn.c; sourceTree = "<group>"; };
+		AE36CE521A89BA5D0019CC75 /* ImmrHIDUtilAddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmrHIDUtilAddOn.h; sourceTree = "<group>"; };
+		AE36CE531A89BA5D0019CC75 /* IOHIDDevice_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IOHIDDevice_.c; sourceTree = "<group>"; };
+		AE36CE541A89BA5D0019CC75 /* IOHIDDevice_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHIDDevice_.h; sourceTree = "<group>"; };
+		AE36CE551A89BA5D0019CC75 /* IOHIDElement_.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = IOHIDElement_.c; sourceTree = "<group>"; };
+		AE36CE561A89BA5D0019CC75 /* IOHIDElement_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHIDElement_.h; sourceTree = "<group>"; };
+		AE36CE571A89BA5D0019CC75 /* IOHIDLib_.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOHIDLib_.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1525,49 +1527,6 @@
 				3473839B11D062BD00088BB9 /* lfs.h */,
 			);
 			name = lfs;
-			sourceTree = "<group>";
-		};
-		3433A8B70E2AAD8900A02B4E /* HID Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				3433A8C90E2AADAE00A02B4E /* External Headers */,
-				3433A8C50E2AADAE00A02B4E /* Internal Headers */,
-				3433A8BE0E2AADAE00A02B4E /* Source */,
-			);
-			name = "HID Utilities";
-			sourceTree = "<group>";
-		};
-		3433A8BE0E2AADAE00A02B4E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				3433A8BF0E2AADAE00A02B4E /* HID_Name_Lookup.c */,
-				3433A8C00E2AADAE00A02B4E /* HID_Error_Handler.c */,
-				3433A8C10E2AADAE00A02B4E /* HID_Transaction_Utilities.c */,
-				3433A8C20E2AADAE00A02B4E /* HID_Config_Utilities.c */,
-				3433A8C30E2AADAE00A02B4E /* HID_Utilities.c */,
-				3433A8C40E2AADAE00A02B4E /* HID_Queue_Utilities.c */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
-		3433A8C50E2AADAE00A02B4E /* Internal Headers */ = {
-			isa = PBXGroup;
-			children = (
-				3433A8C60E2AADAE00A02B4E /* HIDLib.h */,
-				3433A8C70E2AADAE00A02B4E /* HID_Utilities_Internal.h */,
-				3433A8C80E2AADAE00A02B4E /* HID_Name_Lookup.h */,
-			);
-			name = "Internal Headers";
-			sourceTree = "<group>";
-		};
-		3433A8C90E2AADAE00A02B4E /* External Headers */ = {
-			isa = PBXGroup;
-			children = (
-				3433A8CA0E2AADAE00A02B4E /* PID.h */,
-				3433A8CB0E2AADAE00A02B4E /* HID_Utilities_External.h */,
-				3433A8CC0E2AADAE00A02B4E /* IOHIDPowerUsage.h */,
-			);
-			name = "External Headers";
 			sourceTree = "<group>";
 		};
 		34344A4A0E3035A000FC041D /* Include */ = {
@@ -2031,7 +1990,7 @@
 				343C16D2131944AB003637EA /* Vorbis */,
 				3406448411E7DF7300033B1D /* FreeType */,
 				34EECBE111CB92D300667B26 /* Lua */,
-				3433A8B70E2AAD8900A02B4E /* HID Utilities */,
+				AE36CE1D1A89BA010019CC75 /* HID Utilities */,
 				34A18BAF0E2841E8001C79A5 /* Box2D */,
 				34828121176EA62D003E8994 /* GLFW */,
 				34FB467E1638F7A9002EB836 /* GWEN */,
@@ -2584,6 +2543,75 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		AE36CE1D1A89BA010019CC75 /* HID Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE4E1A89BA380019CC75 /* Headers */,
+				AE36CE4F1A89BA3E0019CC75 /* Sources */,
+				AE36CE611A89BA7F0019CC75 /* Addons */,
+			);
+			name = "HID Utilities";
+			path = "Libraries/HID Utilities";
+			sourceTree = "<group>";
+		};
+		AE36CE4E1A89BA380019CC75 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE2F1A89BA010019CC75 /* HID_Utilities_External.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		AE36CE4F1A89BA3E0019CC75 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE2A1A89BA010019CC75 /* HID_Config_Utilities.c */,
+				AE36CE2B1A89BA010019CC75 /* HID_Error_Handler.c */,
+				AE36CE2C1A89BA010019CC75 /* HID_Name_Lookup.c */,
+				AE36CE2D1A89BA010019CC75 /* HID_Queue_Utilities.c */,
+				AE36CE2E1A89BA010019CC75 /* HID_Utilities.c */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		AE36CE501A89BA5D0019CC75 /* IOHIDManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE5F1A89BA6A0019CC75 /* Headers */,
+				AE36CE601A89BA730019CC75 /* Sources */,
+			);
+			path = IOHIDManager;
+			sourceTree = "<group>";
+		};
+		AE36CE5F1A89BA6A0019CC75 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE521A89BA5D0019CC75 /* ImmrHIDUtilAddOn.h */,
+				AE36CE541A89BA5D0019CC75 /* IOHIDDevice_.h */,
+				AE36CE561A89BA5D0019CC75 /* IOHIDElement_.h */,
+				AE36CE571A89BA5D0019CC75 /* IOHIDLib_.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		AE36CE601A89BA730019CC75 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE511A89BA5D0019CC75 /* ImmrHIDUtilAddOn.c */,
+				AE36CE531A89BA5D0019CC75 /* IOHIDDevice_.c */,
+				AE36CE551A89BA5D0019CC75 /* IOHIDElement_.c */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		AE36CE611A89BA7F0019CC75 /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				AE36CE501A89BA5D0019CC75 /* IOHIDManager */,
+			);
+			name = Addons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2604,12 +2632,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3433A8D60E2AADEF00A02B4E /* PID.h in Headers */,
-				3433A8D70E2AADEF00A02B4E /* HID_Utilities_External.h in Headers */,
-				3433A8D80E2AADEF00A02B4E /* IOHIDPowerUsage.h in Headers */,
-				3433A8D90E2AADF400A02B4E /* HIDLib.h in Headers */,
-				3433A8DA0E2AADF400A02B4E /* HID_Utilities_Internal.h in Headers */,
-				3433A8DB0E2AADF400A02B4E /* HID_Name_Lookup.h in Headers */,
+				AE36CE591A89BA5D0019CC75 /* ImmrHIDUtilAddOn.h in Headers */,
+				AE36CE3F1A89BA010019CC75 /* HID_Utilities_External.h in Headers */,
+				AE36CE5B1A89BA5D0019CC75 /* IOHIDDevice_.h in Headers */,
+				AE36CE5D1A89BA5D0019CC75 /* IOHIDElement_.h in Headers */,
+				AE36CE5E1A89BA5D0019CC75 /* IOHIDLib_.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3260,12 +3287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3433A8DC0E2AADFD00A02B4E /* HID_Name_Lookup.c in Sources */,
-				3433A8DD0E2AADFD00A02B4E /* HID_Error_Handler.c in Sources */,
-				3433A8DE0E2AADFD00A02B4E /* HID_Transaction_Utilities.c in Sources */,
-				3433A8DF0E2AADFD00A02B4E /* HID_Config_Utilities.c in Sources */,
-				3433A8E00E2AADFD00A02B4E /* HID_Utilities.c in Sources */,
-				3433A8E10E2AADFD00A02B4E /* HID_Queue_Utilities.c in Sources */,
+				AE36CE3C1A89BA010019CC75 /* HID_Name_Lookup.c in Sources */,
+				AE36CE3A1A89BA010019CC75 /* HID_Config_Utilities.c in Sources */,
+				AE36CE3D1A89BA010019CC75 /* HID_Queue_Utilities.c in Sources */,
+				AE36CE5A1A89BA5D0019CC75 /* IOHIDDevice_.c in Sources */,
+				AE36CE3E1A89BA010019CC75 /* HID_Utilities.c in Sources */,
+				AE36CE3B1A89BA010019CC75 /* HID_Error_Handler.c in Sources */,
+				AE36CE5C1A89BA5D0019CC75 /* IOHIDElement_.c in Sources */,
+				AE36CE581A89BA5D0019CC75 /* ImmrHIDUtilAddOn.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3718,6 +3747,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = HIDUtilities;
 				SKIP_INSTALL = YES;
@@ -3733,6 +3766,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = HIDUtilities;
 				SKIP_INSTALL = YES;

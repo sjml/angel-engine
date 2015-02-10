@@ -752,6 +752,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities/IOHIDManager\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);
 				INFOPLIST_FILE = platforms/mac/IntroGameInfo.plist;
@@ -783,6 +784,7 @@
 					"\"$(PROJECT_DIR)/../Angel/Libraries/libvorbis-1.3.2/include\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/lua-5.2.1/src\"",
 					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities\"",
+					"\"$(PROJECT_DIR)/../Angel/Libraries/HID Utilities/IOHIDManager\"",
 					"\"$(PROJECT_DIR)/../Angel\"",
 				);
 				INFOPLIST_FILE = platforms/mac/IntroGameInfo.plist;

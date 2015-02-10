@@ -191,9 +191,22 @@ void Controller::Setup()
 			{
 				break;
 			}
+            
+            char manufacturer_c[256] = ""; // name of manufacturer
+            CFStringRef tCFStringRef = IOHIDDevice_GetManufacturer(_device);
+            if ( tCFStringRef ) {
+                verify( CFStringGetCString(tCFStringRef, manufacturer_c, sizeof(manufacturer_c), kCFStringEncodingUTF8) );
+            }
+            
+            char product_c[256] = "";      // name of product
+            tCFStringRef = IOHIDDevice_GetProduct(_device);
+            if ( tCFStringRef ) {
+                verify( CFStringGetCString(tCFStringRef, product_c, sizeof(product_c), kCFStringEncodingUTF8) );
+            }
 			
-			std::string manufacturer = _device->manufacturer;
-			std::string product = _device->product;
+            std::string manufacturer(manufacturer_c);
+            std::string product(product_c);
+            
 			if (manufacturer.length() > 0)
 				manufacturer = manufacturer.substr(1, manufacturer.length()-1).c_str(); //trimming off the initial copyright symbol so matching won't be dumb
 			if (
@@ -208,6 +221,7 @@ void Controller::Setup()
 			
 			_device = HIDGetNextDevice(_device);
 		}
+    
 		if (_device == NULL)
 		{
 			sysLog.Printf("Controller %d not present...", _controllerID+1);
@@ -215,10 +229,11 @@ void Controller::Setup()
 		}
 		else
 		{
-			pRecElement current_element = HIDGetFirstDeviceElement(_device, kHIDElementTypeIO);
+			IOHIDElementRef current_element = HIDGetFirstDeviceElement(_device, kHIDElementTypeIO);
 			while (current_element != NULL)
 			{
-				_elements[(unsigned int)current_element->cookie] = current_element;
+                IOHIDElementCookie cookie = IOHIDElementGetCookie(current_element);
+				_elements[(unsigned int)cookie] = current_element;
 				current_element = HIDGetNextDeviceElement(current_element, kHIDElementTypeIO);
 			}
 		}
