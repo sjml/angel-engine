@@ -67,7 +67,7 @@ void keyboardInput(GLFWwindow* window, int key, int scancode, int state, int mod
 			theWorld.StopGame();
 		}
 	}
-	else
+	else if(state == GLFW_RELEASE)
 	{
 		if( theWorld.GetConsole()->IsEnabled() )
 			return;
@@ -75,5 +75,9 @@ void keyboardInput(GLFWwindow* window, int key, int scancode, int state, int mod
 		if( theInput.OnKeyUp((int)key))
 			return;
 	}
+	/*
+	else if(state == GLFW_REPEAT)
+	{
+	}*/
 }
 
