@@ -442,7 +442,7 @@ private:
 	XINPUT_STATE _currentControllerRawState;
 #elif defined(__APPLE__)
 	pRecDevice _device;
-	hashmap_ns::hash_map<unsigned int, pRecElement> _elements;
+	std::unordered_map<unsigned int, pRecElement> _elements;
 	const long _getValueForCookie(unsigned int cookie)
 	{
 		return HIDGetElementValue(_device, _elements[cookie]);

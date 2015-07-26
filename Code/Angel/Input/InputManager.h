@@ -72,9 +72,9 @@ enum InputKeys
  */
 class InputManager
 {
-	typedef hashmap_ns::hash_map<int, InputBinding*>		BindingTable;
-	typedef hashmap_ns::hash_map<String, int>				KeyNameTable;
-	typedef hashmap_ns::hash_map<int, bool>					XboxButtonState;
+	typedef std::unordered_map<int, InputBinding*>		BindingTable;
+	typedef std::unordered_map<String, int>				KeyNameTable;
+	typedef std::unordered_map<int, bool>					XboxButtonState;
 
 public:
 	static InputManager &GetInstance();
