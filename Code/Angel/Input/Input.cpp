@@ -38,7 +38,7 @@
 
 void charInput(GLFWwindow* window, unsigned int key)
 {
-	if (key == theWorld.GetConsole()->GetToggleConsoleKey())
+	if (key == (unsigned int)theWorld.GetConsole()->GetToggleConsoleKey())
 	{
 		theWorld.GetConsole()->Enable(!theWorld.GetConsole()->IsEnabled());
 		return;

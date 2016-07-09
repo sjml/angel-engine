@@ -45,7 +45,7 @@
 
 std::map<String, FTFont*> _fontCache;
 
-const bool RegisterFont(const String& filename, int pointSize, const String& nickname)
+const bool RegisterFont(const String& filename, unsigned int pointSize, const String& nickname)
 {
 	std::map<String,FTFont*>::iterator it = _fontCache.find(nickname);
 	if(it != _fontCache.end())
@@ -103,7 +103,7 @@ const bool UnRegisterFont(const String& nickname)
 	return true;
 }
 
-Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int pixelY, float angle)
+Vector2 DrawGameText(const String& text, const String& nickname, unsigned int pixelX, unsigned int pixelY, float angle)
 {
 	Vector2 forReturn;
 
@@ -113,7 +113,7 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 		return forReturn;
 	}
 	
-	Vec2i winDimensions;
+	Vec2ui winDimensions;
 	winDimensions.X = theCamera.GetWindowWidth();
 	winDimensions.Y = theCamera.GetWindowHeight();
 	pixelY = winDimensions.Y - pixelY;
@@ -149,7 +149,7 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
 	return forReturn;
 }
 
-Vector2 DrawGameTextRaw(const String& text, const String& nickname, int pixelX, int pixelY, float angle)
+Vector2 DrawGameTextRaw(const String& text, const String& nickname, unsigned int pixelX, unsigned int pixelY, float angle)
 {
     Vector2 forReturn;
     
@@ -159,7 +159,7 @@ Vector2 DrawGameTextRaw(const String& text, const String& nickname, int pixelX, 
 		return forReturn;
 	}
     
-    pixelY = theCamera.GetWindowHeight() - pixelY;
+    pixelY = (unsigned int)theCamera.GetWindowHeight() - pixelY;
     
 	//set up modelview
 	glMatrixMode(GL_MODELVIEW);

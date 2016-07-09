@@ -206,7 +206,7 @@ void DemoGameManager::Render()
 		infoString = "[A/Space]: Next";
 		xOffset = 887;
 	}
-	else if (_current == _screens.size() - 1)
+	else if ((unsigned int)_current == _screens.size() - 1)
 	{
 		infoString = "[Back/Minus]: Previous";
 		xOffset = 824;

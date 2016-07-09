@@ -102,7 +102,7 @@ void PathFinder::Render()
 	Vector2 screenCenter = MathUtil::WorldToScreen( _currentPos.X, _currentPos.Y );
 	//Print some vals
 	glColor3f(0,1.f,1.f);
-	DrawGameText( currentState + String(" ") + IntToString(_currentPathIndex), "ConsoleSmall", (int)screenCenter.X, (int)screenCenter.Y );
+	DrawGameText( currentState + String(" ") + IntToString(_currentPathIndex), "ConsoleSmall", (unsigned int)screenCenter.X, (unsigned int)screenCenter.Y );
 
 }
 

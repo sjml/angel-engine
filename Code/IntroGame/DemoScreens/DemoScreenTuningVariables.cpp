@@ -44,10 +44,10 @@ void DemoScreenTuningVariables::Update(float dt)
 	float bouncePeriod = theTuning.GetFloat("BouncePeriod");
 	
 	float p = MathUtil::Clamp(bouncePeriod, 0.00001f, 1000000.f);
-	float t = MathUtil::TwoPi * theWorld.GetCurrentTimeSeconds() / p;
+	float t2 = MathUtil::TwoPi * theWorld.GetCurrentTimeSeconds() / p;
 	
-	a->SetSize(0.5f + MathUtil::Abs(theTuning.GetFloat("BounceSize") * sin(0.5f*t))); // halve t since we are using abs
-	a->SetPosition(theTuning.GetFloat("BounceDist") * cos(0.5f*t), 0.f);
+	a->SetSize(0.5f + MathUtil::Abs(theTuning.GetFloat("BounceSize") * sin(0.5f*t2))); // halve t since we are using abs
+	a->SetPosition(theTuning.GetFloat("BounceDist") * cos(0.5f*t2), 0.f);
 
 	// You can also manually edit the tuning.lua file and the engine will attempt
 	//  to reload it roughly every second or so. (NOTE: if you've tuned a

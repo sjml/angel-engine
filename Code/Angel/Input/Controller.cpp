@@ -781,7 +781,7 @@ void Controller::SetRightVibrationRaw(unsigned int newVibration)
 
 void Controller::SetLeftVibration(unsigned int newVibration)
 {
-	newVibration = MathUtil::Clamp(newVibration, 0, 255);
+	newVibration = (unsigned int)MathUtil::Clamp(newVibration, 0, 255);
 	if (newVibration == 255)
 	{
 		SetLeftVibrationRaw(65535);
@@ -794,7 +794,7 @@ void Controller::SetLeftVibration(unsigned int newVibration)
 
 void Controller::SetRightVibration(unsigned int newVibration)
 {
-	newVibration = MathUtil::Clamp(newVibration, 0, 255);
+	newVibration = (unsigned int)MathUtil::Clamp(newVibration, 0, 255);
 	if (newVibration == 255)
 	{
 		SetRightVibrationRaw(65535);

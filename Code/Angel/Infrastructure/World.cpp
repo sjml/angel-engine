@@ -58,7 +58,7 @@
 
 World* World::s_World = NULL;
 
-World::World()
+World::World() 
 {
 	_simulateOn = true;
 	_initialized = false;
@@ -207,11 +207,22 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	LuaScriptingModule::Prep();
 
 	//Reset values based on preferences
-	antiAliasing = thePrefs.OverrideInt("WindowSettings", "antiAliasing", antiAliasing);
-	fullScreen = thePrefs.OverrideInt("WindowSettings", "fullScreen", fullScreen);
-	resizable = thePrefs.OverrideInt("WindowSettings", "resizable", resizable);
-	windowHeight = thePrefs.OverrideInt("WindowSettings", "height", windowHeight);
-	windowWidth = thePrefs.OverrideInt("WindowSettings", "width", windowWidth);
+	antiAliasing = thePrefs.OverrideInt("WindowSettings", "antiAliasing", antiAliasing) == 1;
+	fullScreen = thePrefs.OverrideInt("WindowSettings", "fullScreen", fullScreen) == 1;
+	resizable = thePrefs.OverrideInt("WindowSettings", "resizable", resizable) == 1;
+	int windowHeightPref = thePrefs.OverrideInt("WindowSettings", "height", (int)windowHeight);
+	int windowWidthPref = thePrefs.OverrideInt("WindowSettings", "width", (int)windowWidth);
+
+	if (windowHeightPref < 0 || windowWidthPref < 0)
+	{
+		sysLog.Log("Negative value for window dimensions founded; using defaults.");
+	}
+	else
+	{
+		windowHeight = (unsigned int)windowHeightPref;
+		windowWidth = (unsigned int)windowWidthPref;
+	}
+
 	windowName = thePrefs.OverrideString("WindowSettings", "name", windowName);
 	
 	//Windowing system setup
@@ -245,7 +256,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 	
 		int fbw, fbh;
 		glfwGetFramebufferSize(_mainWindow, &fbw, &fbh);
-		if (fbw == windowWidth * 2)
+		if ((unsigned int)fbw == (windowWidth * 2))
 		{
 			SetHighResolutionScreen(true);
 		}
@@ -262,7 +273,7 @@ bool World::Initialize(unsigned int windowWidth, unsigned int windowHeight, Stri
 		glfwSetMouseButtonCallback(_mainWindow, MouseButton);
 		glfwSetScrollCallback(_mainWindow, MouseWheel);
 		glfwSetWindowCloseCallback(_mainWindow, windowClosed);
-		_prevTime = glfwGetTime();
+		_prevTime = (float)glfwGetTime();
 	
 		Camera::ResizeCallback(_mainWindow, fbw, fbh);
 	#else
@@ -332,12 +343,15 @@ std::vector<Vec3ui> World::GetVideoModes()
 		int numModes = 0;
 		const GLFWvidmode* vidModes = glfwGetVideoModes(glfwGetPrimaryMonitor(), &numModes);
 
-		for (int i=0; i < numModes; i++)
+		if (numModes == 0) return forReturn;
+		unsigned int num = (unsigned int)numModes;
+
+		for (unsigned int i=0; i < num; i++)
 		{
 			Vec3ui avm;
-			avm.X = vidModes[i].width;
-			avm.Y = vidModes[i].height;
-			avm.Z = vidModes[i].redBits + vidModes[i].greenBits + vidModes[i].blueBits;
+			avm.X = (unsigned int)vidModes[i].width;
+			avm.Y = (unsigned int)vidModes[i].height;
+			avm.Z = (unsigned int)(vidModes[i].redBits + vidModes[i].greenBits + vidModes[i].blueBits);
 			forReturn.push_back(avm);
 		}
 	#else
@@ -347,14 +361,14 @@ std::vector<Vec3ui> World::GetVideoModes()
 	return forReturn;
 }
 
-void World::AdjustWindow(int windowWidth, int windowHeight, const String& windowName)
+void World::AdjustWindow(unsigned int windowWidth, unsigned int windowHeight, const String& windowName)
 {
 	#if !ANGEL_MOBILE
 		glfwSetWindowTitle(_mainWindow, windowName.c_str());
 
 		int width, height;
 		glfwGetWindowSize(_mainWindow, &width, &height);
-		if ( (width != windowWidth) || (height != windowHeight) )
+		if ( ((unsigned)width != windowWidth) || ((unsigned)height != windowHeight) )
 		{
 			glfwSetWindowSize(_mainWindow, windowWidth, windowHeight);
 		}
@@ -385,7 +399,8 @@ bool World::SetupPhysics(const Vector2& gravity, const Vector2& maxVertex, const
 
 	_physicsWorld->SetContactListener(this);
 	
-	return _physicsSetUp = _physicsRunning = true;
+	_physicsSetUp = _physicsRunning = true;
+	return true;
 }
 
 
@@ -401,10 +416,7 @@ void World::Destroy()
     
     theUI.Shutdown();
 
-	if (_gameManager != NULL)
-	{
-		delete _gameManager;
-	}
+	delete _gameManager;
 }
 
 void World::StartGame()
@@ -476,7 +488,7 @@ float World::CalculateNewDT()
 		// _currTime = tv.tv_sec + (double) tv.tv_usec / 1000000.0 - _startTime;
 		return _systemEstimatedDT;
 	#else
-		_currTime = glfwGetTime();
+		_currTime = (float)glfwGetTime();
 	#endif
 	_dt = MathUtil::Clamp((_currTime - _prevTime), 0.0f, MAX_TIMESTEP);
 	_prevTime = _currTime;
@@ -699,7 +711,8 @@ const float World::GetDT()
 
 const bool World::ResumeSimulation()
 {
-	return _simulateOn = true;
+	_simulateOn = true;
+	return true;
 }
 
 const bool World::PauseSimulation()
@@ -1069,7 +1082,7 @@ void World::PurgeDebugDrawing()
 	while (itdd != _debugDrawItems.end())
 	{
 		DebugDrawBase* pDD = (*itdd);
-		_debugDrawItems.erase(itdd);
+		itdd = _debugDrawItems.erase(itdd);
 		delete pDD;
 	}
 }
