@@ -121,10 +121,9 @@ public:
 	void ToggleConsole();
 	
 	/**
-	 * Lets you know what key is set to toggle the Console. (Hard-coded to
-	 *  \c '`' at the moment.)
+	 * Lets you know what key is set to toggle the Console.
 	 * 
-	 * @return The toggle console key
+	 * @return The toggle console key scan code
 	 */
 	unsigned char GetToggleConsoleKey()	{return '`';}
 	

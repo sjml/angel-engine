@@ -39,7 +39,7 @@ class SpatialGraphKDNode;
 
 class Traversal
 {
-	typedef hashmap_ns::hash_map<SpatialGraphKDNode*, int> VisitedNeighborsTable;
+	typedef std::unordered_map<SpatialGraphKDNode*, int> VisitedNeighborsTable;
 	typedef std::deque<SpatialGraphKDNode*> CurrentNodesQueue;
 public:
 

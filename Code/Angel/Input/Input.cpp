@@ -38,7 +38,12 @@
 
 void charInput(GLFWwindow* window, unsigned int key)
 {
-	if (key != theWorld.GetConsole()->GetToggleConsoleKey())
+	if (key == theWorld.GetConsole()->GetToggleConsoleKey())
+	{
+		theWorld.GetConsole()->Enable(!theWorld.GetConsole()->IsEnabled());
+		return;
+	}
+	else
 	{
 		if (theWorld.GetConsole()->GetInput(key))
 			return;
@@ -49,12 +54,7 @@ void keyboardInput(GLFWwindow* window, int key, int scancode, int state, int mod
 {
 	if (state == GLFW_PRESS)
 	{
-		if (key == theWorld.GetConsole()->GetToggleConsoleKey())
-		{
-			theWorld.GetConsole()->Enable(!theWorld.GetConsole()->IsEnabled());
-			return;
-		}
-		else if (theWorld.GetConsole()->GetSpecialInputDown(key))
+		if (theWorld.GetConsole()->GetSpecialInputDown(key))
 		{
 			return;
 		}

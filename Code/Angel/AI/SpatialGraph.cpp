@@ -414,9 +414,9 @@ bool SpatialGraph::IsFullyBlocked( SpatialGraphKDNode* node )
 	return node->bBlocked && IsFullyBlocked(node->LHC) && IsFullyBlocked(node->RHC);
 }
 
-bool QuickContainsNode( hashmap_ns::hash_map<SpatialGraphKDNode*, int>& NodeList, SpatialGraphKDNode* pNode )
+bool QuickContainsNode( std::unordered_map<SpatialGraphKDNode*, int>& NodeList, SpatialGraphKDNode* pNode )
 {
-	hashmap_ns::hash_map<SpatialGraphKDNode*, int>::iterator itr = NodeList.find( pNode );
+	std::unordered_map<SpatialGraphKDNode*, int>::iterator itr = NodeList.find( pNode );
 	return itr != NodeList.end();
 }
 
@@ -473,7 +473,7 @@ bool SpatialGraph::CanGoInternal( const Vector2& vFrom, const Vector2 vTo, Spati
 
 	Ray2 ray = Ray2::CreateRayFromTo( vUseFrom, vUseTo );
 
-	hashmap_ns::hash_map<SpatialGraphKDNode*, int> NodeList;
+	std::unordered_map<SpatialGraphKDNode*, int> NodeList;
 	SpatialGraphKDNode* pCurrent = pSourceNode;
 
 	while( true )

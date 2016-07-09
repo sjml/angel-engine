@@ -197,5 +197,5 @@ private:
 	Preferences();
 	static Preferences* s_Preferences;
 	
-	hashmap_ns::hash_map<String,LoadedVariableMap> _preferenceVariables;
+	std::unordered_map<String,LoadedVariableMap> _preferenceVariables;
 };
