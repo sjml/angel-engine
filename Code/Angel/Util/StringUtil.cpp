@@ -111,7 +111,7 @@ String FloatToString( float val )
 	return to_string( val, std::dec );
 }
 
-String ULLIntToString( unsigned long long val )
+String ULIntToString( unsigned long val )
 {
 	return to_string( val, std::dec );
 }
@@ -186,7 +186,7 @@ String JoinString (const StringList &list, const String& joinString)
 {
 	String forReturn; 
 
-	for (int i=0; i < list.size(); i++)
+	for (unsigned int i=0; i < list.size(); i++)
 	{
 		forReturn += list[i];
 		if (i < list.size()-1)
@@ -238,20 +238,21 @@ String TrimString( const String& trimMe )
 	return TrimString( trimMe, StringUtil_WhiteSpaceChars );
 }
 
-void GetCarCdr( StringList& inputStrings, String& car, String& cdr, int numInputStrings )
+void GetCarCdr( const StringList& inputStrings, String& car, String& cdr, int numInputStrings )
 {
 	if( inputStrings.size() == 0 )
 		return;
 
+	unsigned int num = (unsigned int)numInputStrings;
 	if( numInputStrings < 0 )
-		numInputStrings = (int)inputStrings.size();
+		num = inputStrings.size();
 
 	car = inputStrings[0];
-	for( int i = 1; i < numInputStrings; i++ )
+	for( unsigned int i = 1; i < num; i++ )
 	{
 		cdr += inputStrings[i];
 		//Only add a space between args that aren't at the end of the input string
-		if( i < numInputStrings - 1 )
+		if( i < (num - 1) )
 			cdr += " ";
 
 	}

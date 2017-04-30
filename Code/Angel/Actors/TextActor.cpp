@@ -57,7 +57,7 @@ void TextActor::Render()
 	glColor4f(_color.R, _color.G, _color.B, _color.A);
 	for(unsigned int i=0; i < _displayStrings.size(); i++)
 	{
-		DrawGameText(_displayStrings[i]._string, _fontNickname, (int)_displayStrings[i]._position.X, (int)_displayStrings[i]._position.Y, _rotation + theCamera.GetRotation());
+		DrawGameText(_displayStrings[i]._string, _fontNickname, (unsigned int)_displayStrings[i]._position.X, (unsigned int)_displayStrings[i]._position.Y, _rotation + theCamera.GetRotation());
 	}
 }
 

@@ -56,7 +56,7 @@ Preferences::Preferences()
 void Preferences::SavePreferences()
 {
 	StringList written;
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.begin();
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.begin();
 	while (it != _preferenceVariables.end())
 	{
 		written.push_back(it->first + " = {");
@@ -92,7 +92,7 @@ const String Preferences::GetUserPrefsPath()
 
 int Preferences::GetInt(const String& category, const String& name) 
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._int;
@@ -108,7 +108,7 @@ int Preferences::GetInt(const String& category, const String& name)
 
 float Preferences::GetFloat(const String& category, const String& name) 
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._float;
@@ -124,7 +124,7 @@ float Preferences::GetFloat(const String& category, const String& name)
 
 String Preferences::GetString(const String& category, const String& name) 
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return LoadedVariable()._string;
@@ -142,7 +142,7 @@ LoadedVariableMap Preferences::GetTable(const String& category)
 {
 	LoadedVariableMap forReturn;
 
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return forReturn;
@@ -164,7 +164,7 @@ void Preferences::SetInt(const String& category, const String& name, int val)
 	{
 		sysLog.Log("ERROR: Null strings passed for category or name in preference setting.");
 	}
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		_preferenceVariables[category] = LoadedVariableMap();
@@ -178,7 +178,7 @@ void Preferences::SetFloat(const String& category, const String& name, float val
 	{
 		sysLog.Log("ERROR: Null strings passed for category or name in preference setting.");
 	}
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		_preferenceVariables[category] = LoadedVariableMap();
@@ -192,7 +192,7 @@ void Preferences::SetString(const String& category, const String& name, const St
 	{
 		sysLog.Log("ERROR: Null strings passed for category or name in preference setting.");
 	}
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		_preferenceVariables[category] = LoadedVariableMap();
@@ -202,7 +202,7 @@ void Preferences::SetString(const String& category, const String& name, const St
 
 int Preferences::OverrideInt(const String& category, const String& name, int val)
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;
@@ -218,7 +218,7 @@ int Preferences::OverrideInt(const String& category, const String& name, int val
 
 float Preferences::OverrideFloat(const String& category, const String& name, float val)
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;
@@ -234,7 +234,7 @@ float Preferences::OverrideFloat(const String& category, const String& name, flo
 
 String Preferences::OverrideString(const String& category, const String& name, String val)
 {
-	hashmap_ns::hash_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
+	std::unordered_map<String, LoadedVariableMap>::iterator it = _preferenceVariables.find(category);
 	if (it == _preferenceVariables.end())
 	{
 		return val;

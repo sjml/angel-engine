@@ -40,10 +40,10 @@
 
 #if defined(WIN32)
 	#define WIN32_LEAN_AND_MEAN
+	#define _CRT_SECURE_NO_WARNINGS
 	#include <windows.h>
 	#include <direct.h>
-	#include <hash_map>
-	#define hashmap_ns stdext
+	#include <unordered_map>
 	#include <GL/gl.h>
 	#include <GL/glu.h>
 #elif defined(__APPLE__)
@@ -71,21 +71,8 @@
 	#endif
 #endif
 #if defined(__APPLE__) || defined(__linux__)
-	#include <ext/hash_map>
-	
-	//GCC is picky about what types are allowed to be used as indices to hashes. 
-	// Defining this here lets us use std::strings to index, which is useful. 
-	#define hashmap_ns __gnu_cxx
-	namespace hashmap_ns
-	{
-		template<> struct hash< std::string >
-		{
-			size_t operator()( const std::string& x ) const
-			{
-				return hash< const char* >()( x.c_str() );
-			}
-		};
-	}
+	#include <unordered_map>
+
 	#if ANGEL_MOBILE
 		// making up for OpenGL|ES missing pieces
 		#define glColor3f(r,g,b) glColor4f(r,g,b,1.0f)

@@ -71,7 +71,7 @@ void SpatialGraphKDNode::Render()
 		Vector2 screenCenter = MathUtil::WorldToScreen( centroid.X, centroid.Y );
 		//Print some vals
 		glColor3f(0,1.f,1.f);
-		DrawGameText( IntToString(Index), "ConsoleSmall", (int)screenCenter.X, (int)screenCenter.Y );
+		DrawGameText( IntToString(Index), "ConsoleSmall", (unsigned int)screenCenter.X, (unsigned int)screenCenter.Y );
 	}
 
 	if( theSpatialGraph.GetDrawGraph() && !bBlocked )
@@ -385,7 +385,7 @@ SpatialGraphKDNode* SpatialGraph::CreateTree(int depth, const BoundingBox& bbox,
 	if (depth > 0 && node->bBlocked )
 	{
 		BoundingBox LHSbbox, RHSbbox;
-		MathUtil::SplitBoundingBox( bbox, depth % 2 ? MathUtil::AA_X : MathUtil::AA_Y, LHSbbox, RHSbbox );
+		MathUtil::SplitBoundingBox( bbox, (depth % 2) ? MathUtil::AA_X : MathUtil::AA_Y, LHSbbox, RHSbbox );
 		node->LHC = CreateTree(depth, LHSbbox, node, node->Index << 1);
 		node->RHC = CreateTree(depth, RHSbbox, node, (node->Index << 1) + 1);
 
@@ -414,9 +414,9 @@ bool SpatialGraph::IsFullyBlocked( SpatialGraphKDNode* node )
 	return node->bBlocked && IsFullyBlocked(node->LHC) && IsFullyBlocked(node->RHC);
 }
 
-bool QuickContainsNode( hashmap_ns::hash_map<SpatialGraphKDNode*, int>& NodeList, SpatialGraphKDNode* pNode )
+bool QuickContainsNode( std::unordered_map<SpatialGraphKDNode*, int>& NodeList, SpatialGraphKDNode* pNode )
 {
-	hashmap_ns::hash_map<SpatialGraphKDNode*, int>::iterator itr = NodeList.find( pNode );
+	std::unordered_map<SpatialGraphKDNode*, int>::iterator itr = NodeList.find( pNode );
 	return itr != NodeList.end();
 }
 
@@ -473,7 +473,7 @@ bool SpatialGraph::CanGoInternal( const Vector2& vFrom, const Vector2 vTo, Spati
 
 	Ray2 ray = Ray2::CreateRayFromTo( vUseFrom, vUseTo );
 
-	hashmap_ns::hash_map<SpatialGraphKDNode*, int> NodeList;
+	std::unordered_map<SpatialGraphKDNode*, int> NodeList;
 	SpatialGraphKDNode* pCurrent = pSourceNode;
 
 	while( true )
@@ -642,8 +642,7 @@ SpatialGraphManager::~SpatialGraphManager()
 
 void SpatialGraphManager::CreateGraph( float entityWidth, const BoundingBox& bounds )
 {
-	if( _spatialGraph != NULL )
-		delete _spatialGraph;
+	delete _spatialGraph;
 
 	_spatialGraph = new SpatialGraph( entityWidth, bounds );
 }

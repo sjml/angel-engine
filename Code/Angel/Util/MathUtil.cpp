@@ -77,9 +77,9 @@ float MathUtil::AngleFromVectors(const Vector2& v1, const Vector2& v2)
 }
 
 
-int MathUtil::RoundToInt(double x)
+int MathUtil::RoundToInt(float x)
 {
-	return ((int)(floor(x+0.5)));
+	return ((int)(floor(x+0.5f)));
 }
 
 int MathUtil::RandomInt(int maximum)
@@ -88,7 +88,7 @@ int MathUtil::RandomInt(int maximum)
 	if (firstTime) 
 	{
 		firstTime = false;
-		srand((int)time(NULL));
+		srand((unsigned int)time(NULL));
 	}
 	if (maximum <= 0) 
 	{
@@ -145,9 +145,9 @@ Vector2 MathUtil::RandomVector(const Vector2& minValues, const Vector2& maxValue
 	return Vector2(RandomFloatInRange(minValues.X, maxValues.X), RandomFloatInRange(minValues.Y, maxValues.Y));
 }
 
-bool __poissonFieldCheck(Vector2List list, Vector2 point, float minDist)
+bool __poissonFieldCheck(const Vector2List& list, Vector2 point, float minDist)
 {
-	for (int i=0; i < list.size(); i++) {
+	for (unsigned int i=0; i < list.size(); i++) {
 		if (Vector2::DistanceSquared(list[i], point) < minDist)
 		{
 			return true;
@@ -156,7 +156,7 @@ bool __poissonFieldCheck(Vector2List list, Vector2 point, float minDist)
 	return false;
 }
 
-Vector2List MathUtil::RandomPointField(int numPoints, const Vector2& min, const Vector2& max, float minDistance)
+Vector2List MathUtil::RandomPointField(unsigned int numPoints, const Vector2& min, const Vector2& max, float minDistance)
 {
 	Vector2List forReturn;
 	
@@ -212,10 +212,15 @@ bool MathUtil::FuzzyEquals(const Vector2& v1, const Vector2& v2, float epsilon)
 
 Vector2 MathUtil::ScreenToWorld(const Vec2i& screenCoordinates)
 {
-	return MathUtil::ScreenToWorld(screenCoordinates.X, screenCoordinates.Y);
+	return MathUtil::ScreenToWorld((long)screenCoordinates.X, (long)screenCoordinates.Y);
 }
 
-Vector2 MathUtil::ScreenToWorld(int x, int y)
+Vector2 MathUtil::ScreenToWorld(const Vec2ui& screenCoordinates)
+{
+	return MathUtil::ScreenToWorld((long)screenCoordinates.X, (long)screenCoordinates.Y);
+}
+
+Vector2 MathUtil::ScreenToWorld(long x, long y)
 {
 	if (theWorld.IsHighResScreen())
 	{
@@ -258,8 +263,8 @@ Vector2 MathUtil::WorldToScreen(float x, float y)
 Vector2 MathUtil::GetWorldDimensions()
 {
 	float worldWidth, worldHeight;
-	int screenWidth = theCamera.GetWindowWidth();
-	int screenHeight = theCamera.GetWindowHeight();
+	unsigned int screenWidth = theCamera.GetWindowWidth();
+	unsigned int screenHeight = theCamera.GetWindowHeight();
 	float aspect = (float)screenWidth / (float)screenHeight;
 	if (screenWidth > screenHeight)
 	{

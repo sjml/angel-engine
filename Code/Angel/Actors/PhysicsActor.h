@@ -141,7 +141,7 @@ public:
 	 * 
 	 * @param groupIndex The new group index for this PhysicsActor
 	 */
-	void SetGroupIndex(int groupIndex);
+	void SetGroupIndex(short groupIndex);
 	
 	/**
 	 * If true, this PhysicsActor will not rotate (useful for characters).
@@ -330,7 +330,7 @@ protected:
 	float _restitution;
 	eShapeType _shapeType;
 	bool _isSensor;
-	int _groupIndex;
+	short _groupIndex;
 	bool _fixedRotation;
 
 private:

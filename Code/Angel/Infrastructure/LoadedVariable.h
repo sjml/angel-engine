@@ -83,4 +83,4 @@ struct LoadedVariable
 	}
 };
 
-typedef hashmap_ns::hash_map<String, LoadedVariable>    LoadedVariableMap;
+typedef std::unordered_map<String, LoadedVariable>    LoadedVariableMap;

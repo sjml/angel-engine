@@ -122,7 +122,7 @@ public: // methods
 	{
 	}
 
-	int GetState() {return m_State;}
+	unsigned int GetState() {return m_State;}
 
 	// call at any time to cancel the search and free up all the memory
 	void CancelSearch()

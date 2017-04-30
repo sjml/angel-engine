@@ -92,10 +92,10 @@ String IntToString( int val );
 /**
  * Converts extra long integers to a string.
  *
- * @param val The unsigned long long integer to convert.
+ * @param val The unsigned long integer to convert.
  * @return The string representation of the number.
  */
-String ULLIntToString( unsigned long long val );
+String ULIntToString( unsigned long val );
 
 /**
  * Converts a float to a string.

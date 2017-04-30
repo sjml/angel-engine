@@ -36,7 +36,7 @@ class Sentient;
 
 class AIBrain
 {
-	typedef hashmap_ns::hash_map<String, AIBrainState*> BrainStateTable;
+	typedef std::unordered_map<String, AIBrainState*> BrainStateTable;
 public:
 	AIBrain();
 	void SetActor( Sentient* actor ) {_actor = actor;}

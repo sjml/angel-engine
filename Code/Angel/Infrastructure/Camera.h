@@ -123,14 +123,14 @@ public:
 	 * 
 	 * @return Height in pixels. 
 	 */
-	const int GetWindowHeight() const;
+	const unsigned int GetWindowHeight() const;
 	
 	/**
 	 * Get the window's current width. 
 	 * 
 	 * @return Width in pixels.
 	 */
-	const int GetWindowWidth() const;
+	const unsigned int GetWindowWidth() const;
 	
 	/**
 	 * If you were to draw a circle inscribed in the viewport, this function
@@ -142,7 +142,7 @@ public:
 	 * 
 	 * @return The radius size in GL units. 
 	 */
-	const double GetViewRadius() const;
+	const float GetViewRadius() const;
 	
 	/**
 	 * Get the world coordinate of the top-right point of the window. 
@@ -208,6 +208,7 @@ public:
 	 *  You will have to manually subscribe to this Message, though.
 	 */
 	virtual void MoveTo(const Vector3& newPosition, float duration, bool smooth=false, String onCompletionMessage="");
+	virtual void MoveTo(const Vector2& newPosition, float duration, bool smooth = false, String onCompletionMessage = "");
 	
 	/**
 	 * Get the position of the camera on the Z-axis. 
@@ -300,12 +301,12 @@ protected:
 	Camera();
 	static Camera *s_Camera;
 
-	void Resize(int w, int h);
+	void Resize(unsigned int w, unsigned int h);
 
 private:
-	int _windowWidth;
-	int _windowHeight;
-	double _aperture;
+	unsigned int _windowWidth;
+	unsigned int _windowHeight;
+	float _aperture;
 	Vector3 _camera3DPosition;
 	Vector3 _view;
 	Vector3 _up;

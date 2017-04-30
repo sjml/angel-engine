@@ -76,6 +76,6 @@ public:
 	}
 	
 private:
-	ClassInstance*	_instance;
 	FunctionPointer  _function;
+	ClassInstance*	_instance;
 };

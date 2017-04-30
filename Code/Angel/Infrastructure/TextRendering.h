@@ -49,7 +49,7 @@
  * @return Whether or not it successfully registered (check the error log if
  *   this returns false)
  */
-const bool RegisterFont(const String& filename, int pointSize, const String& nickname);
+const bool RegisterFont(const String& filename, unsigned int pointSize, const String& nickname);
 
 /**
  * Tell whether there is already a font with a given name (to avoid repeat loading).
@@ -80,7 +80,7 @@ const bool UnRegisterFont(const String& nickname);
  *   where you could safely start drawing and not overwrite the string you
  *   just displayed. 
  */
-Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int pixelY, float angle=0.0f);
+Vector2 DrawGameText(const String& text, const String& nickname, unsigned int pixelX, unsigned int pixelY, float angle=0.0f);
 
 /**
  * Renders text without first doing the transformation to screenspace. If you're 
@@ -96,7 +96,7 @@ Vector2 DrawGameText(const String& text, const String& nickname, int pixelX, int
  *   where you could safely start drawing and not overwrite the string you
  *   just displayed.
  */
-Vector2 DrawGameTextRaw(const String& text, const String& nickname, int pixelX, int pixelY, float angle=0.0f);
+Vector2 DrawGameTextRaw(const String& text, const String& nickname, unsigned int pixelX, unsigned int pixelY, float angle=0.0f);
 
 /**
  * If you're just interested in how much space a certain string will take up, 
